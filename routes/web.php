@@ -14,6 +14,8 @@ use App\Http\Controllers\UsuarioController;
 */
 
 Route::get('/', function () {
+
+    
     return view('GrupoEmpresa.registro');
 });
 
