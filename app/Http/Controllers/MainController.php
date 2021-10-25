@@ -52,7 +52,7 @@ class MainController extends Controller
          $admin = new Usuario;
          $admin->username = $request->name;
          $admin->pass = Hash::make($request->password);
-         $admin->tipo = '1';
+         $admin->tipo = '3';
          $save = $admin->save();
 
          if($save){
@@ -76,8 +76,18 @@ class MainController extends Controller
         }else{
             //check password
             if(Hash::check($request->password, $userInfo->pass)){
-                $request->session()->put('LoggedUser', $userInfo->id);
-                return redirect('admin/dashboard');
+                if($userInfo->tipo==1){
+                    $request->session()->put('LoggedUser', $userInfo->id);
+                    return redirect('admin/dashboard');
+                }if($userInfo->tipo==2){
+                    $request->session()->put('LoggedUser', $userInfo->id);
+                    return redirect('docente/dashboard');
+                }if($userInfo->tipo==3){
+                    $request->session()->put('LoggedUser', $userInfo->id);
+                    return redirect('estudiante/dashboard');
+                }else{
+                    return back()->with('fail','Pagina no creada');
+                }
 
             }else{
                 return ;
@@ -97,7 +107,15 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.dashboard', $data);
     }
-
+    function dashboard2(){
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        return view('docente.dashboard', $data);
+    }
+    function dashboard3(){
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        return view('estudiante.dashboard', $data);
+    }
+    /*
     function settings(){
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.settings', $data);
@@ -110,5 +128,5 @@ class MainController extends Controller
     function staff(){
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.staff', $data);
-    }
+    }*/
 }

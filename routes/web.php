@@ -33,6 +33,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
 
     Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
+    Route::get('/docente/dashboard',[MainController::class, 'dashboard2']);
+    Route::get('/estudiante/dashboard',[MainController::class, 'dashboard3']);
     Route::get('/admin/settings',[MainController::class,'settings']);
     Route::get('/admin/profile',[MainController::class,'profile']);
     Route::get('/admin/staff',[MainController::class,'staff']);
