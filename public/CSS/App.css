@@ -1,0 +1,73 @@
+    img.logoUmssCss {
+    margin: -9vw 0 0 5%;
+    height: 12.3vw;
+    }
+    img {
+    vertical-align: middle;
+    border-style: none;
+    }
+
+    .portada {
+border-color: black;
+background-color: black;
+padding-block-end: 1px;
+    }
+    .textos{
+        text-align: center;
+        font-size: 60px;
+        
+    }
+    .avisos {
+    border: black 2px solid;
+    padding-top: 0;
+    text-align: center;
+    background-color:rgba(33,95,136,255);
+
+    }
+    .avisotes {
+    border: black 2px solid;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    }
+    .card {
+    border: black 2px solid;
+    padding-bottom: 100px;
+    padding-left: 10px;
+    }
+    .cardazo {
+        border: black 2px solid;
+        border-radius: 20px;
+        padding-bottom: 100px;
+        padding-left: 10px;
+        background-color: #fff3cd;
+    }
+    .cards {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    }
+    .cars{
+
+    margin-bottom: 20px;
+    
+    }
+    .pie {
+    margin-top: 0px;
+    background-color: aquamarine;
+    }
+    .navg a {
+    color: black;
+    background-color: #007bdc;
+    font-size: 23px;
+    padding: 10px 400px;
+    text-align: center;
+    text-transform: uppercase;
+    }
+.footer{
+    background-color: #215f88
+    ;
+}

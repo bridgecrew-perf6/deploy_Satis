@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Models",
+    "\\database",
+    "\\public",
+    "\\public\\INICIAR SESION",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\auth",
+    "\\routes"
+  ],
+  "SelectedNode": "\\public\\INICIAR SESION\\iniciarsesion.html",
+  "PreviewInSolutionExplorer": false
+}
