@@ -1,0 +1,61 @@
+.cabeceraCssAzul {
+    width: 35%;
+    height: 10.6vw;
+    background:rgba(33,95,136,255);
+}
+.cabeceraCssAzulClaro {
+        margin: -10.6vw 0 0 10%;
+        width: 25%;
+        height: 10.6vw;
+        background: rgb(91, 160, 200);
+        border-radius: 100% 0 0 0 / 155px 0 0 0;
+    }
+.cabeceraCssRoja {
+        margin: -10.6vw 0 0 65%;
+        width: 35%;
+        height: 10.6vw;
+        background: red;
+    }
+.cabeceraCssRojoClaro {
+        margin: -10.6vw 0 0 65%;
+        width: 25%;
+        height: 10.6vw;
+        background: #F19999;
+        border-radius: 0 0 100% 0 / 0 0 155px 0;
+    }
+.cabeceraCssBlanca {
+        margin: -10.6vw 0 0 20%;
+        width: 60%;
+        height: 10.6vw;
+        background: snow;
+        border-radius: 100% 0 100% 0 / 500px 0 500px 0;
+    }
+.textoCabecera {
+        margin: -10.2vw 0 0 31%;
+        font-size: 3.7vw;
+        color:rgb(91, 160, 200);        ;
+        text-shadow: 0 0 3px rgb(19 50 254), 0.12vw 0.12vw 1px #00004d;
+    }
+.textoCabeceraUniverisdad {
+        margin: 1.5vw 0 0 23%;
+        font-size: 2vw;
+        color: #ff4d4d;
+        text-shadow: 0 0 3px #ff0000;
+        text-shadow: 1.3px 1.3px 0px #4d0000;
+    }
+    .logoUmssCss {
+        margin: -9vw 0 0 5%;
+        height: 12.3vw;
+    }
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+    .logoCarreraCss {
+        margin: -9.5vw 0 0 70%;
+        height: 9.5vw;
+    }
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }

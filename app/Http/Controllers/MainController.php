@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -13,6 +14,9 @@ class MainController extends Controller
     }
     function register(){
         return view('auth.register');
+    }
+    function register2(){
+        return view('auth.register2');
     }
     function save(Request $request){
         
@@ -36,26 +40,48 @@ class MainController extends Controller
              return back()->with('fail','Something went wrong, try again later');
          }
     }
-
-    function check(Request $request){
+    function save2(Request $request){
+        
         //Validate requests
         $request->validate([
-             'email'=>'required|email',
-             'password'=>'required|min:5|max:12'
+            'name'=>'required',
+            'password'=>'required|min:5|max:12'
         ]);
 
-        $userInfo = Admin::where('email','=', $request->email)->first();
+         //Insert data into database
+         $admin = new Usuario;
+         $admin->username = $request->name;
+         $admin->pass = Hash::make($request->password);
+         $admin->tipo = '1';
+         $save = $admin->save();
 
+         if($save){
+            return back()->with('success','New User has been successfuly added to database');
+         }else{
+             return back()->with('fail','Something went wrong, try again later');
+         }
+    }
+
+    function check(Request $request){    
+        //Validate requests
+        $request->validate([
+             'username'=>'required',
+             'password'=>'required|min:5|max:12'
+        ]);
+        
+        $userInfo = Usuario::where('username','=', $request->username)->first();
+        
         if(!$userInfo){
-            return back()->with('fail','We do not recognize your email address');
+            return back()->with('fail','Usuario no registrado');
         }else{
             //check password
-            if(Hash::check($request->password, $userInfo->password)){
+            if(Hash::check($request->password, $userInfo->pass)){
                 $request->session()->put('LoggedUser', $userInfo->id);
                 return redirect('admin/dashboard');
 
             }else{
-                return back()->with('fail','Incorrect password');
+                return ;
+                return back()->with('fail','Contraseña incorrecta');
             }
         }
     }
@@ -68,21 +94,21 @@ class MainController extends Controller
     }
 
     function dashboard(){
-        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.dashboard', $data);
     }
 
     function settings(){
-        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.settings', $data);
     }
 
     function profile(){
-        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.profile', $data);
     }
     function staff(){
-        $data = ['LoggedUserInfo'=>Admin::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('admin.staff', $data);
     }
 }

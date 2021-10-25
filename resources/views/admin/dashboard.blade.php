@@ -15,14 +15,12 @@
                    <h4>Dashboard</h4><hr>
                    <table class="table table-hover">
                       <thead>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>Name</th>                        
                         <th></th>
                       </thead>
                       <tbody>
                          <tr>
-                            <td>{{ $LoggedUserInfo['name'] }}</td>
-                            <td>{{ $LoggedUserInfo['email'] }}</td>
+                            <td>{{ $LoggedUserInfo['username'] }}</td>
                             <td><a href="{{ route('auth.logout') }}">Logout</a></td>
                          </tr>
                       </tbody>

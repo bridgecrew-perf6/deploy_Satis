@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,18 +42,18 @@
         </a>
         <div class="navbar-links">
           <ul>
-            <li><a href="../INICIO/INICIO.html">Inicio</a></li>
+            <li><a href="{{ url('/') }}">Inicio</a></li>
             <li><a href="#" class="active">Iniciar Sesión</a></li>
             
           </ul>
         </div>
       </nav>
-    </header>
+</header>
 
 <div class="container">
-   <div class="row" style="margin-top:45px">
-      <div class="col-md-4 col-md-offset-4">
-           <h4>Login</h4><hr>
+   <div class="row justify-content-center pt-5 mt-5 m-1 caja">
+      <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
+           <h4 style="color:black">Iniciar sesión</h4><hr>
            <form action="{{ route('auth.check') }}" method="post">
             @if(Session::get('fail'))
                <div class="alert alert-danger">
@@ -63,12 +63,12 @@
   
            @csrf
               <div class="form-group">
-                 <label>Email</label>
-                 <input type="text" class="form-control" name="email" placeholder="Ingrese su email" value="{{ old('email') }}">
-                 <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+                 <label style="color:black">Usuario</label>
+                 <input type="text" class="form-control" name="username" placeholder="Ingrese su email" value="{{ old('username') }}">
+                 <span class="text-danger">@error('required'){{ $message }} @enderror</span>
               </div>
               <div class="form-group">
-                 <label>Contraseña</label>
+                 <label style="color:black">Contraseña</label>
                  <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
               </div>

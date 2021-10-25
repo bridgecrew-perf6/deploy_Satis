@@ -17,6 +17,8 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('inicio');
 });
+Route::get('/auth/register2',[MainController::class, 'register2'])->name('auth.register2');
+Route::post('/auth/save2',[MainController::class, 'save2'])->name('auth.save2');
 
 
 Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
