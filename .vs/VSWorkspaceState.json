@@ -4,13 +4,14 @@
     "\\app",
     "\\app\\Models",
     "\\database",
+    "\\database\\migrations",
     "\\public",
-    "\\public\\INICIAR SESION",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\auth",
-    "\\routes"
+    "\\resources\\views\\docente",
+    "\\resources\\views\\estudiante"
   ],
-  "SelectedNode": "\\public\\INICIAR SESION\\iniciarsesion.html",
+  "SelectedNode": "\\app\\Models\\Empresa.php",
   "PreviewInSolutionExplorer": false
 }

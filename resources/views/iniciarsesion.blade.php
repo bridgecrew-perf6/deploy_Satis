@@ -42,8 +42,8 @@
         </a>
         <div class="navbar-links">
           <ul>
-            <li><a href="../INICIO/INICIO.html">Inicio</a></li>
-            <li><a href="#" class="active">Iniciar Sesión</a></li>
+            <li><a href="{{ url('/') }}">Inicio</a></li>
+            <li><a href="{{ url('/auth/login') }}" class="active">Iniciar Sesión</a></li>
             
           </ul>
         </div>

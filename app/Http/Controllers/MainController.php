@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Usuario;
+use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class MainController extends Controller
 {
@@ -19,26 +21,44 @@ class MainController extends Controller
         return view('auth.register2');
     }
     function save(Request $request){
+        $filesource = $request->file('file');
+        $fileExtension = $filesource->getClientOriginalExtension();
+        if(strcmp($fileExtension, "csv") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .csv');
+        }
+        /*$request->validate([
+            'file' => 'required|mimes:csv,txt'
+            ]);
+          */  
         
-        //Validate requests
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:admins',
-            'password'=>'required|min:5|max:12'
-        ]);
+        
+        if(isset($_POST["submit_file"]))
+        {
+            
+            try{  
 
-         //Insert data into database
-         $admin = new Admin;
-         $admin->name = $request->name;
-         $admin->email = $request->email;
-         $admin->password = Hash::make($request->password);
-         $save = $admin->save();
-
-         if($save){
-            return back()->with('success','New User has been successfuly added to database');
-         }else{
-             return back()->with('fail','Something went wrong, try again later');
-         }
+            $file = $_FILES["file"]["tmp_name"];
+            $file_open = fopen($file,"r");
+            $usuario = new Usuario;
+            $i = 0;
+            while(($csv = fgetcsv($file_open, 200, ";")) !== false)
+            {
+                if($i != 0){
+                $username = $csv[0];
+                $pass = Hash::make($csv[1]);
+                DB::table('usuarios')->insert([
+                    'username' => $username,
+                    'pass' => $pass,
+                    'tipo' => '3'
+                ]);
+                }
+                $i++;                        
+            }
+            return redirect('docente/dashboard');
+            }catch (Exception $e){
+                echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+            }
+        }        
     }
     function save2(Request $request){
         
@@ -52,7 +72,7 @@ class MainController extends Controller
          $admin = new Usuario;
          $admin->username = $request->name;
          $admin->pass = Hash::make($request->password);
-         $admin->tipo = '3';
+         $admin->tipo = '2';
          $save = $admin->save();
 
          if($save){
@@ -60,6 +80,29 @@ class MainController extends Controller
          }else{
              return back()->with('fail','Something went wrong, try again later');
          }
+    }
+    function save3(Request $request){
+       
+        //Validate requests
+        $request->validate([
+            'nombreC'=>'required|unique:empresas',
+            'nombreL'=>'required|min:5|unique:empresas'
+        ]);
+
+         //Insert data into database
+         $admin = new Empresa;
+         $admin->nombreC = $request->nombreC;
+         $admin->nombreL = $request->nombreL;         
+         $save = $admin->save();
+
+         if($save){
+            return back()->with('success','Empresa creada exitosamente');
+         }else{
+             return back()->with('fail','La empresa ya existe o su nombre no es valido');
+         }
+    }
+    function funda(Request $request){
+        return view('fundaempresa');
     }
 
     function check(Request $request){    
@@ -115,6 +158,7 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('estudiante.dashboard', $data);
     }
+    
     /*
     function settings(){
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
