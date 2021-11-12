@@ -132,8 +132,7 @@ class MainController extends Controller
                     return back()->with('fail','Pagina no creada');
                 }
 
-            }else{
-                return ;
+            }else{                
                 return back()->with('fail','Contraseña incorrecta');
             }
         }

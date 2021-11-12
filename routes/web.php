@@ -17,7 +17,7 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('inicio');
 });
-
+Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 
 
 
@@ -28,7 +28,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/auth/save2',[MainController::class, 'save2'])->name('auth.save2');
     Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
-    Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
+    
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
     Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');
     Route::post('/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
