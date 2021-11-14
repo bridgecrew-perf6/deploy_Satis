@@ -86,13 +86,38 @@ class MainController extends Controller
         //Validate requests
         $request->validate([
             'nombreC'=>'required|unique:empresas',
-            'nombreL'=>'required|min:5|unique:empresas'
+            'nombreL'=>'required|min:5|unique:empresas',
+            'integrantes'=>'nullable|unique:empresas',
+            'representante'=>'nullable|unique:empresas',
+            'correo'=>'nullable|email|unique:empresas',
+            'telefono'=>'nullable|unique:empresas',
+            'direccion'=>'nullable|unique:empresas'
         ]);
+        if($request->integrantes == null){
+            $request->integrantes = "";
+        }
+        if($request->representante == null){
+            $request->representante = "";
+        }
+        if($request->correo == null){
+            $request->correo = "";
+        }
+        if($request->telefono == null){
+            $request->telefono = "";
+        }
+        if($request->direccion == null){
+            $request->direccion = "";
+        }
 
          //Insert data into database
          $admin = new Empresa;
          $admin->nombreC = $request->nombreC;
-         $admin->nombreL = $request->nombreL;         
+         $admin->nombreL = $request->nombreL;
+         $admin->integrantes = $request->integrantes;
+         $admin->representante = $request->representante;
+         $admin->correo = $request->correo;
+         $admin->telefono = $request->telefono;
+         $admin->direccion = $request->direccion;
          $save = $admin->save();
 
          if($save){

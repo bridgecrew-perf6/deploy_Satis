@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2021 a las 02:48:31
+-- Tiempo de generación: 14-11-2021 a las 19:50:12
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -45,16 +45,22 @@ CREATE TABLE `admins` (
 CREATE TABLE `empresas` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nombreC` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombreL` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `nombreL` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `integrantes` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `representante` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `empresas`
 --
 
-INSERT INTO `empresas` (`id`, `nombreC`, `nombreL`) VALUES
-(1, 'lion', 'liontech'),
-(3, 'so', 'software');
+INSERT INTO `empresas` (`id`, `nombreC`, `nombreL`, `integrantes`, `representante`, `correo`, `telefono`, `direccion`) VALUES
+(1, 'lion', 'liontech', '', '', '', '', ''),
+(2, 'soft', 'software', '', '', '', '', ''),
+(3, 'hard', 'hardware', 'askdhsdkhk', 'jhon', 'xxx@yy.com', '6727364', 'aca');
 
 -- --------------------------------------------------------
 
@@ -92,11 +98,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (4, '2021_10_16_200022_create_usuarios_table', 1),
 (6, '2014_10_12_200000_add_two_factor_columns_to_users_table', 2),
-(11, '2014_10_12_000000_create_users_table', 3),
-(12, '2014_10_12_100000_create_password_resets_table', 3),
-(13, '2019_08_19_000000_create_failed_jobs_table', 3),
-(14, '2020_12_31_051631_create_admins_table', 3),
-(15, '2021_11_07_184907_create_empresas_table', 3);
+(21, '2014_10_12_000000_create_users_table', 3),
+(22, '2014_10_12_100000_create_password_resets_table', 3),
+(23, '2019_08_19_000000_create_failed_jobs_table', 3),
+(24, '2020_12_31_051631_create_admins_table', 3),
+(25, '2021_11_07_184907_create_empresas_table', 3);
 
 -- --------------------------------------------------------
 
@@ -252,7 +258,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`

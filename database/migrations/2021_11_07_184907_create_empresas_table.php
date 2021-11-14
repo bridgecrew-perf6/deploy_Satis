@@ -17,6 +17,11 @@ class CreateEmpresasTable extends Migration
             $table->id();
             $table->text('nombreC');
             $table->text('nombreL');
+            $table->text('integrantes');
+            $table->text('representante');
+            $table->text('correo');
+            $table->text('telefono');
+            $table->text('direccion');
         });
     }
 
