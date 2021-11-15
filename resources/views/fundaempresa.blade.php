@@ -78,7 +78,8 @@
             </div>
             <div class="col-md-12">
               <label for="integrantes" class="form-label">Integrantes</label>
-              <textarea rows="6" cols="60" class="form-control" name="integrantes" form="funda" ></textarea>
+              <textarea rows="6" cols="60" class="form-control" name="integrantes" form="funda"
+              placeholder="1.Integrante1&#10;2.Integrante2&#10;3.Integrante3&#10;4.Integrante4&#10;5.Integrante5&#10;"></textarea>
               <span class="text-danger">@error('integrantes'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-12">
