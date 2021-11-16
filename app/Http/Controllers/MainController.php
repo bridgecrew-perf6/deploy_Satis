@@ -14,6 +14,12 @@ class MainController extends Controller
     function login(){
         return view('auth.login');
     }
+    function convocatoriasD(){
+        return view('docente.convocatoriasD');
+    }
+    function avisosD(){
+        return view('docente.avisosD');
+    }
     function register(){
         return view('auth.register');
     }
