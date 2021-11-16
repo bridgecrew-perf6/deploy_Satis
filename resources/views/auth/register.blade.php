@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Docente</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap-3.1.1/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap@5.1.3/dist/css/bootstrap.min.css') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,15 +18,13 @@
     <link rel="stylesheet" href="../CSS/cabecera.css"> 
     <script src="../CSS/script.js" defer></script>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
-        <div class="cabeceraCssAzul"></div>
+    <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
-        <div class="cabeceraCssRoja"></div>
-        <div class="cabeceraCssRojoClaro"></div>
         <div class="cabeceraCssBlanca"></div>
-        <div class="textoCabecera h3">INFORMATICA - SISTEMAS</div>
-        <div class="textoCabeceraUniverisdad h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
-        <img class="logoUmssCss" src="../IMAGENES/LogoUMSS.png" alt="">
-        <img class="logoCarreraCss" src="../IMAGENES/logoInformaticaSistemas.png" alt="">
+        <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
+        <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
+        <img class="logoUmssCss" src="../../INICIO/IMAGENES/LogoUMSS.png" alt="">
+       
     </div>
 </head>
 <header>
@@ -43,18 +41,19 @@
               <span class="bar"></span>
             </a>
             <div class="navbar-links">
-              <ul>
-                <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
+            <ul>
+              <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
+              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
+                <li><a href="">Agregar Aviso</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-                
               </ul>
             </div>
           </nav>
 </header>
 <body>
 
-<div class="container">
+<div Style="margin-bottom: 40px;" class="container">
    <div class="row" style="margin-top:45px">
       <div class="col-md-4 col-md-offset-4">
            <h4>Registro de estudiantes</h4><hr>
@@ -67,9 +66,15 @@
             @endif
             @csrf
             <input type="file" name="file"/>
-            <input type="submit" name="submit_file" value="Submit"/>
+            <!-- <input type="submit" name="submit_file" value="Submit"/>-->
+            <button  Style="margin-top: 40px;background-color: #215f88;" type="submit" class="btn btn-primary" >Registrar</button>
             </form>
            </div>
+
+
+
+
+
            <!--<form action="{{ route('auth.save') }}" method="post">
 
            @if(Session::get('success'))
