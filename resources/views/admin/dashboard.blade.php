@@ -18,21 +18,22 @@
     <link rel="stylesheet" href="../CSS/cabecera.css"> 
     <script src="../CSS/script.js" defer></script>
     
+    <!--PORTADA-->
+
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
     <div class="cabeceraCssAzul"></div>
     <div class="cabeceraCssAzulClaro"></div>
-    <!-- <div class="cabeceraCssRoja"></div> -->
-    <!-- <div class="cabeceraCssRojoClaro"></div> -->
     <div class="cabeceraCssBlanca"></div>
     <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
     <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
     <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
-    <!-- <img class="logoCarreraCss" src="IMAGENES/logoInformaticaSistemas.png" alt="">
- -->
+    
+
   </div>
 </head>
-<header>
-    
+
+
+<header>   
         <title>INICIO</title>
         <div>
             <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
@@ -55,6 +56,7 @@
           </nav>
 </header>
 <body>
+  <!--CONVACATORIAS Y AVISOS-->
 <section>
         <div class="container mt-5 mb-5 ">
         <div class=" row d-flex justify-content-between cards ">
@@ -98,6 +100,8 @@
         </div>
       </div>
       </section>
+
+      <!-- PIE DE PAGINA-->
           <footer class="footer text-white">
             <div class="container">
               <nav class="row">
@@ -122,11 +126,7 @@
                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                   <!--  {/*
-    <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-    <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-    */}
-     -->
+   
                   </ul>
     
     
