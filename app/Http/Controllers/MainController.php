@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Aviso;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
@@ -14,12 +15,41 @@ class MainController extends Controller
     function login(){
         return view('auth.login');
     }
-    function convocatoriasD(){
-        return view('docente.convocatoriasD');
-    }
+
     function avisosD(){
         return view('docente.avisosD');
     }
+    
+    function convocatoriasD(Request $request){
+        $Aviso = new Aviso();
+        $Aviso-> name = $request->name;
+        $Aviso-> codigo = $request->codigo;
+        $Aviso-> gestion = $request->gestion;
+        $Aviso-> semestre = $request->semestre;
+        $Aviso-> descripcion = $request->descripcion;
+        $Aviso ->save();
+        return redirect()->route('docente.avisosD');
+       /*  return $avisos; */
+    }
+
+    function edit($id){
+        $Aviso = Aviso::find($id);
+    }
+   /*  public function index(){
+        $usuarios = \DB::table('avisos')
+                ->select('avisos.*')
+                ->orderby('id','DESC')
+                ->get();
+                return view('docente.avisosD');
+
+    }
+
+ */
+
+
+
+
+
     function register(){
         return view('auth.register');
     }

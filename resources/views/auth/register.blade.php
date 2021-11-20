@@ -44,7 +44,7 @@
             <ul>
               <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
               <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-                <li><a href="">Agregar Aviso</a></li>
+                <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
               </ul>

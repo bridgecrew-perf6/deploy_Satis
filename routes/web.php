@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-
+use App\Models\Aviso;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +15,15 @@ use App\Http\Controllers\MainController;
 */
 
 Route::get('/', function () {
-    return view('inicio');
+$Aviso = Aviso::all();
+    return view('inicio',array('avisos'=> $Aviso));
 });
+
+
+    
+
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
+
 
 
 
@@ -28,7 +34,11 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/auth/save2',[MainController::class, 'save2'])->name('auth.save2');
     Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
+    
+    Route::get('/docente/convocatoriasD',[MainController::class, 'avisosDoc'])->name('docente.avisosDoc');
+
     Route::get('/docente/convocatoriasD',[MainController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
+
     Route::get('/docente/avisosD',[MainController::class, 'avisosD'])->name('docente.avisosD');
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
