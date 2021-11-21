@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Aviso;
+use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
@@ -15,16 +16,38 @@ class MainController extends Controller
     function login(){
         return view('auth.login');
     }
-    
-    public function avisosDos(Request $request){
+    public function convocatoriasDos(Request $request){
+        $Convocatoria = new Convocatoria();
+        $Convocatoria-> name = $request->name;
+        $Convocatoria-> codigo = $request->codigo;
+        $Convocatoria-> gestion = $request->gestion;
+        $Convocatoria-> semestre = $request->semestre;
+        $Convocatoria-> descripcion = $request->descripcion;
+        
+        $save = $Convocatoria->save();
+        if($save){
+            return back()->with('success','Empresa creada exitosamente');
+         }else{
+             return back()->with('fail','La empresa ya existe o su nombre no es valido');
+         }
+       /*  return $avisos; */
+    }
+    function avisosDos(Request $request){
+       
+
         $Aviso = new Aviso();
         $Aviso-> name = $request->name;
         $Aviso-> codigo = $request->codigo;
         $Aviso-> gestion = $request->gestion;
         $Aviso-> semestre = $request->semestre;
         $Aviso-> descripcion = $request->descripcion;
-        $Aviso ->save();
-        return redirect()->route('docente.avisosD');
+        
+        $save = $Aviso->save();
+        if($save){
+            return back()->with('success','Empresa creada exitosamente');
+         }else{
+             return back()->with('fail','La empresa ya existe o su nombre no es valido');
+         }
        /*  return $avisos; */
     }
 

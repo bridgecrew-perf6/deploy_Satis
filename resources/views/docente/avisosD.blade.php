@@ -47,7 +47,19 @@
 
 
 
-          <form class="row g-3" action="{{ route('docente.avisosDos') }}">
+          <form class="row g-3" method="post" action="{{ route('docente.avisosDos') }}" enctype="multipart/form-data">
+           
+            @if(Session::get('success'))
+            <div class="alert alert-success">
+               {{ Session::get('success') }}
+            </div>
+           @endif
+           @if(Session::get('fail'))
+            <div class="alert alert-danger">
+               {{ Session::get('fail') }}
+            </div>
+           @endif
+            @csrf
             <div class="col-md-4">
               <label for="firstName" class="form-label">Titulo:</label>
               <input type="text" class="form-control" name="name" >
