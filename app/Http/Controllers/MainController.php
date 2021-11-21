@@ -15,12 +15,8 @@ class MainController extends Controller
     function login(){
         return view('auth.login');
     }
-
-    function avisosD(){
-        return view('docente.avisosD');
-    }
     
-    function convocatoriasD(Request $request){
+    public function avisosDos(Request $request){
         $Aviso = new Aviso();
         $Aviso-> name = $request->name;
         $Aviso-> codigo = $request->codigo;

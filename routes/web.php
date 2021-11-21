@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Models\Aviso;
@@ -35,11 +36,11 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
     
-    Route::get('/docente/convocatoriasD',[MainController::class, 'avisosDoc'])->name('docente.avisosDoc');
+    Route::get('/docente/convocatoriasD',[AvisosController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
 
-    Route::get('/docente/convocatoriasD',[MainController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
+    Route::get  ('',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
 
-    Route::get('/docente/avisosD',[MainController::class, 'avisosD'])->name('docente.avisosD');
+    Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
     Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');

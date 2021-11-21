@@ -47,7 +47,7 @@
 
 
 
-          <form class="row g-3" action="{{ route('docente.convocatoriasD') }}">
+          <form class="row g-3" action="{{ route('docente.avisosDos') }}">
             <div class="col-md-4">
               <label for="firstName" class="form-label">Titulo:</label>
               <input type="text" class="form-control" name="name" >
