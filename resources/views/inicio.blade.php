@@ -31,9 +31,15 @@
             <div class="card ">
 
               <div class="card-body">
-                <h5 class="card-title">Empresa TIS</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               @foreach ($convocatorias as $convocatorias)
+                <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
+                
+                <p class="card-text">link documentos {{$convocatorias->archivote }}</p>
 
+                <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
+                <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
+                <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
+                @endforeach 
               </div>
             </div>
           </div>
@@ -49,7 +55,8 @@
             <div class="cardazo">
 
               <div class="card-body">
-                 @foreach ($avisos as $avisos)
+         
+             @foreach ($avisos as $avisos)
                 <h5 class="card-title text-ligth">{{$avisos->name }}</h5>
                 
 
@@ -57,7 +64,7 @@
                 <p class="card-text">codigo: {{$avisos->codigo }}</p>
                 <p class="card-text">Gestion: {{$avisos->gestion }}</p>
                 <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
-                @endforeach
+                @endforeach 
               </div>
             </div>
            {{--  <div class="cardazo">

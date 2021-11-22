@@ -33,13 +33,11 @@
             </div>
            @endif
             @csrf
-            <div class="col-md-4">
+         <div class="col-md-4">
               <label for="firstName" class="form-label">Titulo:</label>
               <input type="text" class="form-control" name="name" >
             </div>
-            {{-- <div  class="col-md-12">Fecha:
-            <input Style="margin-left: 40px;" type="date" value="2021-09-30" min="2021-01-01" max="2021-12-31">
-            </div> --}}
+            
             <div class="container">
             <div class=" col-md-2">
               <label  class="form-label">Codigo:</label>
@@ -67,12 +65,13 @@
               <option value="2">2</option>
             </select>
             
-          </div>
+          </div> 
         
-            <div class="form-floating">
-              
-              <textarea name="descripcion" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
-              <label for="floatingTextarea2">Escribir Aviso</label>
+          <div Style="margin-top: 40px;" >
+            <label for="convocatoria" >Elegir Documento:</label>
+            <input name= "archivote" type="file" name="convocatoria" id="convocatoria">
+            
+
             </div>
 
             <div class="col-md-6 d-flex justify-content-between ">

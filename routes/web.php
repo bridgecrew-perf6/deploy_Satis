@@ -4,6 +4,10 @@ use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Models\Aviso;
+use App\Models\Convocatoria;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +21,11 @@ use App\Models\Aviso;
 
 Route::get('/', function () {
 $Aviso = Aviso::all();
-    return view('inicio',array('avisos'=> $Aviso));
+$Convocatoria = Convocatoria::all();
+    return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria));
 });
 
-
-    
+ 
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 
@@ -42,6 +46,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
     Route::post('/docente/avisosD',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
+
+    Route::get('/docente/dashboard',[MainController::class, 'inicioD']);
+
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
     Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');

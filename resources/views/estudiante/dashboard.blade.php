@@ -69,7 +69,21 @@
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
               </div>
+              
+             
             </div>
+         {{--  <div class="col-sm-12"> 
+            <p><h1>DOCUMENTOS BASE
+              </h1>
+
+              <a href="http://moodle3.umss.edu.bo/pluginfile.php/247589/mod_resource/content/4/PliegoEspecificaciones22021.pdf">Pliego de Especificaciones (PETIS)-II/2021</a>.
+              </p>
+            </div> --}}
+            <h2 class="align-items-center avisos text-light">
+              DOCUMENTOS BASE
+            </h2>
+            <a class="card" href="http://moodle3.umss.edu.bo/pluginfile.php/247589/mod_resource/content/4/PliegoEspecificaciones22021.pdf">Pliego de Especificaciones (PETIS)-II/2021</a>.
+
           </div>
 
           <div class="col-sm-5 avisotes">

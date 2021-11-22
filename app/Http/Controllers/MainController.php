@@ -17,25 +17,44 @@ class MainController extends Controller
         return view('auth.login');
     }
     public function convocatoriasDos(Request $request){
-        $Convocatoria = new Convocatoria();
+       $Convocatoria = new Convocatoria();
         $Convocatoria-> name = $request->name;
         $Convocatoria-> codigo = $request->codigo;
         $Convocatoria-> gestion = $request->gestion;
         $Convocatoria-> semestre = $request->semestre;
-        $Convocatoria-> descripcion = $request->descripcion;
+        $Convocatoria-> archivote = $request->archivote;
         
         $save = $Convocatoria->save();
         if($save){
-            return back()->with('success','Empresa creada exitosamente');
+            return back()->with('success','Convocatoria publicado exitosamente');
+
          }else{
-             return back()->with('fail','La empresa ya existe o su nombre no es valido');
+             return back()->with('fail','La convocatoria ya existe o su nombre no es valido');
          }
-       /*  return $avisos; */
+         
+          if($request->hasFile("archivote")){
+            $file=$request->file("archivote");
+            $nombre ="pdf_".time().".".$file->guessExtension();
+            $ruta = public_path("pdf/".$nombre);
+
+            if($file->guessExtension()=="pdf"){
+                copy($file,$ruta);
+            }else
+            {
+                dd("no es pdf bro");
+            } 
+        
+
+
+          }
+      
     }
+
+
     function avisosDos(Request $request){
        
 
-        $Aviso = new Aviso();
+         $Aviso = new Aviso();
         $Aviso-> name = $request->name;
         $Aviso-> codigo = $request->codigo;
         $Aviso-> gestion = $request->gestion;
@@ -44,9 +63,9 @@ class MainController extends Controller
         
         $save = $Aviso->save();
         if($save){
-            return back()->with('success','Empresa creada exitosamente');
+            return back()->with('success','El aviso fue publicado exitosamente');
          }else{
-             return back()->with('fail','La empresa ya existe o su nombre no es valido');
+             return back()->with('fail','El aviso ya existe o su nombre no es valido');
          }
        /*  return $avisos; */
     }
