@@ -17,8 +17,14 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('inicio');
 });
+/*Route::get('/lista', function () {
+    return view('lista');
+});*/
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
-
+Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
+Route::get('/estudiante/lista',[MainController::class, 'funda3']);
+Route::get('/docente/lista',[MainController::class, 'funda4']);
+Route::get('/admin/lista',[MainController::class, 'funda5']);
 
 
 

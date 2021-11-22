@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\database",
-    "\\database\\migrations",
     "\\public",
+    "\\public\\CSS",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\admin",
@@ -11,6 +11,6 @@
     "\\resources\\views\\docente",
     "\\resources\\views\\estudiante"
   ],
-  "SelectedNode": "\\database\\migrations\\2021_11_07_184907_create_empresas_table.php",
+  "SelectedNode": "\\public\\CSS\\script.js",
   "PreviewInSolutionExplorer": false
 }

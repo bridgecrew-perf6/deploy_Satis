@@ -95,8 +95,17 @@ class MainController extends Controller
          }
     }
     function save3(Request $request){
-        
+       
         $integrantes = $request->seleccion;
+        if($integrantes == null){
+            return back()->with('fail','Se necesitan al menos 3 socios');
+        }
+        if(count($integrantes) < 3){
+            return back()->with('fail','Se necesitan al menos 3 socios');
+        }
+        if(count($integrantes) > 5){
+            return back()->with('fail','Maximo 5 socios');
+        }
         $nombres = $request->nombre;
         //Validate requests
         $request->validate([
@@ -159,6 +168,27 @@ class MainController extends Controller
         $data = $query->get();
         return view('fundaempresa',compact('data'));
     }
+    function funda2(){        
+        $query = DB::table('empresas');         
+        $data = $query->get();
+        return view('lista',compact('data'));
+    }
+    function funda3(){        
+        $query = DB::table('empresas');         
+        $data = $query->get();
+        return view('/estudiante/lista',compact('data'));
+    }
+    function funda4(){        
+        $query = DB::table('empresas');         
+        $data = $query->get();
+        return view('/docente/lista',compact('data'));
+    }
+    function funda5(){        
+        $query = DB::table('empresas');         
+        $data = $query->get();
+        return view('/admin/lista',compact('data'));
+    }
+
 
     function check(Request $request){    
         //Validate requests

@@ -55,48 +55,42 @@
 </header>
 <body>
     <section>
-    
-            <div class="d-flex justify-content-between cards">
-              <div class="col-sm-6">
-                <h2 class="align-items-center avisos text-light">
-                  Publicacion de convocatoria TIS
-                </h2>
-                <div class="card">
-    
-                  <div class="card-body">
-                    <h5 class="card-title">Empresa TIS</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-sm-5 avisotes">
-                <h2 class="align-items-center avisos text-light">
-                  Avisos
-                </h2>
-               <div class = "cars">
-                <div class="cardazo">
-    
-                  <div class="card-body">
-                    <h5 class="card-title">Aviso importante   :</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
-                  </div>
-                </div>
-                <div class="cardazo">
-    
-                  <div class="card-body">
-                    <h5 class="card-title">Aviso importante   :</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
-                  </div>
-                </div>
-                </div>
-              </div>
-            </div>
-    
-          </section>
+        <div class="container mt-5 mb-5 ">
+        <div class=" row d-flex justify-content-between cards ">
+          <div class="col-sm-6">
+            <h2><label for="empresas" class="form-label">Grupo Empresas</label></h2>
+                <style>
+                    table, th, td {
+                        border: 2px solid black;
+                        padding: 10px;
+                    }
+                </style>
+                <table name="empresas" border="1">
+                    <tr>
+                            <th class="text-center" border="1">Nombre corto</th>
+                            <th class="text-center" border="1">Nombre Largo</th>
+                    </tr>
+                    
+                    @foreach($data as $key=>$item)
+                        
+                        <tr>
+                            <td align="center">
+                                {{$item->nombreC}}
+                                
+                            </td>
+                            <td>
+                                {{$item->nombreL}}                                
+                            </td>
+                        </tr>
+                        
+                    @endforeach
+                    
+                </table>
+          </div>
+            
+        </div>
+        </div>
+    </section>
           <footer class="footer text-white">
             <div class="container">
               <nav class="row">

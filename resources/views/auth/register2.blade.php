@@ -44,7 +44,8 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
+                <li><a href="{{ url('/admin/dashboard') }}">Inicio</a></li>
+                <li><a href="{{ url('/admin/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
