@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\Http",
     "\\database",
+    "\\database\\migrations",
+    "\\public",
     "\\resources",
-    "\\resources\\lang",
-    "\\resources\\lang\\en",
     "\\resources\\views",
     "\\resources\\views\\admin",
+    "\\resources\\views\\auth",
     "\\resources\\views\\docente",
     "\\resources\\views\\estudiante"
   ],
-  "SelectedNode": "\\resources\\lang\\en\\passwords.php",
+  "SelectedNode": "\\database\\migrations\\2021_11_07_184907_create_empresas_table.php",
   "PreviewInSolutionExplorer": false
 }

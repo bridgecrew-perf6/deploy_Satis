@@ -9,6 +9,7 @@ use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
 use DB;
 
+
 class MainController extends Controller
 {
     function login(){
@@ -41,20 +42,31 @@ class MainController extends Controller
             $file_open = fopen($file,"r");
             $usuario = new Usuario;
             $i = 0;
+            $c = 0;
             while(($csv = fgetcsv($file_open, 200, ";")) !== false)
             {
+                $csv = array_map("utf8_encode", $csv);
                 if($i != 0){
                 $username = $csv[0];
-                $pass = Hash::make($csv[1]);
-                DB::table('usuarios')->insert([
-                    'username' => $username,
-                    'pass' => $pass,
-                    'tipo' => '3'
-                ]);
+                $pass = $csv[1];
+                $nombre = $csv[2];
+                $comprobar = DB::table('usuarios')->where('username','=',$username)->first();
+                if($comprobar == null){
+                    DB::table('usuarios')->insert([
+                        'username' => $username,
+                        'pass' => $pass,
+                        'nombre' => $nombre,
+                        'tipo' => '3'
+                    ]);
+                    $c++;
+                }
                 }
                 $i++;                        
             }
-            return redirect('docente/dashboard');
+            if($c==0){
+                return back()->with('success',' Se agregaron 0 usuarios');
+            }
+            return back()->with('success',' Usuarios agregados');
             }catch (Exception $e){
                 echo 'Excepción capturada: ',  $e->getMessage(), "\n";
             }
@@ -64,35 +76,38 @@ class MainController extends Controller
         
         //Validate requests
         $request->validate([
-            'name'=>'required',
+            'name'=>'required:unique',
             'password'=>'required|min:5|max:12'
         ]);
 
          //Insert data into database
          $admin = new Usuario;
          $admin->username = $request->name;
-         $admin->pass = Hash::make($request->password);
+         $admin->pass = $request->password;
+         $admin->nombre = $request->name;
          $admin->tipo = '2';
          $save = $admin->save();
 
          if($save){
-            return back()->with('success','New User has been successfuly added to database');
+            return back()->with('success','Nuevo docente agregado');
          }else{
-             return back()->with('fail','Something went wrong, try again later');
+             return back()->with('fail','Algo salio mal');
          }
     }
     function save3(Request $request){
-       
+        
+        $integrantes = $request->seleccion;
+        $nombres = $request->nombre;
         //Validate requests
         $request->validate([
             'nombreC'=>'required|unique:empresas',
             'nombreL'=>'required|min:5|unique:empresas',
-            'integrantes'=>'nullable|unique:empresas',
+            'seleccion'=>'nullable',
             'representante'=>'nullable|unique:empresas',
             'correo'=>'nullable|email|unique:empresas',
             'telefono'=>'nullable|unique:empresas',
             'direccion'=>'nullable|unique:empresas'
-        ]);
+        ]);       
         if($request->integrantes == null){
             $request->integrantes = "";
         }
@@ -119,15 +134,30 @@ class MainController extends Controller
          $admin->telefono = $request->telefono;
          $admin->direccion = $request->direccion;
          $save = $admin->save();
+         
 
          if($save){
+            if($integrantes != null){
+                foreach($integrantes as $integrante){
+                    DB::table('usuario_empresa')->insert([
+	                    'usr' => DB::table('usuarios')->where('nombre', '=', $nombres[$integrante])->first()->id,
+                        'emp' => $admin->id
+	                ]);                    
+                }
+            }  
             return back()->with('success','Empresa creada exitosamente');
          }else{
              return back()->with('fail','La empresa ya existe o su nombre no es valido');
          }
     }
     function funda(Request $request){
-        return view('fundaempresa');
+        
+        $query = DB::table('usuarios');        
+        $query->where('tipo', '=', 3);
+        $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
+        
+        $data = $query->get();
+        return view('fundaempresa',compact('data'));
     }
 
     function check(Request $request){    
@@ -143,7 +173,7 @@ class MainController extends Controller
             return back()->with('fail','Usuario no registrado');
         }else{
             //check password
-            if(Hash::check($request->password, $userInfo->pass)){
+            if($request->password == $userInfo->pass){
                 if($userInfo->tipo==1){
                     $request->session()->put('LoggedUser', $userInfo->id);
                     return redirect('admin/dashboard');
@@ -182,6 +212,7 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('estudiante.dashboard', $data);
     }
+
     
     /*
     function settings(){
