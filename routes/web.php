@@ -21,7 +21,12 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 Route::get('/',[MainController::class, 'index'])->name('home');
-Route::get('/docente/dashboard',[MainController::class, 'show'])->name('docente.show');
+
+
+
+Route::get('/docente/dashboard',[MainController::class, 'funda4'])->name('docente.funda4');
+
+
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::group(['middleware'=>['AuthCheck']], function(){

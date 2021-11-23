@@ -45,6 +45,7 @@
     <!--publicaciones y avisos -->
 
     @yield('cuerpo')
+    
 
     <!-- PIE DE CABECERA -->
     <footer class="footer text-white">

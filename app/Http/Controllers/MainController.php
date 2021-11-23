@@ -14,12 +14,16 @@ use DB;
 class MainController extends Controller
 {
     function index(){
-        $Aviso = Aviso::all();
+        $query = DB::table('avisos');         
+        $data = $query->get();
+        return view('inicio',compact('data'));
+        /*     $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
-            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria));
+            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); */
 
     }
 
+    
     
     
     function login(){

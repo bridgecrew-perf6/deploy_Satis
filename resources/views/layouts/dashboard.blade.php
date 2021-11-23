@@ -1,23 +1,23 @@
-@extends('layouts.plantilla')
-
-
+@extends('layouts.plantillaD')
 
 @section('content')
-<nav class="navbar">
-<div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a href="{{ url('/') }}">Inicio</a></li>
-            <li><a href="{{ url('/auth/login') }}">Iniciar Sesión</a></li>
-            
-          </ul>
-        </div>
-      </nav>
+          <nav class="navbar" >
+            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+            <a href="#" class="toggle-button">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+              <ul>
+          <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
+              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
+                <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
+                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
+                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li> 
+              </ul>
+            </div>
+          </nav>
 @endsection
 
 @section('cuerpo')
@@ -29,21 +29,14 @@
               Publicacion de convocatoria TIS
             </h2>
             <div class="card ">
-              @foreach($data as $key=>$item)
-                        
-              <tr>
-                  <td align="center">
-                      {{$item->id}}
-                      
-                  </td>
-                  <td>
-                      {{$item->name}}                                
-                  </td>
-              </tr>
-              
-          @endforeach
-              <div class="card-body">
              
+             
+
+
+            
+             
+              <div class="card-body">
+              
               </div>
             </div>
           </div>
@@ -60,7 +53,7 @@
 
               <div class="card-body">
          
-             
+           
               </div>
             </div>
            {{--  <div class="cardazo">

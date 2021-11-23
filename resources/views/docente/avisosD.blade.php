@@ -88,6 +88,7 @@
           </div>
             
             <div class="col-md-2"> Elegir semestre :
+              
            
               <select name = "semestre" class="form-control ">
               <option value="1">1</option>
@@ -95,7 +96,7 @@
             </select>
             
           </div>
-        
+         
             <div class="form-floating">
               
               <textarea name="descripcion" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
