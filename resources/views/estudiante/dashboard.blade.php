@@ -45,7 +45,7 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ url('/estudiante/dashboard') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
@@ -86,16 +86,7 @@
             </h2>
            <div class = "cars">
             <div class="cardazo">
-              {{$user->name}}
-              @foreach ($avisos as $avisos)
-              <h5 class="card-title text-ligth">{{$avisos->name }}</h5>
-              
-
-              <p class="card-text">{{$avisos->descripcion }}</p>
-              <p class="card-text">codigo: {{$avisos->codigo }}</p>
-              <p class="card-text">Gestion: {{$avisos->gestion }}</p>
-              <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
-              @endforeach 
+            
 
 
 

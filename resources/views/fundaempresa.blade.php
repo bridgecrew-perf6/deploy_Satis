@@ -43,7 +43,7 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ url('/estudiante/dashboard') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="#">Registrar funda empresa TIS</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 

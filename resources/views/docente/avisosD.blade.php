@@ -9,7 +9,8 @@
             </a>
             <div class="navbar-links">
               <ul>
-              <li><a href="{{ url('/docente/dashboard') }}">Inicio</a></li>
+              
+              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
               <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
                 <li><a href="">Agregar Avisos</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
@@ -21,6 +22,7 @@
 @section('cuerpo')
          <div class="container mt-5 formulario">
           <h1>AVISOS</h1>
+          
           
       {{--   <form action = "{{ route('docente.convocatoriasD') }}">
         <label>

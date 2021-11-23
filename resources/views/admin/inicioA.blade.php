@@ -1,5 +1,4 @@
 @extends('layouts.plantillaD')
-
 @section('content')
           <nav class="navbar" >
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
@@ -10,19 +9,17 @@
             </a>
             <div class="navbar-links">
               <ul>
-          
-          <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-                <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li> 
-              </ul>
-            </div>
-          </nav>
-@endsection
-
-@section('cuerpo')
-<section>
+                <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
+                <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
+                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+      @endsection
+    
+      @section('cuerpo')
+      <section>
         <div class="container mt-5 mb-5 ">
         <div class=" row d-flex justify-content-between cards ">
           <div class="col-sm-6">
@@ -30,7 +27,15 @@
               Publicacion de convocatoria TIS
             </h2>
             <div class="card ">
-            
+              @foreach ($convocatorias as $convocatorias)
+              <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
+              
+              <p class="card-text">link documentos {{$convocatorias->archivote }}</p>
+
+              <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
+              <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
+              <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
+              @endforeach 
              
 
 
@@ -40,6 +45,7 @@
               
               </div>
             </div>
+            
           </div>
 
           <div class="col-sm-5 avisotes">
@@ -51,7 +57,15 @@
 
    <div class = "cars">
             <div class="cardazo">
+              @foreach ($avisos as $avisos)
+              <h5 class="card-title text-ligth">{{$avisos->name }}</h5>
+              
 
+              <p class="card-text">{{$avisos->descripcion }}</p>
+              <p class="card-text">codigo: {{$avisos->codigo }}</p>
+              <p class="card-text">Gestion: {{$avisos->gestion }}</p>
+              <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
+              @endforeach   
               <div class="card-body">
          
            
@@ -70,4 +84,4 @@
         </div>
       </div>
       </section>
-      @endsection
+@endsection

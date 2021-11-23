@@ -24,7 +24,11 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 
 
 
-Route::get('/docente/dashboard',[MainController::class, 'funda4'])->name('docente.funda4');
+/* Route::get('/docente/dashboard',[MainController::class, 'funda4']); */
+
+Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');;
+Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');;
+Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');;
 
 
 

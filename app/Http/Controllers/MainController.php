@@ -14,15 +14,29 @@ use DB;
 class MainController extends Controller
 {
     function index(){
-        $query = DB::table('avisos');         
-        $data = $query->get();
-        return view('inicio',compact('data'));
-        /*     $Aviso = Aviso::all();
+        
+          $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
-            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); */
-
+            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
     }
-
+    function docentito(){
+      
+            $Aviso = Aviso::all();
+        $Convocatoria = Convocatoria::all();
+            return view('/docente/inicioD',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+    }
+    function estudiante(){
+      
+            $Aviso = Aviso::all();
+        $Convocatoria = Convocatoria::all();
+            return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+    }
+    function administrador(){
+      
+        $Aviso = Aviso::all();
+    $Convocatoria = Convocatoria::all();
+        return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+}
     
     
     
