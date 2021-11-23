@@ -29,7 +29,7 @@
               Publicacion de convocatoria TIS
             </h2>
             <div class="card ">
-              {{$user->name}}
+          
              
 
 

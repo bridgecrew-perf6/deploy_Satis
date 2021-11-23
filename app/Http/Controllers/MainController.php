@@ -15,13 +15,11 @@ class MainController extends Controller
 {
     function index(){
         $Aviso = Aviso::all();
-            return view('inicio',array('avisos'=> $Aviso));
+        $Convocatoria = Convocatoria::all();
+            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria));
 
     }
-    public function show(){
-      $user = Aviso::all();
-      return view('docente.show',compact('avisos'));
-    }
+
     
     
     function login(){
