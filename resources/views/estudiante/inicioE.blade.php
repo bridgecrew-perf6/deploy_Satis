@@ -28,14 +28,14 @@
             </h2>
             <div class="card ">
               @foreach ($convocatorias as $convocatorias)
-              <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
-              
-              <p class="card-text">link documentos {{$convocatorias->archivote }}</p>
-
-              <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
-              <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
-              <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
-              @endforeach 
+                <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
+                
+                <p class="card-text">link documento:
+                <a class="" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">{{$convocatorias->nombre }}</a></p>
+                <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
+                <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
+                <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
+                @endforeach 
              
 
 
@@ -48,7 +48,7 @@
             <h2 class="align-items-center avisos text-light">
               DOCUMENTOS BASE
             </h2>
-            <a class="card" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>.
+            <a class="card" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>
           </div>
 
           <div class="col-sm-5 avisotes">

@@ -8,6 +8,7 @@ use App\Models\Aviso;
 use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use DB;
 
@@ -17,7 +18,10 @@ class MainController extends Controller
         
           $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
-            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+        /* $now = Carbon::now();
+        $currentDate = $now->format('Y-m-d');
+             */
+            return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
     }
     function docentito(){
       
@@ -45,24 +49,12 @@ class MainController extends Controller
     }
 
     public function convocatoriasDos(Request $request){
-       $Convocatoria = new Convocatoria();
-        $Convocatoria-> name = $request->name;
-        $Convocatoria-> codigo = $request->codigo;
-        $Convocatoria-> gestion = $request->gestion;
-        $Convocatoria-> semestre = $request->semestre;
-        $Convocatoria-> archivote = $request->archivote;
-        
-        $save = $Convocatoria->save();
-        if($save){
-            return back()->with('success','Convocatoria publicado exitosamente');
-
-         }else{
-             return back()->with('fail','La convocatoria ya existe o su nombre no es valido');
-         }
+   
          
           if($request->hasFile("archivote")){
             $file=$request->file("archivote");
-            $nombre ="pdf_".time().".".$file->guessExtension();
+           /*  $request->file('archivote')->getClientOriginalName(); */
+          $nombre ="pdf_".time().".".$file->guessExtension(); 
             $ruta = public_path("pdf/".$nombre);
 
             if($file->guessExtension()=="pdf"){
@@ -71,9 +63,23 @@ class MainController extends Controller
             {
                 dd("no es pdf bro");
             } 
+            $Convocatoria = new Convocatoria();
+        $Convocatoria-> name = $request->name;
+        $Convocatoria-> codigo = $request->codigo;
+        $Convocatoria-> gestion = $request->gestion;
+        $Convocatoria-> semestre = $request->semestre;
+        $Convocatoria-> archivote = $request->archivote;
+        $Convocatoria-> nombre=$request->file('archivote')->getClientOriginalName();
         
+        $save = $Convocatoria->save();
+        if($save){
+            return back()->with('success','Convocatoria publicado exitosamente');
 
+         }else{
+             return back()->with('fail','La convocatoria ya existe o su nombre no es valido');
+         }
 
+      
           }
       
     }
