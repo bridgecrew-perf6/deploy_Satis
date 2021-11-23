@@ -46,6 +46,7 @@
             <div class="navbar-links">
               <ul>
                 <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
+                <li><a href="{{ url('/admin/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
@@ -55,10 +56,10 @@
 </header>
 <body>
 
-<div class="container">
-   <div class="row" style="margin-top:45px">
-      <div class="col-md-4 col-md-offset-4">
-           <h4>Registrar docente</h4><hr>
+  <div class="container">
+    <div class="row" style="margin-top:45px">
+       <div class="col-md-4 col-md-offset-4">
+            <h4>Registrar docente</h4><hr>
            <form action="{{ route('auth.save2') }}" method="post">
 
            @if(Session::get('success'))
@@ -84,50 +85,50 @@
                  <input type="password" class="form-control" name="password" placeholder="Ingrese una contraseña">
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
               </div>
-              
               <button Style="margin-bottom: 120px; background-color: #215f88; margin-top: 50px; " type="submit" class="btn btn-primary" >Registrar</button>
               <br>              
            </form>
-      </div>
-   </div>
-</div>
-    
-</body>
-<footer class="footer text-white">
-            <div class="container">
-              <nav class="row">
-    
-    
-                <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
-                 <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
-                  <div >
-                    <h2>
-                      CONTACTOS
-                    </h2>
-                    <p>Telefono:(+591)75929577 </p>
-                    <p>Email:lion.tech05@gmail.com</p>
-                  </div>
-                </a>
-                <ul class="col-sm-6 list-unstyled redes-container ">
-                  <h2>
-                    REDES SOCIALES
-                  </h2>
-    
-                  <ul>
-                    <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                   <!--  {/*
-    <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-    <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-    */}
-     -->
-                  </ul>
-    
-    
-                </ul>
-              </nav>
-    
-            </div>
-          </footer>
-</html>
+          </div>
+        </div>
+     </div>
+         
+     </body>
+     <footer class="footer text-white">
+                 <div class="container">
+                   <nav class="row">
+         
+         
+                     <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
+                      <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
+                       <div >
+                         <h2>
+                           CONTACTOS
+                         </h2>
+                         <p>Telefono:(+591)75929577 </p>
+                         <p>Email:lion.tech05@gmail.com</p>
+                       </div>
+                     </a>
+                     <ul class="col-sm-6 list-unstyled redes-container ">
+                       <h2>
+                         REDES SOCIALES
+                       </h2>
+         
+                       <ul>
+                         <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                         <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                         <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                        <!--  {/*
+         <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+         <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+         */}
+          -->
+                       </ul>
+         
+         
+                     </ul>
+                   </nav>
+         
+                 </div>
+               </footer>
+     </html>
+     

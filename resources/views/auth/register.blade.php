@@ -44,21 +44,28 @@
             <ul>
               <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
               <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-                <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
+              <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
+                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+                
               </ul>
             </div>
           </nav>
 </header>
 <body>
 
-<div Style="margin-bottom: 40px;" class="container">
-   <div class="row" style="margin-top:45px">
-      <div class="col-md-4 col-md-offset-4">
-           <h4>Registro de estudiantes</h4><hr>
-           <div id="wrapper">
+  <div Style="margin-bottom: 40px;" class="container">
+    <div class="row" style="margin-top:45px">
+       <div class="col-md-4 col-md-offset-4">
+            <h4>Registro de estudiantes</h4><hr>
+            <div id="wrapper">
             <form method="post" action="{{ route('auth.save') }}" accept=".csv" enctype="multipart/form-data">
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
             @if(Session::get('fail'))
              <div class="alert alert-danger">
                 {{ Session::get('fail') }}
@@ -66,15 +73,9 @@
             @endif
             @csrf
             <input type="file" name="file"/>
-            <!-- <input type="submit" name="submit_file" value="Submit"/>-->
-            <button  Style="margin-top: 40px;background-color: #215f88;" type="submit" class="btn btn-primary" >Registrar</button>
+            <input type="submit" name="submit_file" value="Submit"/>
             </form>
            </div>
-
-
-
-
-
            <!--<form action="{{ route('auth.save') }}" method="post">
 
            @if(Session::get('success'))

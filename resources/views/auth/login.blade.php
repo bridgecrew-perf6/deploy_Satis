@@ -45,6 +45,7 @@
         <div class="navbar-links">
           <ul>
             <li><a href="{{ url('/') }}">Inicio</a></li>
+            <li><a href="{{ url('/lista') }}">Lista de empresas</a></li>
             <li><a href="#" class="active">Iniciar Sesión</a></li>
             
           </ul>

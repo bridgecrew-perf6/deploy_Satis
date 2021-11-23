@@ -45,7 +45,7 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li><a href="{{ url('/estudiante/dashboard') }}">Inicio</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
@@ -56,68 +56,50 @@
 </header>
 <body>
     
-<section>
+    <section>
         <div class="container mt-5 mb-5 ">
         <div class=" row d-flex justify-content-between cards ">
           <div class="col-sm-6">
-            <h2 class="align-items-center avisos text-light">
-              Publicacion de convocatoria TIS
-            </h2>
-            <div class="card ">
-
-              <div class="card-body">
-                <h5 class="card-title">Empresa TIS</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-              </div>
-              
-             
-            </div>
-         
-            <h2 class="align-items-center avisos text-light">
-              DOCUMENTOS BASE
-            </h2>
-            <a class="card" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>.
-
+            <h2><label for="empresas" class="form-label">Grupo Empresas</label></h2>
+                <style>
+                    table, th, td {
+                        border: 2px solid black;
+                        padding: 10px;
+                    }
+                </style>
+                <table name="empresas" border="1">
+                    <tr>
+                            <th class="text-center" border="1">Nombre corto</th>
+                            <th class="text-center" border="1">Nombre Largo</th>
+                    </tr>
+                    
+                    @foreach($data as $key=>$item)
+                        
+                        <tr>
+                            <td align="center">
+                                {{$item->nombreC}}
+                                
+                            </td>
+                            <td>
+                                {{$item->nombreL}}                                
+                            </td>
+                        </tr>
+                        
+                    @endforeach
+                    
+                </table>
           </div>
-
-          <div class="col-sm-5 avisotes">
-            <h2 class="align-items-center avisos text-light">
-              Avisos
-            </h2>
-           <div class = "cars">
-            <div class="cardazo">
             
-
-
-
-
-
-              <div class="card-body">
-                <h5 class="card-title text-ligth">Aviso importante   :</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-              </div>
-            </div>
-            <div class="cardazo">
-
-              <div class="card-body">
-                <h5 class="card-title">Aviso importante   :</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-              </div>
-            </div>
-            </div>
-          </div>
         </div>
-      </div>
-      </section>
+        </div>
+    </section>
           <footer class="footer text-white">
             <div class="container">
               <nav class="row">
     
     
                 <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
+                 <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
                   <div >
                     <h2>
                       CONTACTOS
@@ -135,7 +117,11 @@
                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                   
+                   <!--  {/*
+    <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+    <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+    */}
+     -->
                   </ul>
     
     
@@ -146,3 +132,10 @@
           </footer>
 </body>
 </html>
+<!--
+<ul>
+                       <li><a href="/admin/dashboard">Dashboard</a></li>
+                       <li><a href="/admin/profile">Profile</a></li>
+                       <li><a href="/admin/settings">Settings</a></li>
+                       <li><a href="/admin/staff">Staff</a></li>
+                   </ul>
