@@ -14,18 +14,17 @@
     <link rel="stylesheet" href="CSS/formulario.css"> 
     <script src="CSS/script.js" defer></script>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
-        <div class="cabeceraCssAzul"></div>
-        <div class="cabeceraCssAzulClaro"></div>
-        <div class="cabeceraCssRoja"></div>
-        <div class="cabeceraCssRojoClaro"></div>
-        <div class="cabeceraCssBlanca"></div>
-        <div class="textoCabecera h3">INFORMATICA - SISTEMAS</div>
-        <div class="textoCabeceraUniverisdad h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
-        <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
-        <img class="logoCarreraCss" src="IMAGENES/logoInformaticaSistemas.png" alt="">
-        
-    
-      </div>
+    <div class="cabeceraCssAzul"></div>
+    <div class="cabeceraCssAzulClaro"></div>
+    <!-- <div class="cabeceraCssRoja"></div> -->
+    <!-- <div class="cabeceraCssRojoClaro"></div> -->
+    <div class="cabeceraCssBlanca"></div>
+    <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
+    <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
+    <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
+    <!-- <img class="logoCarreraCss" src="IMAGENES/logoInformaticaSistemas.png" alt="">
+ -->
+  </div>
       <title>RegistrarFundaEmpresa</title>
         </head>
     <body>
@@ -44,7 +43,7 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ url('/estudiante/dashboard') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 <li><a href="#">Registrar funda empresa TIS</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
@@ -54,7 +53,10 @@
           </nav>
         </header>
         <div class="container mt-5 formulario">
-          <h1>Registrar Grupo-Empresa</h1>
+          <h1
+          Style="text-align: center;">Registrar Grupo-Empresa</h1>
+          <div class="card formFunda">
+          
           <form id="funda" class="row g-3" method="post" action="{{ route('auth.save3') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
              <div class="alert alert-success">
@@ -132,42 +134,43 @@
             </div>
           </form>
       </div>
-      <footer class="footer text-white">
-        <div class="container">
-          <nav class="row">
+    </div>
+    <footer class="footer text-white">
+      <div class="container">
+        <nav class="row">
 
 
-            <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
-             <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
-              <div >
-                <h2>
-                  CONTACTOS
-                </h2>
-                <p>Telefono:(+591)75929577 </p>
-                <p>Email:lion.tech05@gmail.com</p>
-              </div>
-            </a>
-            <ul class="col-sm-6 list-unstyled redes-container ">
+          <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
+           <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
+            <div >
               <h2>
-                REDES SOCIALES
+                CONTACTOS
               </h2>
+              <p>Telefono:(+591)75929577 </p>
+              <p>Email:lion.tech05@gmail.com</p>
+            </div>
+          </a>
+          <ul class="col-sm-6 list-unstyled redes-container ">
+            <h2>
+              REDES SOCIALES
+            </h2>
 
-              <ul>
-                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-               <!--  {/*
+            <ul>
+              <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
+             <!--  {/*
 <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
 <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
 */}
- -->
-              </ul>
-
-
+-->
             </ul>
-          </nav>
 
-        </div>
-      </footer>
+
+          </ul>
+        </nav>
+
+      </div>
+    </footer>
 </body>
 </html>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2021 a las 01:59:51
+-- Tiempo de generación: 23-11-2021 a las 17:34:23
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.24
+-- Versión de PHP: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `liontech`
+-- Base de datos: `liontech2`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +35,51 @@ CREATE TABLE `admins` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `avisos`
+--
+
+CREATE TABLE `avisos` (
+  `id` bigint(10) UNSIGNED NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gestion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semestre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `avisos`
+--
+
+INSERT INTO `avisos` (`id`, `name`, `descripcion`, `codigo`, `gestion`, `semestre`) VALUES
+(109, 'Aviso Importante', 'La información de acceso (Código SIS, Contraseña, Fecha de Nacimiento) a la cuenta de Estudiantes es estrictamente privada, siendo responsabilidad del Estudiante su seguridad.\r\nNO DEBE COMPARTIR, ENTREGAR, NI ENVIAR (RE-ENVIAR) EL CORREO DE SU CONTRASEÑA A CENTROS DE ESTUDIANTES o TERCERAS PERSONAS. TAMPOCO DEBE ENTREGAR FOTOCOPIA (NI ORIGINAL) DE SU MATRICULA UNIVERSITARIA o CI-DOCUMENTO PERSONAL A CENTROS DE ESTUDIANTE. Su seguridad es su responsabidad y no de la Institución.', '123456', '2021', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `convocatorias`
+--
+
+CREATE TABLE `convocatorias` (
+  `id` bigint(10) UNSIGNED NOT NULL,
+  `name` text NOT NULL,
+  `archivote` text NOT NULL,
+  `codigo` text NOT NULL,
+  `gestion` varchar(50) NOT NULL,
+  `semestre` varchar(50) NOT NULL,
+  `nombre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `convocatorias`
+--
+
+INSERT INTO `convocatorias` (`id`, `name`, `archivote`, `codigo`, `gestion`, `semestre`, `nombre`) VALUES
+(21, 'convocatoria 2021', 'C:\\xampp\\tmp\\php75DF.tmp', '123456', '2021', '2', 'PliegoEspecificaciones22021.pdf');
 
 -- --------------------------------------------------------
 
@@ -245,6 +290,18 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `avisos`
+--
+ALTER TABLE `avisos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `empresas`
 --
 ALTER TABLE `empresas`
@@ -305,6 +362,18 @@ ALTER TABLE `usuario_empresa`
 --
 ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `avisos`
+--
+ALTER TABLE `avisos`
+  MODIFY `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+
+--
+-- AUTO_INCREMENT de la tabla `convocatorias`
+--
+ALTER TABLE `convocatorias`
+  MODIFY `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `empresas`

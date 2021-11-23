@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9ac0673dac.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/App.css">
@@ -14,20 +15,21 @@
     <link rel="stylesheet" href="CSS/cabecera.css"> 
     <script src="CSS/script.js" defer></script>
     <title>iniciarsesion</title>
+    
+    <!--PORTADA-->
+    
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
       <div class="cabeceraCssAzul"></div>
       <div class="cabeceraCssAzulClaro"></div>
-      <!-- <div class="cabeceraCssRoja"></div> -->
-      <!-- <div class="cabeceraCssRojoClaro"></div> -->
       <div class="cabeceraCssBlanca"></div>
       <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
       <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
       <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
-      <!-- <img class="logoCarreraCss" src="IMAGENES/logoInformaticaSistemas.png" alt="">
-   -->
+  
     </div>
 </head>
 <body>
+  <!--CONVOCATORIAS Y AVISOS-->
 <header>
     <title>INICIO</title>
     <div>
@@ -54,7 +56,11 @@
 <div class="container">
    <div class="row justify-content-center pt-5 mt-5 m-1 caja">
       <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
-           <h4 style="color:black">Iniciar sesión</h4><hr>
+      
+      <div class="form-group text-center pt-3">
+      <h1 class="text-dark">INICIAR SESIÓN</h1>
+      </div>
+
            <form action="{{ route('auth.check') }}" method="post">
             @if(Session::get('fail'))
                <div class="alert alert-danger">
@@ -73,12 +79,14 @@
                  <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
               </div>
-              <button type="submit" class="btn btn-block btn-primary">Iniciar sesion</button>
+              <button type="submit" class="btn btn-block ingresar">Ingresar</button>
               <br>              
            </form>
       </div>
    </div>
 </div>
+
+<!--PIE DE PAGINA-->
 
 <footer class="footer text-white">
   <div class="container">
@@ -122,11 +130,7 @@
           <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
           <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-         <!--  {/*
-<li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-<li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-*/}
--->
+
         </ul>
 
 

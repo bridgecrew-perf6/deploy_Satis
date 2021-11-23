@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Aviso;
+use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +14,103 @@ use DB;
 
 class MainController extends Controller
 {
+    function index(){
+        
+        $Aviso = Aviso::all();
+      $Convocatoria = Convocatoria::all();
+      /* $now = Carbon::now();
+      $currentDate = $now->format('Y-m-d');
+           */
+          return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
+  }
+  function docentito(){
+      
+    $Aviso = Aviso::all();
+$Convocatoria = Convocatoria::all();
+    return view('/docente/inicioD',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+}
+function estudiante(){
+
+    $Aviso = Aviso::all();
+$Convocatoria = Convocatoria::all();
+    return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+}
+public function convocatoriasDos(Request $request){
+   
+         
+    if($request->hasFile("archivote")){
+      $file=$request->file("archivote");
+     /*  $request->file('archivote')->getClientOriginalName(); */
+    $nombre ="pdf_".time().".".$file->guessExtension(); 
+      $ruta = public_path("pdf/".$nombre);
+
+      if($file->guessExtension()=="pdf"){
+          copy($file,$ruta);
+      }else
+      {
+          dd("no es pdf bro");
+      } 
+      $Convocatoria = new Convocatoria();
+  $Convocatoria-> name = $request->name;
+  $Convocatoria-> codigo = $request->codigo;
+  $Convocatoria-> gestion = $request->gestion;
+  $Convocatoria-> semestre = $request->semestre;
+  $Convocatoria-> archivote = $request->archivote;
+  $Convocatoria-> nombre=$request->file('archivote')->getClientOriginalName();
+  
+  $save = $Convocatoria->save();
+  if($save){
+      return back()->with('success','Convocatoria publicado exitosamente');
+
+   }else{
+       return back()->with('fail','La convocatoria ya existe o su nombre no es valido');
+   }
+
+
+    }
+
+}
+
+
+
+function avisosDos(Request $request){
+ 
+
+  $Aviso = new Aviso();
+  $Aviso-> name = $request->name;
+  $Aviso-> codigo = $request->codigo;
+  $Aviso-> gestion = $request->gestion;
+  $Aviso-> semestre = $request->semestre;
+  $Aviso-> descripcion = $request->descripcion;
+  
+  $save = $Aviso->save();
+  if($save){
+      return back()->with('success','El aviso fue publicado exitosamente');
+   }else{
+       return back()->with('fail','El aviso ya existe o su nombre no es valido');
+   }
+ /*  return $avisos; */
+}
+
+
+
+
+
+
+
+
+
+
+
+function administrador(){
+
+$Aviso = Aviso::all();
+$Convocatoria = Convocatoria::all();
+return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+}
+
+
+
     function login(){
         return view('auth.login');
     }
