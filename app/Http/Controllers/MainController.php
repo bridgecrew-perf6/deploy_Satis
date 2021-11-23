@@ -13,9 +13,21 @@ use DB;
 
 class MainController extends Controller
 {
+    function index(){
+        $Aviso = Aviso::all();
+            return view('inicio',array('avisos'=> $Aviso));
+
+    }
+    public function show(){
+      $user = Aviso::all();
+      return view('docente.show',compact('avisos'));
+    }
+    
+    
     function login(){
         return view('auth.login');
     }
+
     public function convocatoriasDos(Request $request){
        $Convocatoria = new Convocatoria();
         $Convocatoria-> name = $request->name;
@@ -51,10 +63,11 @@ class MainController extends Controller
     }
 
 
+
     function avisosDos(Request $request){
        
 
-         $Aviso = new Aviso();
+        $Aviso = new Aviso();
         $Aviso-> name = $request->name;
         $Aviso-> codigo = $request->codigo;
         $Aviso-> gestion = $request->gestion;

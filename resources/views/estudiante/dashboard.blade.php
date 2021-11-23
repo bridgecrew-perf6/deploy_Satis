@@ -72,17 +72,11 @@
               
              
             </div>
-         {{--  <div class="col-sm-12"> 
-            <p><h1>DOCUMENTOS BASE
-              </h1>
-
-              <a href="http://moodle3.umss.edu.bo/pluginfile.php/247589/mod_resource/content/4/PliegoEspecificaciones22021.pdf">Pliego de Especificaciones (PETIS)-II/2021</a>.
-              </p>
-            </div> --}}
+         
             <h2 class="align-items-center avisos text-light">
               DOCUMENTOS BASE
             </h2>
-            <a class="card" href="http://moodle3.umss.edu.bo/pluginfile.php/247589/mod_resource/content/4/PliegoEspecificaciones22021.pdf">Pliego de Especificaciones (PETIS)-II/2021</a>.
+            <a class="card" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>.
 
           </div>
 
@@ -92,6 +86,20 @@
             </h2>
            <div class = "cars">
             <div class="cardazo">
+              {{$user->name}}
+              @foreach ($avisos as $avisos)
+              <h5 class="card-title text-ligth">{{$avisos->name }}</h5>
+              
+
+              <p class="card-text">{{$avisos->descripcion }}</p>
+              <p class="card-text">codigo: {{$avisos->codigo }}</p>
+              <p class="card-text">Gestion: {{$avisos->gestion }}</p>
+              <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
+              @endforeach 
+
+
+
+
 
               <div class="card-body">
                 <h5 class="card-title text-ligth">Aviso importante   :</h5>
@@ -118,7 +126,6 @@
     
     
                 <a class="col-sm-6 text-reset text-uppercase d-flex align-items-center">
-                 <!--  {/*   <img src={icono} class="img-logo mr-2"></img> */} -->
                   <div >
                     <h2>
                       CONTACTOS
@@ -136,11 +143,7 @@
                     <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#" class="instagram"><i class="fab fa-instagram"></i></a></li>
                     <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                   <!--  {/*
-    <li><a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
-    <li><a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-    */}
-     -->
+                   
                   </ul>
     
     
@@ -151,10 +154,3 @@
           </footer>
 </body>
 </html>
-<!--
-<ul>
-                       <li><a href="/admin/dashboard">Dashboard</a></li>
-                       <li><a href="/admin/profile">Profile</a></li>
-                       <li><a href="/admin/settings">Settings</a></li>
-                       <li><a href="/admin/staff">Staff</a></li>
-                   </ul>

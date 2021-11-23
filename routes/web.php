@@ -19,20 +19,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-$Aviso = Aviso::all();
-$Convocatoria = Convocatoria::all();
-    return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria));
-});
 
- 
+Route::get('/',[MainController::class, 'index'])->name('home');
+Route::get('/docente/dashboard',[MainController::class, 'show'])->name('docente.show');
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
-
-
-
-
-
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
     Route::get('/auth/register2',[MainController::class, 'register2'])->name('auth.register2');
@@ -47,7 +38,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/docente/avisosD',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
 
-    Route::get('/docente/dashboard',[MainController::class, 'inicioD']);
+    
 
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
