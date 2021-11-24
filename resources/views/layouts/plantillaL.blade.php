@@ -1,53 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9ac0673dac.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="CSS/App.css">
-    <link rel="stylesheet" href="CSS/iconos.css">
-    <link rel="stylesheet" href="CSS/nav.css">
-    <link rel="stylesheet" href="CSS/fondos.css">
-    <link rel="stylesheet" href="CSS/cabecera.css">
-    <link rel="stylesheet" href="CSS/formulario.css">
-    <script src="CSS/script.js" defer></script>
-
-    <!--PORTADA PAGINA PRINCIPAL-->
-
-    <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss">
-        <div class="cabeceraCssAzul"></div>
-        <div class="cabeceraCssAzulClaro"></div>
-        <div class="cabeceraCssBlanca"></div>
-        <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
-        <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
-        <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
-
+    <link rel="stylesheet" href="../CSS/App.css">
+    <link rel="stylesheet" href="../CSS/iconos.css">
+    <link rel="stylesheet" href="../CSS/nav.css">  
+    <link rel="stylesheet" href="../CSS/fondos.css"> 
+    <link rel="stylesheet" href="../CSS/formulario.css"> 
+    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="stylesheet" href="../CSS/cabecera.css"> 
+    <script src="../CSS/script.js" defer></script>
+    <title>iniciarsesion</title>
+    
+    <!--PORTADA-->
+    
+    <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
+      <div class="cabeceraCssAzul"></div>
+      <div class="cabeceraCssAzulClaro"></div>
+      <div class="cabeceraCssBlanca"></div>
+      <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
+      <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
+      <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
+  
     </div>
 </head>
-
 <body>
-    <header>
+  <!--CONVOCATORIAS Y AVISOS-->
+<header>
+    <title>INICIO</title>
+    <div>
+        <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
+      </div>
+      
+            <!--MENU NAVBAR  -->
+        @yield('content')>
 
-        <title>INICIO</title>
-        <div>
-            <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
-        </div>
-
-        <!--MENU NAVBAR  -->
-
-         @yield('content')
-           
     </header>
 
     <!--publicaciones y avisos -->
-
     @yield('cuerpo')
-    
-
     <!-- PIE DE CABECERA -->
     <footer class="footer text-white">
         <div class="container">
@@ -82,8 +78,3 @@
 
         </div>
     </footer>
-
-
-</body>
-
-</html>
