@@ -22,35 +22,10 @@
 
 @section('cuerpo')
          <div class="container mt-5 formulario">
-          <h1>AVISOS</h1>
-          
-          
-      {{--   <form action = "{{ route('docente.convocatoriasD') }}">
-        <label>
-          nombre:
-          <br>
-          <input type="text" name ="name">
-        </label>
-        <br>
-        <label>
-          descripcion:
-          <br>
-          <textarea name="descripcion" rows="s"></textarea>
 
-        </label>
-        <label>
-          codigo:
-          <br>
-          <input type="text" name ="codigo">
-        </label>
-        <button type="submit">enviar formulario</button>
-        
-        </form>
- --}}
-
-
-
-          <form class="row g-3" method="post" action="{{ route('docente.avisosDos') }}" enctype="multipart/form-data">
+          <div class="card formFunda formA">
+            <h1 Style="text-align: center;">AVISOS</h1>
+          <form class="row g-3 " method="post" action="{{ route('docente.avisosDos') }}" enctype="multipart/form-data">
            
             @if(Session::get('success'))
             <div class="alert alert-success">
@@ -107,10 +82,11 @@
             </div>
 
             <div class="col-md-6 d-flex justify-content-between ">
-              <button type="submit" class="" style="background-color: #215f88;">Publicar</button>
+              <button type="submit" class="btn btn-primary" style="background-color: #215f88;">Publicar</button>
               
             </div>
           </form> 
+          </div>
      
      
      

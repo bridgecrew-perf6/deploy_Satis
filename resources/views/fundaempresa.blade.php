@@ -53,9 +53,8 @@
           </nav>
         </header>
         <div class="container mt-5 formulario">
-          <h1
-          Style="text-align: center;">Registrar Grupo-Empresa</h1>
-          <div class="card formFunda">
+          <div class="card formFunda formA">
+            <h1 Style="text-align: center;">AVISOS</h1>
           
           <form id="funda" class="row g-3" method="post" action="{{ route('auth.save3') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
