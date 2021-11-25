@@ -16,13 +16,10 @@ use App\Http\Controllers\MainController;
 */
 
 Route::get('/',[MainController::class, 'index'])->name('home');
-<<<<<<< HEAD
 
 Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');;
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');;
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');;
-=======
->>>>>>> AleRaiCH
 
 Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');;
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');;

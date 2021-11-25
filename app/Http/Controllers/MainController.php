@@ -71,8 +71,6 @@ public function convocatoriasDos(Request $request){
 
 }
 
-
-
 function avisosDos(Request $request){
  
 
@@ -91,16 +89,6 @@ function avisosDos(Request $request){
    }
  /*  return $avisos; */
 }
-
-
-
-
-
-
-
-
-
-
 
 function administrador(){
 
