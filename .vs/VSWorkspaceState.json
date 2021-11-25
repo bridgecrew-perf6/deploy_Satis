@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
-    "\\app\\Models",
+    "\\database",
+    "\\public",
+    "\\public\\CSS",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\GrupoEmpresa"
+    "\\resources\\views\\admin",
+    "\\resources\\views\\auth",
+    "\\resources\\views\\docente",
+    "\\resources\\views\\estudiante"
   ],
+  "SelectedNode": "\\public\\CSS\\script.js",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,2 @@
+<li><a href="{{ url('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
+ Route::post('/docente/convocatoriasD',[MainController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
