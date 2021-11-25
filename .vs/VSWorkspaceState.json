@@ -3,7 +3,6 @@
     "",
     "\\database",
     "\\public",
-    "\\public\\CSS",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\admin",
@@ -11,6 +10,5 @@
     "\\resources\\views\\docente",
     "\\resources\\views\\estudiante"
   ],
-  "SelectedNode": "\\public\\CSS\\script.js",
   "PreviewInSolutionExplorer": false
 }
