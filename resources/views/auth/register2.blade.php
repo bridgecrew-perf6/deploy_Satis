@@ -10,10 +10,6 @@
             <div class="navbar-links">
               <ul>
                 <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
-<<<<<<< HEAD
-=======
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
->>>>>>> AleRaiCH
                 <li><a href="{{ url('/admin/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
