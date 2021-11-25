@@ -12,4 +12,7 @@ class AvisosController extends Controller
     function convocatoriasD(){
         return view('docente.convocatoriasD');
     }
+    function documentosB(){
+        return view('estudiante.documentosB');
+    }
 }

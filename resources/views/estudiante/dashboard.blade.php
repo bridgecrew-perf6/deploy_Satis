@@ -10,6 +10,7 @@
             <div class="navbar-links">
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
