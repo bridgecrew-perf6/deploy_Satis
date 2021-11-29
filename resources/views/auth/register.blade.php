@@ -27,7 +27,7 @@
   <div Style="margin-bottom: 40px;" class="container">
     <div class="row" style="margin-top:45px">
        <div class="col-md-10 col-md-offset-4">
-         <div class="card formFunda formA">
+         <div class="cardForm formFunda formA">
             <h1 Style="text-align: center;">Registro de estudiantes</h1>  
             <div id="wrapper">
             <form method="post" action="{{ route('auth.save') }}" accept=".csv" enctype="multipart/form-data">
