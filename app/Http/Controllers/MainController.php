@@ -184,10 +184,7 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
     function save3(Request $request){
        
         $integrantes = $request->seleccion;
-        if($integrantes == null){
-            return back()->with('fail','Se necesitan al menos 3 socios');
-        }
-        if(count($integrantes) < 3){
+        if(($integrantes == null) || (count($integrantes) < 3)){
             return back()->with('fail','Se necesitan al menos 3 socios');
         }
         if(count($integrantes) > 5){
@@ -274,6 +271,23 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         $query = DB::table('empresas');         
         $data = $query->get();
         return view('/admin/lista',compact('data'));
+    }
+    function empresa(){
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $data = $query->get();
+        if($data){
+            //$data2 = DB::table('usuario_empresa')->where('emp', '=', $data->pluck('emp'));
+            $query2 = DB::table('usuarios');        
+            $query2->join('usuario_empresa','usuario_empresa.usr','=','usuarios.id')->
+                         where('usuario_empresa.emp', '=', $data->pluck('emp'));            
+            $data2 = $query2->get();
+            $query = DB::table('empresas')->where('id', '=', $data->pluck('emp'));
+            $data = $query->get();
+            return view('estudiante.empresa',compact('data','data2'));
+        }else{
+            return view('estudiante.sinempresa');
+        }
     }
 
 

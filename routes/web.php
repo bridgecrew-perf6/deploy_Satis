@@ -25,6 +25,7 @@ Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docen
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');;
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');;
 Route::get('/estudiante/documentosB',[AvisosController::class, 'documentosB'])->name('estudiante.documentosB');;
+Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estudiante.empresa');;
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
