@@ -19,10 +19,9 @@
           </nav>
           @endsection
           @section('cuerpo')
-  <div class="container">
-    <div class="row" style="margin-top:45px">
-       <div class="col-md-4 col-md-offset-4">
-            <h4>Registrar docente</h4><hr>
+  <div class="container  mt-5 formulario">
+       <div class="cardForm formFunda formA">
+        <h1 Style="text-align: center;">REGISTRAR DOCENTE</h1>
            <form action="{{ route('auth.save2') }}" method="post">
 
            @if(Session::get('success'))
@@ -48,8 +47,9 @@
                  <input type="password" class="form-control" name="password" placeholder="Ingrese una contraseña">
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
               </div>
-              <button Style="margin-bottom: 120px; background-color: #215f88; margin-top: 50px; " type="submit" class="btn btn-primary" >Registrar</button>
-              <br>              
+              <button Style=" background-color: #215f88; margin-top: 50px; " type="submit" class="btn btn-primary" >Registrar</button>
+              <br>
+                          
            </form>
           </div>
         </div>
