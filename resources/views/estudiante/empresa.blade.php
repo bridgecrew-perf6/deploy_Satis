@@ -26,7 +26,7 @@
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
             <div   >
           <form
-          id="funda" class="row g-3" method="post" action="{{ route('auth.save3') }}" enctype="multipart/form-data">
+          id="funda" class="row g-3" method="post" action="{{ route('empresa.update') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
              <div class="alert alert-success">
                 {{ Session::get('success') }}
@@ -41,17 +41,17 @@
             @foreach($data as $empresa)
             <div class="col-md-6 ">
               <label for="nombreC" class="form-label">Nombre corto*</label>
-              <input type="text" class="form-control" name="nombreC" placeholder="{{$empresa->nombreC}}" required>
+              <input type="text" class="form-control" name="nombreC" value="{{$empresa->nombreC}}" required>
               <span class="text-danger">@error('nombreC'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-6">
               <label for="nombreL" class="form-label">Nombre Largo*</label>
-              <input type="text" class="form-control" name="nombreL" placeholder="{{$empresa->nombreL}}" required>
+              <input type="text" class="form-control" name="nombreL" value="{{$empresa->nombreL}}" required>
               <span class="text-danger">@error('nombreL'){{ $message }} @enderror</span>
             </div>
    
             <div class="col-md-6">
-                <label for="integrantes" class="form-label">Integrantes</label>
+                
                 <table name="integrantes">
                     <tr>                            
                             <th class="text-center">Socios</th>
@@ -78,31 +78,87 @@
             <div class="container">
             <div class="col-md-12">
               <label for="representante" class="form-label">Representante Legal</label>
-              <input type="text" class="form-control" name="representante" placeholder="{{$empresa->representante}}" >
+              <input type="text" class="form-control" name="representante" value="{{$empresa->representante}}" >
               <span class="text-danger">@error('representante'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-12">
               <label for="correo" class="form-label">Correo de la empresa</label>
-              <input type="email" class="form-control" name="correo" placeholder="{{$empresa->correo}}">
+              <input type="email" class="form-control" name="correo" value="{{$empresa->correo}}">
               <span class="text-danger">@error('correo'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-12">
               <label for="telefono" class="form-label">Telefono de la empresa</label>
-              <input type="text" class="form-control" name="telefono" placeholder="{{$empresa->telefono}}">
+              <input type="text" class="form-control" name="telefono" value="{{$empresa->telefono}}">
               <span class="text-danger">@error('telefono'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-12">
               <label for="direccion" class="form-label">Direccion de la empresa</label>
-              <input type="text" class="form-control" name="direccion" placeholder="{{$empresa->direccion}}" >
+              <input type="text" class="form-control" name="direccion" value="{{$empresa->direccion}}" >
               <span class="text-danger">@error('direccion'){{ $message }} @enderror</span>
             </div>
             <div class="col-md-12">Los campos con (*) son obligatorios</div>
             <div class="col-md-6 d-flex justify-content-between ">
-              <button type="submit" class="btn btn-primary" style="background-color: #215f88;">Registrar</button>              
+              <button type="submit" class="btn btn-primary" style="background-color: #215f88;">Actualizar</button>              
             </div>
           </div>
           @endforeach
           </form>
+          <form method="post" action="{{ route('empresa.parteA') }}" accept=".pdf" enctype="multipart/form-data">
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
+            @if(Session::get('fail'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+             </div>
+            @endif
+            @csrf              
+              
+            <div class="d-flex justify-content-evenly" style="margin-top:50px;">
+              <div>
+                    <label for="parteA" class="form-label">Parte A</label>
+                    <input type="file" name="parteA"/>
+                    <span class="text-danger">@error('parteA'){{ $message }} @enderror</span>
+              </div>
+
+         
+            <div class=" " >
+               <button type="submit"  name="submit_partea" value="Submit" class="btn btn-primary" style="background-color: #215f88;">Subir</button>
+               
+             
+             </div>
+            </div>
+         </form>
+         <form method="post" action="{{ route('empresa.parteB') }}" accept=".pdf" enctype="multipart/form-data">
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
+            @if(Session::get('fail'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+             </div>
+            @endif
+            @csrf              
+              
+            <div class="d-flex justify-content-evenly" style="margin-top:50px;">
+              <div>
+                    <label for="parteA" class="form-label">Parte B</label>
+                    <input type="file" name="parteB"/>
+                    <span class="text-danger">@error('parteB'){{ $message }} @enderror</span>
+              </div>
+
+         
+            <div class=" " >
+               <button type="submit"  name="submit_parteb" value="Submit" class="btn btn-primary" style="background-color: #215f88;">Subir</button>
+               
+             
+             </div>
+            </div>
+         </form>
         </div>
       
       </div>

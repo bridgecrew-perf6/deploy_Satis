@@ -243,6 +243,129 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
              return back()->with('fail','La empresa ya existe o su nombre no es valido');
          }
     }
+
+    function displayA(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->parteA);        
+        $data = $query->get();
+        $base64 = $data->pluck('parteA');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail','Parte A no subida');
+        }
+    }
+    function displayB(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->parteB);        
+        $data = $query->get();
+        $base64 = $data->pluck('parteB');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail2','Parte B no subida');
+        }
+    }
+
+    function parteA(Request $request){
+        $filesource = $request->file('parteA');
+        $fileExtension = $filesource->getClientOriginalExtension();
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .pdf');
+        }
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();        
+        $path = $request->file('parteA')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $emp = $query->pluck('emp');
+        $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $emp);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $emp)
+                            ->update([
+                                    'parteA' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+            DB::table('documentos_empresa')->insert([
+                        'emp' => $emp[0],
+                        'parteA' => $base64
+	                ]);
+                    return back()->with('success','Archivo subido');
+        }
+    }
+    function parteB(Request $request){
+        $filesource = $request->file('parteB');
+        $fileExtension = $filesource->getClientOriginalExtension();
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .pdf');
+        }
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();        
+        $path = $request->file('parteB')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $emp = $query->pluck('emp');
+        $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $emp);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $emp)
+                            ->update([
+                                    'parteB' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+            DB::table('documentos_empresa')->insert([
+                        'emp' => $emp[0],
+                        'parteB' => $base64
+	                ]);
+                    return back()->with('success','Archivo subido');
+        }
+    }
+
+    function updateE(Request $request){
+        if(($request->nombreC == null) || ($request->nombreL == null)){
+            return back()->with('fail','La empresa necesita un nombre');
+        }
+        if($request->representante == null){
+            $request->representante = "";
+        }
+        if($request->correo == null){
+            $request->correo = "";
+        }
+        if($request->telefono == null){
+            $request->telefono = "";
+        }
+        if($request->direccion == null){
+            $request->direccion = "";
+        }
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();
+        $query2 = DB::table('empresas')
+                            ->where('id', $query->pluck('emp'))
+                            ->update([
+                                    'nombreC' => $request->nombreC,
+                                    'nombreL' => $request->nombreL,
+                                    'representante' => $request->representante,
+                                    'correo' => $request->correo,
+                                    'telefono' => $request->telefono,
+                                    'direccion' => $request->direccion
+                                    ]);
+        return back()->with('success','Empresa actualizada');
+    }
+
     function funda(Request $request){
         
         $query = DB::table('usuarios');        
@@ -276,7 +399,7 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         $query = DB::table('usuario_empresa');        
         $query->where('usr', '=', session('LoggedUser'));        
         $data = $query->get();
-        if($data){
+        if(!$data->isEmpty()){
             //$data2 = DB::table('usuario_empresa')->where('emp', '=', $data->pluck('emp'));
             $query2 = DB::table('usuarios');        
             $query2->join('usuario_empresa','usuario_empresa.usr','=','usuarios.id')->
@@ -313,7 +436,7 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                     return redirect('docente/dashboard');
                 }if($userInfo->tipo==3){
                     $request->session()->put('LoggedUser', $userInfo->id);
-                    return redirect('estudiante/dashboard');
+                    return redirect('estudiante/inicioE');
                 }else{
                     return back()->with('fail','Pagina no creada');
                 }

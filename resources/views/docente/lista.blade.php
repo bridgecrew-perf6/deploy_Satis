@@ -34,6 +34,21 @@
                         padding: 10px;
                     }
                 </style>
+                @if(Session::get('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+                @endif
+                @if(Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail') }}
+                </div>
+                @endif
+                @if(Session::get('fail2'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail2') }}
+                </div>
+                @endif
                 <table name="empresas" border="1">
                     <tr>
                             <th class="text-center" border="1">Nombre corto</th>
@@ -50,6 +65,30 @@
                             <td>
                                 {{$item->nombreL}}                                
                             </td>
+                            <td>
+                                <form method="post" action="{{ route('estudiante.parteA') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="parteA" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">ParteA</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('estudiante.parteB') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="parteB" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">ParteB</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
                         </tr>
                         
                     @endforeach
@@ -61,4 +100,3 @@
         </div>
     </section>
     @endsection
-          
