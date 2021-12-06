@@ -21,7 +21,7 @@
           @endsection
           @section('cuerpo')
         <div class="container mt-5 formulario">
-          <div class="card formFunda formA "style="margin-left:200px; margin-right:200px;">
+          <div class="card formFunda formA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
             <div   >
           <form
@@ -77,7 +77,7 @@
               placeholder="1.Integrante1&#10;2.Integrante2&#10;3.Integrante3&#10;4.Integrante4&#10;5.Integrante5&#10;"></textarea>
               <span class="text-danger">@error('integrantes'){{ $message }} @enderror</span>
             </div>-->
-            <div class="container">
+          
             <div class="col-md-12">
               <label for="representante" class="form-label">Representante Legal</label>
               <input type="text" class="form-control" name="representante" >
@@ -102,7 +102,7 @@
             <div class="col-md-6 d-flex justify-content-between ">
               <button type="submit" class="btn btn-primary" style="background-color: #215f88;">Registrar</button>              
             </div>
-          </div>
+         
           </form>
         </div>
       

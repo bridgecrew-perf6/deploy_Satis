@@ -23,7 +23,7 @@
 @section('cuerpo')
          <div class="container mt-5 formulario">
 
-          <div class="card formFunda formA">
+          <div class="cardForm formFunda formA">
             <h1 Style="text-align: center;">AVISOS</h1>
           <form class="row g-3 " method="post" action="{{ route('docente.avisosDos') }}" enctype="multipart/form-data">
            
@@ -87,14 +87,5 @@
             </div>
           </form> 
           </div>
-     
-     
-     
-     
-     
-     
-     
-     
-     
         </div>
 @endsection

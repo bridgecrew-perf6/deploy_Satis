@@ -22,7 +22,7 @@
           @endsection
  @section('cuerpo')
          <div class="container mt-5 formulario">
-          <div class="card formFunda formA">
+          <div class="cardForm formFunda formA">
             <h1 Style="text-align: center;">CONVOCATORIA</h1>
          
           <form class="row g-3"  method="post" action="{{ route('docente.convocatoriasDos') }}" enctype="multipart/form-data">

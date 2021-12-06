@@ -39,12 +39,6 @@
               
              
             </div>
-         
-            <h2 class="align-items-center avisos text-light">
-              DOCUMENTOS BASE
-            </h2>
-            <a class="card" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>.
-
           </div>
 
           <div class="col-sm-5 avisotes">
@@ -53,11 +47,6 @@
             </h2>
            <div class = "cars">
             <div class="cardazo">
-            
-
-
-
-
 
               <div class="card-body">
                 <h5 class="card-title text-ligth">Aviso importante   :</h5>

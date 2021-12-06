@@ -28,12 +28,12 @@
             <h2 class="align-items-center avisos text-light">
               DOCUMENTOS BASE
             </h2>
-            <a class="card tabla" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>
+            <a class="card cardTabla" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">Pliego de Especificaciones (PETIS)-II/2021</a>
             <h2 class="align-items-center avisos text-light">
               ENTREGAS
             </h2>
             
-            <div class="card tabla">
+            <div class="card cardTabla">
               {{--   @foreach ($convocatorias as $convocatorias)
                   <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
                   

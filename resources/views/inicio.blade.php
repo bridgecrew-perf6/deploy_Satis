@@ -20,9 +20,9 @@
       @section('cuerpo')
      <section>
         
-          <div class="container mt-5 mb-5 ">
+          <div class="mt-5 mb-5 ">
             <div class=" row d-flex justify-content-between cards ">
-              <div class="col-sm-6">
+              <div class="col-sm-6 avisotes">
                 <h2 class="align-items-center avisos text-light">
                   Publicacion de convocatoria TIS
                 </h2>
@@ -42,38 +42,23 @@
                 </div>
               </div>
     
-              <div class="col-sm-5 avisotes">
+              <div class="col-sm-6 avisotes">
                 <h2 class="align-items-center avisos text-light">
                   Avisos
                 </h2>
-    
-    
-    
-       <div class = "cars">
                 <div class="cardazo">
                   @foreach ($avisos as $avisos)
-                  <h5 class="card-title text-ligth">{{$avisos->name }}</h5>
+                  <h2 class="card-title text-ligth">{{$avisos->name }}</h2>
                   
-    
                   <p class="card-text">{{$avisos->descripcion }}</p>
                   <p class="card-text">codigo: {{$avisos->codigo }}</p>
                   <p class="card-text">Gestion: {{$avisos->gestion }}</p>
                   <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
                   @endforeach   
                   <div class="card-body">
-             
-                 
+
                   </div>
-                </div>
-               {{--  <div class="cardazo">
-    
-                  <div class="card-body">
-                    <h5 class="card-title">Aviso importante   :</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
-                  </div>
-                </div> --}}
-                </div> 
+                </div>            
               </div>
             </div>
           </div>
