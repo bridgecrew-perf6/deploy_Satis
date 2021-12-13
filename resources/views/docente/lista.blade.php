@@ -21,17 +21,17 @@
           </nav>
           @endsection
           @section('cuerpo') 
-</header>
-<body>
+
     <section>
-        <div class="container mt-5 mb-5 ">
-        <div class=" row d-flex justify-content-between cards ">
+        <div class=" mt-5 mb-5 ">
+        <div class=" row d-flex justify-content-center cards ">
           <div class="col-sm-6">
-            <h2><label for="empresas" class="form-label">Grupo Empresas</label></h2>
+            <h2 class="text-center"  for="empresas" class="form-label">Grupo Empresas</h2>
                 <style>
                     table, th, td {
                         border: 2px solid black;
                         padding: 10px;
+                       
                     }
                 </style>
                 @if(Session::get('success'))
@@ -49,10 +49,11 @@
                     {{ Session::get('fail2') }}
                 </div>
                 @endif
-                <table name="empresas" border="1">
-                    <tr>
+                <table class="table tabl"name="empresas" border="1">
+                    <tr  class="tablaL" > 
                             <th class="text-center" border="1">Nombre corto</th>
                             <th class="text-center" border="1">Nombre Largo</th>
+                            <th class="text-center" colspan="2">Documentos</th>
                     </tr>
                     
                     @foreach($data as $key=>$item)
@@ -71,7 +72,7 @@
                                 <div class="d-flex justify-content-evenly" >
                                         
                                 <div class=" " >
-                                <button type="submit"  name="parteA" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">ParteA</button>
+                                <button type="submit"  name="parteA" value="{{$item->id}}" class="btn btn-primary"  style="background-color: #215f88;">ParteA</button>
                             
                                 </div>
                                 </div>
@@ -83,7 +84,7 @@
                                 <div class="d-flex justify-content-evenly" >
                                         
                                 <div class=" " >
-                                <button type="submit"  name="parteB" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">ParteB</button>
+                                <button type="submit"  name="parteB" value="{{$item->id}}" class="btn btn-primary"  style="background-color: #215f88;">ParteB</button>
                             
                                 </div>
                                 </div>
