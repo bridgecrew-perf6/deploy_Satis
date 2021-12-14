@@ -146,7 +146,7 @@
               
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
               <div>
-                    <label for="parteA" class="form-label">Parte B</label>
+                    <label for="parteB" class="form-label">Parte B</label>
                     <input type="file" name="parteB"/>
                     <span class="text-danger">@error('parteB'){{ $message }} @enderror</span>
               </div>
@@ -154,6 +154,62 @@
          
             <div class=" " >
                <button type="submit"  name="submit_parteb" value="Submit" class="btn btn-primary" style="background-color: #215f88;">Subir</button>
+               
+             
+             </div>
+            </div>
+         </form>
+         <form method="post" action="{{ route('empresa.trabajo') }}" accept=".pdf" enctype="multipart/form-data">
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
+            @if(Session::get('fail'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+             </div>
+            @endif
+            @csrf              
+              
+            <div class="d-flex justify-content-evenly" style="margin-top:50px;">
+              <div>
+                    <label for="trabajo" class="form-label">Plan de trabajo</label>
+                    <input type="file" name="trabajo"/>
+                    <span class="text-danger">@error('trabajo'){{ $message }} @enderror</span>
+              </div>
+
+         
+            <div class=" " >
+               <button type="submit"  name="submit_trabajo" value="Submit" class="btn btn-primary" style="background-color: #215f88;">Subir</button>
+               
+             
+             </div>
+            </div>
+         </form>
+         <form method="post" action="{{ route('empresa.pagos') }}" accept=".pdf" enctype="multipart/form-data">
+            @if(Session::get('success'))
+             <div class="alert alert-success">
+                {{ Session::get('success') }}
+             </div>
+            @endif
+            @if(Session::get('fail'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail') }}
+             </div>
+            @endif
+            @csrf              
+              
+            <div class="d-flex justify-content-evenly" style="margin-top:50px;">
+              <div>
+                    <label for="pagos" class="form-label">Plan de pagos</label>
+                    <input type="file" name="pagos"/>
+                    <span class="text-danger">@error('pagos'){{ $message }} @enderror</span>
+              </div>
+
+         
+            <div class=" " >
+               <button type="submit"  name="submit_pagos" value="Submit" class="btn btn-primary" style="background-color: #215f88;">Subir</button>
                
              
              </div>

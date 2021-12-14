@@ -8,6 +8,7 @@ use App\Models\Aviso;
 use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
+use App\Models\Evento;
 use Illuminate\Support\Facades\Hash;
 use DB;
 
@@ -34,6 +35,16 @@ function estudiante(){
     $Aviso = Aviso::all();
 $Convocatoria = Convocatoria::all();
     return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+}
+function calendario(Request $request){
+      if($request->ajax())
+    	{            
+    		$data = Evento::whereDate('inicio', '>=', $request->inicio)
+                       ->whereDate('fin',   '<=', $request->fin)
+                       ->get(['id', 'titulo', 'inicio', 'fin']);
+            return response()->json($data);
+    	}        
+    	return view('/docente/calendario');
 }
 public function convocatoriasDos(Request $request){
    
@@ -270,10 +281,39 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             return back()->with('fail2','Parte B no subida');
         }
     }
+    function displayT(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->trabajo);        
+        $data = $query->get();
+        $base64 = $data->pluck('trabajo');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail3','Plan de trabajo no subido');
+        }
+    }
+    function displayP(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->pagos);        
+        $data = $query->get();
+        $base64 = $data->pluck('pagos');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail4','Plan de pagos no subido');
+        }
+    }
 
     function parteA(Request $request){
         $filesource = $request->file('parteA');
-        $fileExtension = $filesource->getClientOriginalExtension();
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
         if(strcmp($fileExtension, "pdf") !== 0){
             return back()->with('fail','Se requiere un archivo con extension .pdf');
         }
@@ -304,7 +344,10 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
     }
     function parteB(Request $request){
         $filesource = $request->file('parteB');
-        $fileExtension = $filesource->getClientOriginalExtension();
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
         if(strcmp($fileExtension, "pdf") !== 0){
             return back()->with('fail','Se requiere un archivo con extension .pdf');
         }
@@ -329,6 +372,74 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             DB::table('documentos_empresa')->insert([
                         'emp' => $emp[0],
                         'parteB' => $base64
+	                ]);
+                    return back()->with('success','Archivo subido');
+        }
+    }
+    function parteT(Request $request){
+        $filesource = $request->file('trabajo');
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .pdf');
+        }
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();        
+        $path = $request->file('trabajo')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $emp = $query->pluck('emp');
+        $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $emp);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $emp)
+                            ->update([
+                                    'trabajo' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+            DB::table('documentos_empresa')->insert([
+                        'emp' => $emp[0],
+                        'trabajo' => $base64
+	                ]);
+                    return back()->with('success','Archivo subido');
+        }
+    }
+    function parteP(Request $request){
+        $filesource = $request->file('pagos');
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .pdf');
+        }
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();        
+        $path = $request->file('pagos')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $emp = $query->pluck('emp');
+        $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $emp);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $emp)
+                            ->update([
+                                    'pagos' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+            DB::table('documentos_empresa')->insert([
+                        'emp' => $emp[0],
+                        'pagos' => $base64
 	                ]);
                     return back()->with('success','Archivo subido');
         }
@@ -467,6 +578,42 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         return view('estudiante.dashboard', $data);
     }
 
+    public function accion(Request $request)
+    {
+        return view('estudiante.dashboard', $data);
+    	if($request->ajax())
+    	{   
+            
+    		if($request->type == 'add')
+    		{
+    			$event = Evento::create([
+    				'titulo'		=>	$request->titulo,
+    				'inicio'		=>	$request->inicio,
+    				'fin'		=>	$request->fin
+    			]);
+
+    			return response()->json($event);
+    		}
+
+    		if($request->type == 'update')
+    		{
+    			$event = Evento::find($request->id)->update([
+    				'titulo'		=>	$request->titulo,
+    				'inicio'		=>	$request->inicio,
+    				'fin'		=>	$request->fin
+    			]);
+
+    			return response()->json($event);
+    		}
+
+    		if($request->type == 'delete')
+    		{
+    			$event = Evento::find($request->id)->delete();
+
+    			return response()->json($event);
+    		}
+    	}
+    }
     
     /*
     function settings(){

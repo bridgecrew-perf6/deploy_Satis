@@ -49,6 +49,16 @@
                     {{ Session::get('fail2') }}
                 </div>
                 @endif
+                @if(Session::get('fail3'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail3') }}
+                </div>
+                @endif
+                @if(Session::get('fail4'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail4') }}
+                </div>
+                @endif
                 <table name="empresas" border="1">
                     <tr>
                             <th class="text-center" border="1">Nombre corto</th>
@@ -84,6 +94,30 @@
                                         
                                 <div class=" " >
                                 <button type="submit"  name="parteB" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">ParteB</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('estudiante.trabajo') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="trabajo" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Plan de trabajo</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('estudiante.pagos') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="pagos" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Plan de pagos</button>
                             
                                 </div>
                                 </div>
