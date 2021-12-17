@@ -7,7 +7,7 @@
                 <h2>Registro Plan de Pagos </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('projects.create') }}" title="Create a project"> <i class="fas fa-plus-circle"></i>
+                <a class="btn btn-success" href="{{ route('pagos.create') }}" title="Create a pago"> <i class="fas fa-plus-circle"></i>
                     </a>
             </div>
         </div>
@@ -22,29 +22,32 @@
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>Introduction</th>
-            <th>Location</th>
-            <th>Cost</th>
-            <th>Date Created</th>
-            <th width="280px">Action</th>
+            <th>Estado del Proyecto</th>
+            <th>Entregable</th>
+            <th>Fecha de Entrega</th>
+            <th>Porcentaje</th>
+            <th>Costo(BS.)</th>
+
+            <th width="280px">Acción</th>
+
         </tr>
-        @foreach ($projects as $project)
+        @foreach ($pagos as $pago)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $project->name }}</td>
-                <td>{{ $project->introduction }}</td>
-                <td>{{ $project->location }}</td>
-                <td>{{ $project->cost }}</td>
-                <td>{{ date_format($project->created_at, 'jS M Y') }}</td>
-                <td>
-                    <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                <td>{{ $pago->estado_del_proyecto }}</td>
+                <td>{{ $pago->entregable }}</td>
+                <td>{{ $pago->fecha_de_entrega}}</td>
+                <td>{{ $pago->porcentaje}}</td>
+                <td>{{ $pago->costo }}</td>
 
-                        <a href="{{ route('projects.show', $project->id) }}" title="show">
+                <td>
+                    <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST">
+
+                        <a href="{{ route('pagos.show', $pago->id) }}" title="show">
                             <i class="fas fa-eye text-success  fa-lg"></i>
                         </a>
 
-                        <a href="{{ route('projects.edit', $project->id) }}">
+                        <a href="{{ route('pagos.edit', $pago->id) }}">
                             <i class="fas fa-edit  fa-lg"></i>
 
                         </a>
@@ -58,10 +61,11 @@
                         </button>
                     </form>
                 </td>
+
             </tr>
         @endforeach
     </table>
 
-    {!! $projects->links() !!}
+    {!! $pagos->links() !!}
 
 @endsection

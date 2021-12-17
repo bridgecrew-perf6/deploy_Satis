@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Pago extends Model
 {
     use HasFactory;
 
-    protected $table = 'projects';
+    protected $table = 'pagos';
     public $timestamps = true;
 
     protected $casts = [
-        'cost' => 'float'
+        'costo' => 'float'
     ];
 
     protected $fillable = [
-        'name',
-        'introduction',
+        'estado_del_proyecto',
+        'entregable',
         'created_at',
-        'location',
-        'cost'
+        'fecha_de_entrega',
+        'porcentaje',
+        'costo'
     ];
 }
