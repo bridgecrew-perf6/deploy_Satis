@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PlanTrabajo;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class PlanTrabajoController extends Controller
@@ -15,9 +16,12 @@ class PlanTrabajoController extends Controller
     public function index()
     {
         //$planTrabajos = PlanTrabajo::latest()->paginate(5);
-        $planTrabajos = PlanTrabajo::all();
+        /*$planTrabajos = PlanTrabajo::all();
         return view('planTrabajos.index', compact('planTrabajos'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 5);*/
+            $planTrabajos = PlanTrabajo::all();
+            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos];
+            return view('planTrabajos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

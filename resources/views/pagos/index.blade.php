@@ -6,10 +6,12 @@
             <div class="pull-left">
                 <h2>Registro Plan de Pagos </h2>
             </div>
+            @if ($LoggedUserInfo->tipo===2)
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('pagos.create') }}" title="Create a pago"> <i class="fas fa-plus-circle"></i>
+                <a class="btn btn-success" href="{{ route('pagos.create') }}" title="Crear un pago"> <i class="fas fa-plus-circle"></i>
                     </a>
             </div>
+            @endif
         </div>
     </div>
 
