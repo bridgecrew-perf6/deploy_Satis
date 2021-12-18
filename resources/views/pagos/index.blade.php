@@ -66,6 +66,6 @@
         @endforeach
     </table>
 
-    {!! $pagos->links() !!}
+
 
 @endsection

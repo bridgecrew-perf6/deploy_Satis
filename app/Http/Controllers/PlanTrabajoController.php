@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pago;
+use App\Models\PlanTrabajo;
 use Illuminate\Http\Request;
 
-class PagoController extends Controller
+class PlanTrabajoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PagoController extends Controller
      */
     public function index()
     {
-        //$pagos = Pago::latest()->paginate(5);
-        $pagos = Pago::all();
+        $pagos = PlanTrabajo::latest()->paginate(5);
+
         return view('pagos.index', compact('pagos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -45,32 +45,32 @@ class PagoController extends Controller
             'costo' => 'required'
         ]);*/
 
-        Pago::create($request->all());
+        PlanTrabajo::create($request->all());
 
-        return redirect()->route('pagos.index')
-            ->with('success', 'Plan de Pagos creado con éxito');
+        return redirect()->route('planTrabajos.index')
+            ->with('success', 'Plan de Trabajo creado con éxito');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pago  $pago
+     * @param  \App\Models\PlanTrabajo  $planTrabajo
      * @return \Illuminate\Http\Response
      */
-    public function show(Pago $pago)
+    public function show(PlanTrabajo $planTrabajo)
     {
-        return view('pagos.show', compact('pago'));
+        return view('planTrabajos.show', compact('planTrabajo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pagot  $pago
+     * @param  \App\Models\PlanTrabajo  $planTrabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pago $pago)
+    public function edit(PlanTrabajo $planTrabajo)
     {
-        return view('pagos.edit', compact('pago'));
+        return view('planTrabajos.edit', compact('planTrabajo'));
     }
     /**
      * Update the specified resource in storage.
@@ -79,7 +79,7 @@ class PagoController extends Controller
      * @param  \App\Models\Pago  $pago
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pago $pago)
+    public function update(Request $request, PlanTrabajo $planTrabajo)
     {
         $request->validate([
             'estado_del_proyecto' => 'required',
@@ -91,19 +91,19 @@ class PagoController extends Controller
         $pago->update($request->all());
 
         return redirect()->route('pagos.index')
-            ->with('success', 'Plan de Pagos actualizado exitosamente');
+            ->with('success', 'Plan de Trabajo actualizado exitosamente');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pago  $pago
+     * @param  \App\Models\PlanTrabajo  $planTrabajo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pago $pago)
+    public function destroy(PlanTrabajo $planTrabajo)
     {
-        $pago->delete();
+        $planTrabajo->delete();
 
-        return redirect()->route('pagos.index')
-            ->with('success', 'Plan de pago borrado exitosamente');
+        return redirect()->route('planTrabajos.index')
+            ->with('success', 'Plan de Trabajo borrado exitosamente');
     }
 }
