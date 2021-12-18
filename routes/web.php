@@ -4,6 +4,7 @@ use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PlanTrabajoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,5 +62,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
     Route::resource('pagos', PagoController::class);
+    Route::resource('planTrabajos', PlanTrabajoController::class);
 
 });
