@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pago;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
@@ -15,9 +16,13 @@ class PagoController extends Controller
     public function index()
     {
         //$pagos = Pago::latest()->paginate(5);
-        $pagos = Pago::all();
+       /* $pagos = Pago::all();
         return view('pagos.index', compact('pagos'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 5);*/
+            $pagos = Pago::all();
+            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos];
+            return view('pagos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
     /**

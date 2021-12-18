@@ -27,12 +27,13 @@
             <th>Duración</th>
             <th>Fecha Inicio</th>
             <th>Fecha Fin</th>
+
             <th width="280px">Acción</th>
 
         </tr>
         @foreach ($planTrabajos as $planTrabajo)
             <tr>
-                <td>{{ ++$i }}</td>
+                <!--<td>{{ ++$i }}</td>-->
                 <td>{{ $planTrabajo->sprint }}</td>
                 <td>{{ $planTrabajo->resultado }}</td>
                 <td>{{ $planTrabajo->duración}}</td>
@@ -41,6 +42,7 @@
 
 
                 <td>
+
                     <form action="{{ route('planTrabajos.destroy', $planTrabajo->id) }}" method="POST">
 
                         <a href="{{ route('planTrabajos.show', $planTrabajo->id) }}" title="show">
@@ -61,6 +63,7 @@
                         </button>
                     </form>
                 </td>
+
 
             </tr>
         @endforeach

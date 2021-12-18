@@ -17,7 +17,7 @@ class CreatePlanTrabajosTable extends Migration
             $table->id();
             $table->string('sprint', 22)->nullable();
             $table->string('resultado', 500)->nullable();
-            $table->date('duración', 10)->nullable();
+            $table->string('duración', 100)->nullable();
             $table->date('fecha_inicio', 10)->nullable();
             $table->date('fecha_fin', 10)->nullable();
             $table->timestamp('created_at')->useCurrent();

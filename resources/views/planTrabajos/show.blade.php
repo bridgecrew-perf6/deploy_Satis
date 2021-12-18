@@ -7,7 +7,7 @@
                 <h2> {{ $planTrabajo->sprint }}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('planTrabjos.index') }}" title="Go back"> <i
+                <a class="btn btn-primary" href="{{ route('planTrabajos.index') }}" title="Go back"> <i
                         class="fas fa-backward "></i> </a>
             </div>
         </div>
@@ -48,7 +48,7 @@
         <!--<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Date Created:</strong>
-                {{ date_format($pago->created_at, 'jS M Y') }}
+                {{ date_format($planTrabajo->created_at, 'jS M Y') }}
             </div>
         </div>-->
     </div>

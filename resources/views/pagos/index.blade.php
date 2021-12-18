@@ -27,8 +27,9 @@
             <th>Fecha de Entrega</th>
             <th>Porcentaje</th>
             <th>Costo(BS.)</th>
-
+            @if ($LoggedUserInfo->tipo===2)
             <th width="280px">Acción</th>
+            @endif
 
         </tr>
         @foreach ($pagos as $pago)
@@ -41,6 +42,7 @@
                 <td>{{ $pago->costo }}</td>
 
                 <td>
+                    @if ($LoggedUserInfo->tipo===2)
                     <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST">
 
                         <a href="{{ route('pagos.show', $pago->id) }}" title="show">
@@ -61,6 +63,7 @@
                         </button>
                     </form>
                 </td>
+                @endif
 
             </tr>
         @endforeach
