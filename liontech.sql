@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 17:34:23
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.25
+-- Servidor: 127.0.0.1:3308
+-- Tiempo de generación: 18-12-2021 a las 21:09:52
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `liontech2`
+-- Base de datos: `liontech_srl_0`
 --
 
 -- --------------------------------------------------------
@@ -148,7 +148,36 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (39, '2019_08_19_000000_create_failed_jobs_table', 3),
 (40, '2020_12_31_051631_create_admins_table', 3),
 (41, '2021_11_07_184907_create_empresas_table', 3),
-(42, '2021_11_16_011138_create_usuarios_table', 3);
+(42, '2021_11_16_011138_create_usuarios_table', 3),
+(43, '2020_09_08_222716_create_projects_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `estado_del_proyecto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entregable` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_de_entrega` date DEFAULT NULL,
+  `porcentaje` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `costo` decimal(22,2) DEFAULT 0.00,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`id`, `estado_del_proyecto`, `entregable`, `fecha_de_entrega`, `porcentaje`, `costo`, `created_at`, `updated_at`) VALUES
+(1, 'Sprint 0', '-Verificación de requerimientos iniciales.\r\n-Coordinación de nuevos requerimientos.\r\n-Elaboración de Product Backlog.\r\n-Prototipos de diseño.', '2021-10-05', '10%', '62215.00', '2021-12-16 20:07:44', '2021-12-16 20:07:44'),
+(2, 'Sprint  1', 'Funcionalidades de registro y separación de roles, el sistema será capaz de proveer espacios de trabajo para los diferentes tipos de usuarios.\r\n- Interfaz para cada tipo de usuario diferente.\r\n     - Funcionalidad de registrar usuarios en la BD.\r\n- Base de datos cuya estructura se adapta al manejo\r\nde las distintas interfaces.\r\n- Documentación técnica de las funcionalidades\r\nimplementadas.', '2021-10-26', '15%', '93225.00', '2021-12-16 23:57:42', '2021-12-16 23:57:42'),
+(3, 'Sprint 2', 'Funcionalidades de listar las empresas registradas en fundempresa de TIS con sus datos respectivos, obtener mayor información de estas y realizar la publicación de una convocatoria.\r\n- Documentación técnica de las funcionalidades implementadas.\r\n- La funcionalidad de listar empresas registradas.', '2021-11-16', '15%', '9322.00', '2021-12-17 00:01:23', '2021-12-17 02:18:29'),
+(5, 'Sprint  3', 'Funcionalidades atribuidas a los usuarios en una grupo-empresa (solicitar\r\nregistro de empresa, aplicar a una invitación pública, modificación de miembros, etc.)\r\n-Documentación técnica de las funcionalidades implementadas.\r\n-Interfaz de los usuarios registrados en una grupo-empresa listo para la versión final.', '2021-12-14', '15%', '9323.00', '2021-12-17 02:21:08', '2021-12-17 02:21:08'),
+(6, 'Sprint  4', 'Funcionalidades restantes o que no se hayan podido cumplir en anteriores Sprints.\r\n- Documentación técnica de las funcionalidades implementadas.\r\n- Una versión beta del sistema completo.', '2021-12-28', '20%', '186450.00', '2021-12-17 03:01:30', '2021-12-17 03:01:30');
 
 -- --------------------------------------------------------
 
@@ -179,6 +208,36 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plantrabajos`
+--
+
+CREATE TABLE `plantrabajos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `sprint` varchar(22) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `resultado` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duración` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `plantrabajos`
+--
+
+INSERT INTO `plantrabajos` (`id`, `sprint`, `resultado`, `duración`, `fecha_inicio`, `fecha_fin`, `created_at`, `updated_at`) VALUES
+(1, '----', 'Firma del contrato: Documento del contrato', '1 día', '2021-10-27', '2021-10-27', '2021-12-18 19:22:56', '2021-12-18 22:45:35'),
+(2, 'Sprint 0', 'Desarrollo del Sprint 0\r\n- Verificación de requerimientos iniciales.\r\n- Coordinación de nuevos requerimientos.\r\n- Elaboración de Product Backlog en cada sprint.', '7 días', '2021-09-27', '2021-10-05', '2021-12-18 22:46:41', '2021-12-18 23:05:25'),
+(3, 'Sprint 1', 'Desarrollo y demostración del Sprint  1\r\nProveer las siguientes funcionalidades de:\r\n  - Crear usuario Administrador.\r\n  - Separación de roles: estudiantes, docentes y administrador.\r\n  - Registrar grupo-empresa.\r\n  - Espacio de trabajo diferenciados por tipo de usuario.\r\n  - Registro de usuarios en base de datos.\r\n  - Prototipos de diseño correspondiente al 1er Sprint\r\nDocumentación técnica de las funcionalidades implementadas.', '15 días', '2021-10-06', '2021-10-26', '2021-12-18 22:56:16', '2021-12-18 23:05:43'),
+(4, 'Sprint 2', 'Desarrollo y demostración del Sprint 2\r\nProveer las siguientes funcionalidades de:\r\n  - Listar las empresas registradas en fundempresa de TIS con sus datos respectivos. \r\n  - Publicación de una convocatoria considerando: título, fecha, código y semestre al\r\n    que corresponde.\r\n  - Publicación de un pliego de especificaciones con toda la información necesaria.\r\n  - Registrar información extra de la grupo-empresa.\r\nDocumentación técnica de las funcionalidades implementadas.', '14 días', '2021-10-27', '2021-11-23', '2021-12-18 22:59:45', '2021-12-18 23:05:54'),
+(5, 'Sprint 3', 'Desarrollo y demostración del Sprint  3\r\nProveer las siguientes funcionalidades de:\r\n  - Presentar toda la documentación necesaria en respuesta a una convocatoria\r\n    pública. \r\n  - Registrar el calendario que las grupo empresas proponen para el desarrollo del\r\n    proyecto.\r\n  - Registrar el plan de pagos de las grupo empresas, registrando las fechas,\r\n    porcentaje, entregables, monto y porcentaje total.\r\n\r\nDocumentación técnica de las funcionalidades implementadas.', '15 días', '2021-11-24', '2021-12-14', '2021-12-18 23:03:45', '2021-12-18 23:06:12'),
+(6, 'Sprint 4', 'Desarrollo y demostración del Sprint  4\r\nProveer las siguientes funcionalidades de:\r\n  - Emitir órdenes de cambio, emitir notificaciones de aceptación, generar contratos\r\n con las grupo empresas y generar adendas/acuerdos.\r\n  - Acceder a la información a través de diversos reportes dependiendo del tipo de\r\n usuario. \"grupo empresas puedan ver los docentes y el admin pueda ver los docentes \"\r\n \r\n\r\nDocumentación técnica de las funcionalidades implementadas.', '10 días', '2021-12-15', '2021-12-28', '2021-12-18 23:07:34', '2021-12-18 23:07:34'),
+(7, 'Entrega del Proyecto', 'Entrega del proyecto acorde a lo especificado para la entrega final', '3 días', '2021-12-29', '2022-01-03', '2021-12-18 23:08:28', '2021-12-18 23:08:28');
 
 -- --------------------------------------------------------
 
@@ -321,6 +380,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -333,6 +398,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indices de la tabla `plantrabajos`
+--
+ALTER TABLE `plantrabajos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -391,13 +462,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `plantrabajos`
+--
+ALTER TABLE `plantrabajos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
