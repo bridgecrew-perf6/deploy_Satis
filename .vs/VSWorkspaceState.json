@@ -5,9 +5,9 @@
     "\\public",
     "\\resources",
     "\\resources\\views",
+    "\\resources\\views\\auth",
     "\\resources\\views\\docente",
     "\\resources\\views\\estudiante"
   ],
-  "SelectedNode": "\\resources\\views\\lista.blade.php",
   "PreviewInSolutionExplorer": false
 }
