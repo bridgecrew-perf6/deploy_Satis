@@ -14,6 +14,7 @@
               <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
                 <li><a href="">Agregar Avisos</a></li>
                 <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
+                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
             </div>
@@ -40,7 +41,10 @@
             @csrf
             <div class="col-md-4">
               <label for="firstName" class="form-label">Titulo:</label>
-              <input type="text" class="form-control" name="name" >
+              <input type="text" class="form-control" name="name" required>
+              <span class="text-danger">@error('name'){{ $message }} @enderror</span>
+              
+
             </div>
             {{-- <div  class="col-md-12">Fecha:
             <input Style="margin-left: 40px;" type="date" value="2021-09-30" min="2021-01-01" max="2021-12-31">
@@ -48,10 +52,11 @@
             <div class="container">
             <div class=" col-md-2">
               <label  class="form-label">Codigo:</label>
-              <input name="codigo"type="text" class="form-control" >
+              <input name="codigo"type="text" class="form-control" required>
+              <span class="text-danger">@error('codigo'){{ $message }} @enderror</span>
             </div> 
             <div class="col-md-1">Año:
-              <select name="gestion" class="form-control" >
+              <select name="gestion" class="form-control" required>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
@@ -68,7 +73,7 @@
             <div class="col-md-2"> Elegir semestre :
               
            
-              <select name = "semestre" class="form-control ">
+              <select name = "semestre" class="form-control " required>
               <option value="1">1</option>
               <option value="2">2</option>
             </select>
@@ -79,6 +84,7 @@
               
               <textarea name="descripcion" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
               <label for="floatingTextarea2">Escribir Aviso</label>
+              <span class="text-danger">@error('descripcion'){{ $message }} @enderror</span>
             </div>
 
             <div class="col-md-6 d-flex justify-content-between ">
