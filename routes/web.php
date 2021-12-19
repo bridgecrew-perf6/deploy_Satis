@@ -3,7 +3,12 @@
 use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+<<<<<<< HEAD
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PlanTrabajoController;
+=======
 use App\Http\Controllers\FullCalenderController;
+>>>>>>> main
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +40,22 @@ Route::get('/estudiante/lista',[MainController::class, 'funda3']);
 Route::get('/docente/lista',[MainController::class, 'funda4']);
 Route::get('/admin/lista',[MainController::class, 'funda5']);
 
+<<<<<<< HEAD
+Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+=======
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
+>>>>>>> main
 
 Route::group(['middleware'=>['AuthCheck']], function(){
-    Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+    //Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
     Route::get('/auth/register2',[MainController::class, 'register2'])->name('auth.register2');
     Route::post('/auth/save2',[MainController::class, 'save2'])->name('auth.save2');
     Route::get('/auth/register',[MainController::class, 'register'])->name('auth.register');
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
-   
+
     Route::get('/docente/convocatoriasD',[AvisosController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
     Route::post ('',[MainController::class, 'convocatoriasDos'])->name('docente.convocatoriasDos');
 
@@ -67,8 +76,13 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
     Route::get('/docente/dashboard',[MainController::class, 'dashboard2']);
     Route::get('/estudiante/dashboard',[MainController::class, 'dashboard3']);
-    
+
     Route::get('/admin/settings',[MainController::class,'settings']);
     Route::get('/admin/profile',[MainController::class,'profile']);
     Route::get('/admin/staff',[MainController::class,'staff']);
+
+
+    Route::resource('pagos', PagoController::class);
+    Route::resource('planTrabajos', PlanTrabajoController::class);
+
 });
