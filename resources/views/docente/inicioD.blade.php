@@ -59,7 +59,7 @@
                 <p class="card-text">codigo: {{$avisos->codigo }}</p>
                 <p class="card-text">Gestion: {{$avisos->gestion }}</p>
                 <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
-                @endforeach   
+                @endforeach     
                 <div class="card-body">
 
                 </div>
