@@ -53,6 +53,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
     Route::post('/docente/avisosD',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
+    Route::post('/docente/contrato',[MainController::class, 'mostrarPDF'])->name('docente.contrato');
+    Route::post('/docente/contratoD',[MainController::class, 'contratoD'])->name('docente.contratoD');
+    Route::post('/docente/verC',[MainController::class, 'displayC'])->name('ver.contrato');
 
     Route::post('/estudiante/empresa',[MainController::class, 'updateE'])->name('empresa.update');
     Route::post('/estudiante/empresa2',[MainController::class, 'parteA'])->name('empresa.parteA');

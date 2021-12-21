@@ -124,6 +124,48 @@
                                 </div>
                                 </form>
                             </td>
+                            <td>
+                                <form method="post" action="{{ route('docente.contrato') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="id" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Generar contrato</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('ver.contrato') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="contrato" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Ver contrato</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('docente.contratoD') }}" accept=".pdf" enctype="multipart/form-data">
+                                @csrf              
+              
+                                <div class="d-flex justify-content-evenly" style="margin-top:50px;">
+                                <div>
+                                    <input type="file" name="contrato"/>
+                                    <span class="text-danger">@error('contrato'){{ $message }} @enderror</span>
+                                </div>
+
+         
+                                <div class=" " >
+                                <button type="submit"  name="id" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Actualizar contrato</button>
+                           
+                                </div>
+                                </div>
+                                </form>
+                            </td>
                         </tr>
                         
                     @endforeach
