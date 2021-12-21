@@ -10,6 +10,7 @@
             <div class="navbar-links">
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                 <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 <li><a href="#">Registrar funda empresa TIS</a></li>
@@ -21,7 +22,7 @@
           @endsection
           @section('cuerpo')
         <div class="container mt-5 formulario">
-          <div class="card formFunda formA ">
+          <div class="cardForm formFunda formA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
             <div   >
           <form

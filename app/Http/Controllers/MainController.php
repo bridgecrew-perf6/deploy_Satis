@@ -579,10 +579,10 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             if($request->password == $userInfo->pass){
                 if($userInfo->tipo==1){
                     $request->session()->put('LoggedUser', $userInfo->id);
-                    return redirect('admin/dashboard');
+                    return redirect('admin/inicioA');
                 }if($userInfo->tipo==2){
                     $request->session()->put('LoggedUser', $userInfo->id);
-                    return redirect('docente/dashboard');
+                    return redirect('docente/inicioD');
                 }if($userInfo->tipo==3){
                     $request->session()->put('LoggedUser', $userInfo->id);
                     return redirect('estudiante/inicioE');
