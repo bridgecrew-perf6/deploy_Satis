@@ -33,7 +33,7 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        @yield('content')>
+        @yield('content')
 
     </header>
 
