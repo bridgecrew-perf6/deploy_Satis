@@ -3,12 +3,9 @@
 use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-<<<<<<< HEAD
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
-=======
 use App\Http\Controllers\FullCalenderController;
->>>>>>> main
 
 /*
 |--------------------------------------------------------------------------
@@ -40,14 +37,11 @@ Route::get('/estudiante/lista',[MainController::class, 'funda3']);
 Route::get('/docente/lista',[MainController::class, 'funda4']);
 Route::get('/admin/lista',[MainController::class, 'funda5']);
 
-<<<<<<< HEAD
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
-=======
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
->>>>>>> main
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     //Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');

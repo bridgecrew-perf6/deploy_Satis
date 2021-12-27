@@ -22,6 +22,7 @@ class Pago extends Model
         'created_at',
         'fecha_de_entrega',
         'porcentaje',
-        'costo'
+        'costo',
+        'id_empresa'
     ];
 }

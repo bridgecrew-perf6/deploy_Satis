@@ -9,8 +9,10 @@ use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use App\Models\Evento;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use DB;
+
 
 
 class MainController extends Controller
