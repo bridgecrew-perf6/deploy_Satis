@@ -13,6 +13,7 @@
                 <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
               <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
                 <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
+            
                 <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
@@ -69,7 +70,7 @@
                     <thead class="tablaL">
                             <th class="text-center"><h4>Nombre corto</h4></th>  
                             <th class="text-center"><h4>Nombre Largo</h4></th>
-                            <th class="text-center" colspan="7"><h4>Documentos</h4></th>
+                            <th class="text-center" colspan="9"><h4>Documentos</h4></th>
                     </thead>
                     
                     @foreach($data as $key=>$item)
