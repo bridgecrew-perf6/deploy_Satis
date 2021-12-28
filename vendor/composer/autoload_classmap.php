@@ -11,6 +11,7 @@ return array(
     'App\\Http\\Controllers\\AvisosController' => $baseDir . '/app/Http/Controllers/AvisosController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\FullCalenderController' => $baseDir . '/app/Http/Controllers/FullCalenderController.php',
+    'App\\Http\\Controllers\\MainController' => $baseDir . '/app/Http/Controllers/MainController.php',
     'App\\Http\\Controllers\\PagoController' => $baseDir . '/app/Http/Controllers/PagoController.php',
     'App\\Http\\Controllers\\PlanTrabajoController' => $baseDir . '/app/Http/Controllers/PlanTrabajoController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
