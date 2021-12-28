@@ -1,13 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\database",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Models",
+    "\\config",
     "\\public",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\auth",
     "\\resources\\views\\docente",
     "\\resources\\views\\estudiante"
   ],
+  "SelectedNode": "\\resources\\views\\docente\\contrato.blade.php",
   "PreviewInSolutionExplorer": false
 }

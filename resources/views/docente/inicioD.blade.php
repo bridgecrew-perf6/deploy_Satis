@@ -13,6 +13,16 @@
             <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
               <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
               <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Ver
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Ver plan de pagos</a></li>
+                  <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Ver plan de Trabajo</a></li>
+                 
+                </ul>
+              </li>
               <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
@@ -59,7 +69,7 @@
                 <p class="card-text">codigo: {{$avisos->codigo }}</p>
                 <p class="card-text">Gestion: {{$avisos->gestion }}</p>
                 <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
-                @endforeach   
+                @endforeach     
                 <div class="card-body">
 
                 </div>

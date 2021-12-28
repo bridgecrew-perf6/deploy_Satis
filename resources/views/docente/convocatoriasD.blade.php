@@ -14,6 +14,7 @@
               <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
               <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
               <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
+              <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
               </ul>
@@ -39,16 +40,16 @@
             @csrf
          <div class="col-md-4">
               <label for="firstName" class="form-label">Titulo:</label>
-              <input type="text" class="form-control" name="name" >
+              <input type="text" class="form-control" name="name" required >
             </div>
             
             <div class="container">
             <div class=" col-md-2">
               <label  class="form-label">Codigo:</label>
-              <input name="codigo"type="text" class="form-control" >
+              <input name="codigo"type="text" class="form-control" required>
             </div> 
             <div class="col-md-1">Año:
-              <select name="gestion" class="form-control" >
+              <select name="gestion" class="form-control" required>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
@@ -64,7 +65,7 @@
             
             <div class="col-md-2"> Elegir semestre :
            
-              <select name = "semestre" class="form-control ">
+              <select name = "semestre" class="form-control " required>
               <option value="1">1</option>
               <option value="2">2</option>
             </select>
@@ -73,7 +74,7 @@
         
           <div Style="margin-top: 40px;"  >
             <label  for="convocatoria" >Elegir Documento:</label>
-            <input name= "archivote" type="file" name="convocatoria" id="convocatoria">
+            <input name= "archivote" type="file" name="convocatoria" id="convocatoria" required>
             
 
             </div>

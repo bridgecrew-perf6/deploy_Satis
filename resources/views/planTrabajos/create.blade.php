@@ -1,10 +1,44 @@
-@extends('layouts.plantilla')
-
+@extends('layouts.plantillaD')
+@section('content')
+          <nav class="navbar " >
+            
+            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+            <a href="#" class="toggle-button">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+              
+              <ul>
+                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
+                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
+                <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
+                
+             <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registrar
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
+            <li><a class="dropdown-item" href="{{ route('pagos.create') }}">Registrar plan de pagos</a></li>
+            <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
+           
+          </ul>
+        </li>
+                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+            
+          </ul>
+        </div>
+      </div>
+      </nav>
+      @endsection
 @section('cuerpo')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Agregar Nuevo Plan de Trabajo</h2>
+                <h1 class="text-center">Agregar Nuevo Plan de Trabajo</h1>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('planTrabajos.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
@@ -22,10 +56,12 @@
             </ul>
         </div>
     @endif-->
+    <div class="mt-5">
+        <div class="formPlanT">
     <form action="{{ route('planTrabajos.store') }}" method="POST" >
         @csrf
 
-        <div class="row">
+        <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>N° Sprint:</strong>
@@ -35,7 +71,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Resultado:</strong>
-                    <textarea required class="form-control" style="height:50px" name="resultado"
+                    <textarea required class="form-control" style="height:200px" name="resultado"
                         placeholder="Resultado del sprint"></textarea>
                 </div>
             </div>
@@ -59,10 +95,12 @@
             </div>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+            <div class="col-md-6 d-flex justify-content-between ">
+                <button type="submit" class="btn btn-primary"style="background-color: #215f88;margin-top: 50px;">Guardar</button>
             </div>
         </div>
 
+    </div>
+</div>
     </form>
 @endsection

@@ -28,3 +28,20 @@ padding-right: 20px;
     padding-bottom: 100px;
     padding-left: 10px;
 }
+.formPlanT{
+
+   margin-left: 500px;
+   margin-right: 500px;
+   padding-left: 50px;
+   padding-right: 50px;
+   padding-bottom: 50px;
+   padding-top: 50px;
+   background-color: #DDDDDD;
+}
+#myTextarea{
+    font-size: 16px; 
+    font-family: monospace; 
+    height: 15em; 
+    resize: none;
+    word-break: break-all;
+  }

@@ -12,8 +12,13 @@ use App\Models\Evento;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
 
 
+=======
+use DB;
+use PDF;
+>>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 
 class MainController extends Controller
 {
@@ -309,6 +314,19 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             return back()->with('fail4','Plan de pagos no subido');
         }
     }
+    function displayC(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->contrato);        
+        $data = $query->get();
+        $base64 = $data->pluck('contrato');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail4','Contrato no generado');
+        }
+    }
 
     function parteA(Request $request){
         $filesource = $request->file('parteA');
@@ -446,7 +464,32 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                     return back()->with('success','Archivo subido');
         }
     }
-
+    function contratoD(Request $request){
+        $filesource = $request->file('contrato');
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail','Se requiere un archivo con extension .pdf');
+        }       
+        $path = $request->file('contrato')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $request->id);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $request->id)
+                            ->update([
+                                    'contrato' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+                   return back()->with('fail','Faltan documentos de la grupo-empresa');
+        }
+    }
     function updateE(Request $request){
         if(($request->nombreC == null) || ($request->nombreL == null)){
             return back()->with('fail','La empresa necesita un nombre');
@@ -543,10 +586,10 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             if($request->password == $userInfo->pass){
                 if($userInfo->tipo==1){
                     $request->session()->put('LoggedUser', $userInfo->id);
-                    return redirect('admin/dashboard');
+                    return redirect('admin/inicioA');
                 }if($userInfo->tipo==2){
                     $request->session()->put('LoggedUser', $userInfo->id);
-                    return redirect('docente/dashboard');
+                    return redirect('docente/inicioD');
                 }if($userInfo->tipo==3){
                     $request->session()->put('LoggedUser', $userInfo->id);
                     return redirect('estudiante/inicioE');
@@ -615,6 +658,31 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
     			return response()->json($event);
     		}
     	}
+    }
+
+     public function mostrarPDF(Request $request){
+      //$pdf = PDF::loadView('pdf', compact('user'));
+      $query = DB::table('empresas');        
+      $query->where('id', '=', $request->id);        
+      $data = $query->get();
+      $pdf = PDF::loadView('/docente/contrato', compact('data'));
+      $path = $pdf->output('contrato.pdf');
+      $base64 = base64_encode($path);
+      $query2 = DB::table('documentos_empresa');        
+        $query2->where('emp', '=', $request->id);        
+        $data = $query2->get();
+        if(!$data->isEmpty()){
+                    $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $request->id)
+                            ->update([
+                                    'contrato' => $base64                                   
+                                    ]);
+                    return $pdf->download('contrato.pdf');
+        }else{
+                   return back()->with('fail','Faltan documentos de la grupo-empresa');
+        }
+      
+
     }
     
     /*
