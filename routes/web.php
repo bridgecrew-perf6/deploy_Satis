@@ -90,6 +90,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
     Route::resource('pagos', PagoController::class);
+    Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
 
 });
