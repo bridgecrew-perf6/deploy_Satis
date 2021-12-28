@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empresa;
 use App\Models\Pago;
 use App\Models\Usuario;
+use App\Models\usuario_empresa;
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
@@ -20,7 +22,12 @@ class PagoController extends Controller
         return view('pagos.index', compact('pagos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
             $pagos = Pago::all();
-            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos];
+            $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+            $empresas = Empresa::all();
+            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+            
+
+
             return view('pagos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
@@ -49,8 +56,11 @@ class PagoController extends Controller
             'feha_de_entrega' => 'required',
             'costo' => 'required'
         ]);*/
-
-        Pago::create($request->all());
+        //$usuario = Usuario::where('id','=', session('LoggedUser'));
+        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+    
+        Pago::create($obj_merged);
 
         return redirect()->route('pagos.index')
             ->with('success', 'Plan de Pagos creado con éxito');
@@ -93,7 +103,10 @@ class PagoController extends Controller
             'porcentaje' => 'required',
             'costo' => 'required'
         ]);
-        $pago->update($request->all());
+        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+
+        $pago->update($obj_merged);
 
         return redirect()->route('pagos.index')
             ->with('success', 'Plan de Pagos actualizado exitosamente');

@@ -3,10 +3,15 @@
 use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+<<<<<<< HEAD
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PlanTrabajoController;
+=======
 
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
 
+>>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 use App\Http\Controllers\FullCalenderController;
 
 /*
@@ -39,17 +44,28 @@ Route::get('/estudiante/lista',[MainController::class, 'funda3']);
 Route::get('/docente/lista',[MainController::class, 'funda4']);
 Route::get('/admin/lista',[MainController::class, 'funda5']);
 
+<<<<<<< HEAD
+Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+=======
 
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
 
+>>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
+<<<<<<< HEAD
 Route::post('/docente/orden',[MainController::class, 'orden'])->name('docente.orden');
 Route::get('/docente/orden',[MainController::class, 'orden']);
 Route::post('/docente/ordenG',[MainController::class, 'ordenG'])->name('docente.ordenG');
 Route::post('/estudiante/cambios',[MainController::class, 'displayO'])->name('estudiante.cambios');
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
+>>>>>>> a5549d4e828c0ce157305c3c45454481fed3685b
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     //Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
