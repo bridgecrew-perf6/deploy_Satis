@@ -320,6 +320,19 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             return back()->with('fail4','Contrato no generado');
         }
     }
+    function displayO(Request $request){
+        $query = DB::table('documentos_empresa');        
+        $query->where('emp', '=', $request->cambios);        
+        $data = $query->get();
+        $base64 = $data->pluck('orden');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail5','No existe una orden de cambio');
+        }
+    }
 
     function parteA(Request $request){
         $filesource = $request->file('parteA');
@@ -676,6 +689,37 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         }
       
 
+    }
+    public function orden(Request $request){      
+      $grupo = $request->orden;
+      return view('/docente/orden',compact('grupo'));
+    }
+   
+
+    public function ordenG(Request $request){
+      $query = DB::table('empresas');        
+      $query->where('id', '=', $request->id);        
+      $data = $query->first();      
+      $pdf = PDF::loadView('/docente/ordenG', compact('data','request'));      
+      $path = $pdf->output('orden.pdf');      
+      $base64 = base64_encode($path);
+      $query2 = DB::table('documentos_empresa');        
+      $query2->where('emp', '=', $request->id);        
+      $data = $query2->get();
+        if(!$data->isEmpty()){
+                    $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $request->id)
+                            ->update([
+                                    'orden' => $base64                                   
+                                    ]);                   
+                    //return $pdf->stream();
+                    $query = DB::table('empresas');         
+                    $data = $query->get();
+                    //return redirect('/docente/lista',compact('data'))->with('success','Archivo subido');
+                    return redirect('/docente/lista')->with('success','Archivo subido');
+        }else{
+                   return back()->with('fail','Faltan documentos de la grupo-empresa');
+        }       
     }
     
     /*
