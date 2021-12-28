@@ -32,12 +32,14 @@
           </nav>
           @endsection
 @section('cuerpo')
+    @foreach ($empresas as $empresa)
+    @if(@$usuario_empresa->emp && @$usuario_empresa->emp== $empresa->id || $LoggedUserInfo->tipo==2)
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Registro Plan de Pagos </h2>
+                <h2>Registro Plan de Pagos: GE {{$empresa->nombreL}} </h2>
             </div>
-            @if ($LoggedUserInfo->tipo===2)
+            @if ($LoggedUserInfo->tipo==3)
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('pagos.create') }}" title="Crear un pago"> <i class="fas fa-plus-circle"></i>
                     </a>
@@ -45,13 +47,11 @@
             @endif
         </div>
     </div>
-
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
-
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>No</th>
@@ -60,12 +60,13 @@
             <th>Fecha de Entrega</th>
             <th>Porcentaje</th>
             <th>Costo(BS.)</th>
-            @if ($LoggedUserInfo->tipo===2)
+            @if ($LoggedUserInfo->tipo==3)
             <th width="280px">Acción</th>
             @endif
 
         </tr>
         @foreach ($pagos as $pago)
+        @if((@$usuario_empresa->emp==@$pago->id_empresa || $LoggedUserInfo->tipo==2) && @$pago->id_empresa == $empresa->id)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $pago->estado_del_proyecto }}</td>
@@ -73,9 +74,9 @@
                 <td>{{ $pago->fecha_de_entrega}}</td>
                 <td>{{ $pago->porcentaje}}</td>
                 <td>{{ $pago->costo }}</td>
-
+                @if ($LoggedUserInfo->tipo==3)
                 <td>
-                    @if ($LoggedUserInfo->tipo===2)
+                    
                     <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST">
 
                         <a href="{{ route('pagos.show', $pago->id) }}" title="show">
@@ -99,9 +100,10 @@
                 @endif
 
             </tr>
+            @endif
         @endforeach
     </table>
-
-
+    @endif
+    @endforeach
 
 @endsection

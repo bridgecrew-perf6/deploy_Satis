@@ -9,7 +9,7 @@ class PlanTrabajo extends Model
 {
     use HasFactory;
 
-    protected $table = 'planTrabajos';
+    protected $table = 'plantrabajos';
     public $timestamps = true;
 
 

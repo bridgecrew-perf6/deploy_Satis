@@ -37,7 +37,7 @@
             <div class="pull-left">
                 <h2>Registro Plan de Plan de Trabajo </h2>
             </div>
-            @if ($LoggedUserInfo->tipo===2)
+            @if ($LoggedUserInfo->tipo==3)
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('planTrabajos.create') }}" title="Crear un plan de Trabajo"> <i class="fas fa-plus-circle"></i>
                     </a>
@@ -60,7 +60,7 @@
             <th>Duración</th>
             <th>Fecha Inicio</th>
             <th>Fecha Fin</th>
-            @if ($LoggedUserInfo->tipo===2)
+            @if ($LoggedUserInfo->tipo==3)
             <th width="280px">Acción</th>
             @endif
         </tr>
@@ -73,7 +73,7 @@
                 <td>{{ $planTrabajo->fecha_inicio}}</td>
                 <td>{{ $planTrabajo->fecha_fin}}</td>
 
-                @if ($LoggedUserInfo->tipo===2)
+                @if ($LoggedUserInfo->tipo==3)
                 <td>
 
                     <form action="{{ route('planTrabajos.destroy', $planTrabajo->id) }}" method="POST">
