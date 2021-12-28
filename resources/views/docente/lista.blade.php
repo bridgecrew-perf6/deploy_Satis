@@ -60,6 +60,11 @@
                     {{ Session::get('fail4') }}
                 </div>
                 @endif
+                @if(Session::get('fail5'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail5') }}
+                </div>
+                @endif
                 <table name="empresas"  class="table tabla">
                     <thead class="tablaL">
                             <th class="text-center"><h4>Nombre corto</h4></th>  
@@ -123,6 +128,30 @@
                                         
                                 <div class=" " >
                                 <button type="submit"  name="pagos" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Plan de pagos</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('docente.orden') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="orden" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Crear orden de cambio</button>
+                            
+                                </div>
+                                </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="{{ route('estudiante.cambios') }}" enctype="multipart/form-data">                               
+                                @csrf
+                                <div class="d-flex justify-content-evenly" >
+                                        
+                                <div class=" " >
+                                <button type="submit"  name="cambios" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Ver orden de cambio</button>
                             
                                 </div>
                                 </div>
