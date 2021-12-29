@@ -46,10 +46,6 @@ Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('est
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
-<<<<<<< HEAD
-=======
-
->>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     //Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
