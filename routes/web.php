@@ -41,13 +41,7 @@ Route::get('/estudiante/lista',[MainController::class, 'funda3']);
 Route::get('/docente/lista',[MainController::class, 'funda4']);
 Route::get('/admin/lista',[MainController::class, 'funda5']);
 
-<<<<<<< HEAD
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
-=======
-
-Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
-
->>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
