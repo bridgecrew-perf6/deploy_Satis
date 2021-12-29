@@ -3,15 +3,12 @@
 use App\Http\Controllers\AvisosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-<<<<<<< HEAD
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
-=======
 
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
 
->>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 use App\Http\Controllers\FullCalenderController;
 
 /*
