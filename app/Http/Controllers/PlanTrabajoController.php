@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PlanTrabajo;
 use App\Models\Usuario;
+use App\Models\usuario_empresa;
 use Illuminate\Http\Request;
 
 class PlanTrabajoController extends Controller
@@ -20,7 +21,13 @@ class PlanTrabajoController extends Controller
         return view('planTrabajos.index', compact('planTrabajos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
             $planTrabajos = PlanTrabajo::all();
-            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos];
+            $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+            $empresas = Empresa::all();
+            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos, 'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+
+
+
+
             return view('planTrabajos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -48,8 +55,12 @@ class PlanTrabajoController extends Controller
             'feha_de_entrega' => 'required',
             'costo' => 'required'
         ]);*/
+        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
 
-        PlanTrabajo::create($request->all());
+
+        //PlanTrabajo::create($request->all());
+        PlanTrabajo::create($obj_merged);
 
         return redirect()->route('planTrabajos.index')
             ->with('success', 'Plan de Trabajo creado con éxito');
@@ -58,7 +69,7 @@ class PlanTrabajoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pago  $pago
+     * @param  \App\Models\PlanTrabajo  $planTrabajo
      * @return \Illuminate\Http\Response
      */
     public function show(PlanTrabajo $planTrabajo)
@@ -91,7 +102,11 @@ class PlanTrabajoController extends Controller
             'fecha_inicio' => 'required',
             'fecha_fin' => 'required'
         ]);
-        $planTrabajo->update($request->all());
+        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+        
+        $planTrabajo->update($obj_merged);
+        //$planTrabajo->update($request->all());
 
         return redirect()->route('planTrabajos.index')
             ->with('success', 'Plan de Trabajo actualizado exitosamente');

@@ -80,7 +80,7 @@ class PagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pagot  $pago
+     * @param  \App\Models\Pago  $pago
      * @return \Illuminate\Http\Response
      */
     public function edit(Pago $pago)
