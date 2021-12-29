@@ -12,13 +12,8 @@ use App\Models\Evento;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-<<<<<<< HEAD
 
 
-=======
-use DB;
-use PDF;
->>>>>>> 9147b7d04f56dae18302c261952a0370130b1a4b
 
 class MainController extends Controller
 {
