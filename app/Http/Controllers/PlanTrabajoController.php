@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Empresa;
 use App\Models\PlanTrabajo;
 use App\Models\Usuario;
 use App\Models\usuario_empresa;
