@@ -550,6 +550,7 @@ class ComposerStaticInite8f8346433ea404a1770ab776a332074
         'App\\Http\\Controllers\\AvisosController' => __DIR__ . '/../..' . '/app/Http/Controllers/AvisosController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\FullCalenderController' => __DIR__ . '/../..' . '/app/Http/Controllers/FullCalenderController.php',
+        'App\\Http\\Controllers\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainController.php',
         'App\\Http\\Controllers\\PagoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagoController.php',
         'App\\Http\\Controllers\\PlanTrabajoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlanTrabajoController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
