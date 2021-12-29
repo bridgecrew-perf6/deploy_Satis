@@ -6,8 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
 
-use App\Http\Controllers\PagoController;
-use App\Http\Controllers\PlanTrabajoController;
+
 
 use App\Http\Controllers\FullCalenderController;
 
