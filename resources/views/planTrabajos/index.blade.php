@@ -32,10 +32,12 @@
           </nav>
           @endsection
 @section('cuerpo')
+    @foreach ($empresas as $empresa)
+    @if(@$usuario_empresa->emp && @$usuario_empresa->emp== $empresa->id || $LoggedUserInfo->tipo==2)
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Registro Plan de Plan de Trabajo </h2>
+                <h2>Registro Plan de Plan de Trabajo: GE {{$empresa->nombreL}} </h2>
             </div>
             @if ($LoggedUserInfo->tipo==3)
             <div class="pull-right">
@@ -65,6 +67,7 @@
             @endif
         </tr>
         @foreach ($planTrabajos as $planTrabajo)
+        @if((@$usuario_empresa->emp==@$pago->id_empresa || $LoggedUserInfo->tipo==2) && @$pago->id_empresa == $empresa->id)
             <tr>
                 <!--<td>{{ ++$i }}</td>-->
                 <td>{{ $planTrabajo->sprint }}</td>
@@ -100,8 +103,11 @@
 
 
             </tr>
+            @endif
         @endforeach
     </table>
+    @endif
+    @endforeach
 
 
 
