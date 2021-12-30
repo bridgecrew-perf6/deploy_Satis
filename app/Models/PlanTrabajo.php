@@ -20,8 +20,9 @@ class PlanTrabajo extends Model
         'duración',
         'fecha_inicio',
         'fecha_fin',
-        'created_at',
-        'id_empresa'
+        'id_empresa',
+        'created_at'
+        
 
     ];
 }
