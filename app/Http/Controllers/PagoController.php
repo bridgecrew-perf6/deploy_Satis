@@ -31,6 +31,17 @@ class PagoController extends Controller
             return view('pagos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
+    function paguitos(){
+        $pagos = Pago::all();
+        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $empresas = Empresa::all();
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+        
+
+
+        return view('/docente/pagos', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
 
     /**
      * Show the form for creating a new resource.

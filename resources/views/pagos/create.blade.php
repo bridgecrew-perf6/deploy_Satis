@@ -96,7 +96,8 @@
                 <button type="submit" class="btn btn-primary" style="background-color: #215f88;margin-top: 50px;">Guardar</button>
             </div>
         </div>
-    </div>
+    
 
     </form>
+</div>
 @endsection

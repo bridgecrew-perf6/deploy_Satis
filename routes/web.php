@@ -6,8 +6,11 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 385b7d638bdd237a87f9782c61c610d4cff7028a
 use App\Http\Controllers\FullCalenderController;
 
 /*
@@ -41,11 +44,26 @@ Route::get('/docente/lista',[MainController::class, 'funda4']);
 Route::get('/admin/lista',[MainController::class, 'funda5']);
 
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+<<<<<<< HEAD
+=======
+
+
+Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
+
+>>>>>>> 385b7d638bdd237a87f9782c61c610d4cff7028a
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
+<<<<<<< HEAD
 //Route::post('/estudiante/plantrabajos',[MainController::class, 'displayP'])->name('estudiante.plantrabajos');
+=======
+Route::post('/docente/orden',[MainController::class, 'orden'])->name('docente.orden');
+Route::get('/docente/orden',[MainController::class, 'orden']);
+Route::post('/docente/ordenG',[MainController::class, 'ordenG'])->name('docente.ordenG');
+Route::post('/estudiante/cambios',[MainController::class, 'displayO'])->name('estudiante.cambios');
+
+>>>>>>> 385b7d638bdd237a87f9782c61c610d4cff7028a
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     //Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
@@ -84,6 +102,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
     Route::resource('pagos', PagoController::class);
+    Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
 
 });
