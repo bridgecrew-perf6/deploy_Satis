@@ -36,6 +36,11 @@ Route::post('/docente/calendario/action', [FullCalenderController::class, 'actio
 Route::get('/docente/planP',[MainController::class, 'planP'])->name('docente.planP');
 Route::get('/docente/planT',[MainController::class, 'planT'])->name('docente.planT');
 
+
+Route::delete('/docente/inicioD/avisosD/{aviso}',[AvisosController::class, 'destroy'])->name('avisos.destroy');
+Route::delete('/docente/inicioD/convocatoriasD/{convocatoria}',[AvisosController::class, 'destroy2'])->name('convocatorias.destroy');
+
+
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
 Route::get('/estudiante/lista',[MainController::class, 'funda3']);
@@ -97,5 +102,5 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('pagos', PagoController::class);
     Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
-
+    
 });

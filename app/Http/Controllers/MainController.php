@@ -32,13 +32,12 @@ class MainController extends Controller
 
 
   function planP(){        
+    
+    
     $pagos = Pago::all();
     $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
     $empresas = Empresa::all();
     $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
-    
-
-
     return view('docente.planP', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
 }
 
@@ -49,12 +48,11 @@ function planT(){
     $empresas = Empresa::all();
     $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos, 'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
 
-
-
-
     return view('docente.planT', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
  
 }
+
+
 
 
 

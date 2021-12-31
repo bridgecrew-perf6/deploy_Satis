@@ -1,6 +1,11 @@
 @extends('layouts.plantillaDocente')
       @section('cuerpo')
       <title>INICIO</title>
+      @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p class="text-center">{{ $message }}</p>
+                </div>
+            @endif
       <section>
         
         <div class="mt-5 mb-5 ">
@@ -10,6 +15,7 @@
                 Publicacion de convocatoria TIS
               </h2>
               <div class="card ">
+               
                 @foreach ($convocatorias as $convocatorias)
                   <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
                   
@@ -18,7 +24,20 @@
                   <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
                   <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
                   <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
-                  @endforeach 
+                  <form action="{{ route('convocatorias.destroy', $convocatorias) }}" method="POST">
+                    @csrf
+                  @method('DELETE')
+  
+                  <button type="submit" style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
+  
+                  </button>
+                </form>
+                 
+                  
+                @endforeach 
+               
+             
                 <div class="card-body">
                
                 </div>
@@ -30,6 +49,7 @@
                 Avisos
               </h2>
               <div class="cardazo">
+               
                 @foreach ($avisos as $avisos)
                 <h2 class="card-title text-ligth">{{$avisos->name }}</h2>
                 
@@ -37,7 +57,18 @@
                 <p class="card-text">codigo: {{$avisos->codigo }}</p>
                 <p class="card-text">Gestion: {{$avisos->gestion }}</p>
                 <p class="card-text">Semestre: {{$avisos->semestre}}</p> 
-                @endforeach     
+
+                <form action="{{ route('avisos.destroy', $avisos) }}" method="POST">
+                  @csrf
+                @method('DELETE')
+
+                <button type="submit" style="border: none; background-color:transparent;">
+                    <i class="fas fa-trash fa-lg text-danger"></i>
+
+                </button>
+              </form>
+                @endforeach    
+               
                 <div class="card-body">
 
                 </div>
