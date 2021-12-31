@@ -1,33 +1,11 @@
-@extends('layouts.plantillaD')
-@section('content')
-          <nav class="navbar" >
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-              <ul>
-                <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-                <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-              <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
-                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-            
-                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-                
-              </ul>
-            </div>
-          </nav>
-          @endsection
-          @section('cuerpo') 
+@extends('layouts.plantillaDocente')
 
+@section('cuerpo') 
+<title>Lista Empresas</title>
     <section>
         <div class=" mt-5 mb-5 ">
-        <div class=" row cards2 d-flex justify-content-center">
-          <div class="col-sm-6">
+        <div class=" row  d-flex justify-content-center">
+           
             <h2 class="textL"  for="empresas" class="form-label">Grupo Empresas</h2>
                 <style>
                     table, th, td {
@@ -82,7 +60,7 @@
                                 
                             </td>
                         
-                            <td>
+                            <td align="center">
                                 <h5>{{$item->nombreL}}</h5>
                                                               
                             </td>
@@ -205,7 +183,7 @@
                     @endforeach
                     
                 </table>
-          </div>
+         
             
         </div>
         </div>

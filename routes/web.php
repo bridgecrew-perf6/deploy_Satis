@@ -31,8 +31,10 @@ Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estu
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
 //Route::post('/docente/calendario/accion',[MainController::class, 'accion'])->name('calendario.accion');
 Route::get('/docente/calendario', [FullCalenderController::class, 'index']);
-
 Route::post('/docente/calendario/action', [FullCalenderController::class, 'action']);
+
+Route::get('/docente/planP',[MainController::class, 'planP'])->name('docente.planP');
+Route::get('/docente/planT',[MainController::class, 'planT'])->name('docente.planT');
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');

@@ -33,7 +33,7 @@
           @endsection
           @section('cuerpo')
         <div class="container mt-5 formulario">
-          <div class="cardForm formFunda formA ">
+          <div class="formCyA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
             <div   >
           <form

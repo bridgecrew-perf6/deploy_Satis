@@ -1,31 +1,9 @@
-@extends('layouts.plantillaD')
-@section('content')
-        <nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-              <ul>
-              
-              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-                <li><a href="">Agregar Avisos</a></li>
-                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-              
-                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-            </div>
-          </nav>
-@endsection
-
+@extends('layouts.plantillaDocente')
 @section('cuerpo')
+<title>Aviso</title>
          <div class="container mt-5 formulario">
 
-          <div class="cardForm formFunda formA">
+          <div class="formCyA">
             <h1 Style="text-align: center;">AVISOS</h1>
           <form class="row g-3 " method="post" action="{{ route('docente.avisosDos') }}" enctype="multipart/form-data">
            

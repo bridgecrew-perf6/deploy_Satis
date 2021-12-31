@@ -1,35 +1,15 @@
-@extends('layouts.plantillaD')
-@section('content')
-          <nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-            <ul>
-              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-              <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
-                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-          
-                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-                
-              </ul>
-            </div>
-          </nav>
-          @endsection
-          @section('cuerpo')
+@extends('layouts.plantillaDocente')
+
+ @section('cuerpo')
+ <title>Registro estudiantes</title>
 </header>
 <body>
 
   <div Style="margin-bottom: 40px;" class="container">
-    <div class="row" style="margin-top:45px">
-       <div class="col-md-10 col-md-offset-4">
-         <div class="cardForm formFunda formA">
+    <div  style="margin-top:45px">
+       <div class=" col-md-offset-4">
+
+         <div class="formRegistro ">
             <h1 Style="text-align: center;">Registro de estudiantes</h1>  
             <div id="wrapper">
             <form method="post" action="{{ route('auth.save') }}" accept=".csv" enctype="multipart/form-data">

@@ -9,6 +9,9 @@ use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use App\Models\Evento;
+use App\Models\Pago;
+use App\Models\usuario_empresa;
+use App\Models\PlanTrabajo;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +28,38 @@ class MainController extends Controller
            */
           return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
   }
+
+
+  function planP(){        
+    $pagos = Pago::all();
+    $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+    $empresas = Empresa::all();
+    $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+    
+
+
+    return view('docente.planP', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+}
+
+function planT(){      
+   
+    $planTrabajos = PlanTrabajo::all();
+    $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+    $empresas = Empresa::all();
+    $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos, 'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+
+
+
+
+    return view('docente.planT', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+ 
+}
+
+
+
+
+
+
   function docentito(){
       
     $Aviso = Aviso::all();
