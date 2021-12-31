@@ -48,6 +48,8 @@ Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('est
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
 Route::post('/docente/orden',[MainController::class, 'orden'])->name('docente.orden');
+Route::post('/estudiante/orden',[MainController::class, 'displayO2'])->name('estudiante.orden');
+
 Route::get('/docente/orden',[MainController::class, 'orden']);
 Route::post('/docente/ordenG',[MainController::class, 'ordenG'])->name('docente.ordenG');
 Route::post('/estudiante/cambios',[MainController::class, 'displayO'])->name('estudiante.cambios');
@@ -68,7 +70,10 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
     Route::post('/docente/contrato',[MainController::class, 'mostrarPDF'])->name('docente.contrato');
     Route::post('/docente/contratoD',[MainController::class, 'contratoD'])->name('docente.contratoD');
+    Route::post('/estudiante/contrato',[MainController::class, 'mostrarPDF2'])->name('descarga.contrato');
+    Route::post('/estudiante/contratoD',[MainController::class, 'contratoD2'])->name('estudiante.contratoD');
     Route::post('/docente/verC',[MainController::class, 'displayC'])->name('ver.contrato');
+    Route::post('/estudiante/verC',[MainController::class, 'displayC2'])->name('ver.contrato2');
 
     Route::post('/estudiante/empresa',[MainController::class, 'updateE'])->name('empresa.update');
     Route::post('/estudiante/empresa2',[MainController::class, 'parteA'])->name('empresa.parteA');
