@@ -9,10 +9,15 @@ use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use App\Models\Evento;
+use App\Models\Pago;
+use App\Models\usuario_empresa;
+use App\Models\PlanTrabajo;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PDF;
+use Response;
+
 
 class MainController extends Controller
 {
@@ -25,6 +30,36 @@ class MainController extends Controller
            */
           return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
   }
+
+
+  function planP(){        
+    
+    
+    $pagos = Pago::all();
+    $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+    $empresas = Empresa::all();
+    $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+    return view('docente.planP', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+}
+
+function planT(){      
+   
+    $planTrabajos = PlanTrabajo::all();
+    $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+    $empresas = Empresa::all();
+    $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'planTrabajos'=>$planTrabajos, 'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
+
+    return view('docente.planT', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+ 
+}
+
+
+
+
+
+
+
+
   function docentito(){
       
     $Aviso = Aviso::all();
@@ -321,10 +356,42 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             return back()->with('fail4','Contrato no generado');
         }
     }
+    function displayC2(Request $request){
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();
+        $query2 = DB::table('documentos_empresa')
+                            ->where('emp', $query->pluck('emp'));                                  
+        $data = $query2->get();
+        $base64 = $data->pluck('contrato');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail4','Contrato no generado');
+        }
+    }
     function displayO(Request $request){
         $query = DB::table('documentos_empresa');        
         $query->where('emp', '=', $request->cambios);        
         $data = $query->get();
+        $base64 = $data->pluck('orden');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+            ->header('Content-Type', 'application/pdf');
+        }else{
+            return back()->with('fail5','No existe una orden de cambio');
+        }
+    }
+    function displayO2(Request $request){
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();
+        $query2 = DB::table('documentos_empresa')
+                            ->where('emp', $query->pluck('emp'));                                  
+        $data = $query2->get();
         $base64 = $data->pluck('orden');
         if(!$data->isEmpty() && $base64[0]!=null){
             $bin = base64_decode($base64[0]);
@@ -497,6 +564,38 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                    return back()->with('fail','Faltan documentos de la grupo-empresa');
         }
     }
+    function contratoD2(Request $request){
+        $filesource = $request->file('contrato');
+        $fileExtension = "";
+        if($filesource != null){
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if(strcmp($fileExtension, "pdf") !== 0){
+            return back()->with('fail6','Se requiere un archivo con extension .pdf');
+        }      
+        $path = $request->file('contrato')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();
+        $query2 = DB::table('documentos_empresa')
+                            ->where('emp', $query->pluck('emp'));                                  
+        $data = $query2->get();
+        if($data->pluck('contrato') == null){
+            return back()->with('fail6','No se puede subir este documento todavía');
+        }
+        if(!$data->isEmpty()){
+                   $query3 = DB::table('documentos_empresa')
+                            ->where('emp', $query->pluck('emp'))
+                            ->update([
+                                    'contrato' => $base64                                   
+                                    ]);
+                   return back()->with('success','Archivo subido');
+        }else{
+                   return back()->with('fail6','Faltan documentos de la grupo-empresa');
+        }
+    }
     function updateE(Request $request){
         if(($request->nombreC == null) || ($request->nombreL == null)){
             return back()->with('fail','La empresa necesita un nombre');
@@ -667,7 +766,7 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
     	}
     }
 
-     public function mostrarPDF(Request $request){
+    public function mostrarPDF(Request $request){
       //$pdf = PDF::loadView('pdf', compact('user'));
       $query = DB::table('empresas');        
       $query->where('id', '=', $request->id);        
@@ -688,8 +787,23 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         }else{
                    return back()->with('fail','Faltan documentos de la grupo-empresa');
         }
-      
-
+    }
+    public function mostrarPDF2(Request $request){
+      $query = DB::table('usuario_empresa');        
+        $query->where('usr', '=', session('LoggedUser'));        
+        $query->get();
+        $query2 = DB::table('documentos_empresa')
+                            ->where('emp', $query->pluck('emp'));                                  
+        $data = $query2->get();
+        $base64 = $data->pluck('contrato');
+        if(!$data->isEmpty() && $base64[0]!=null){
+            $bin = base64_decode($base64[0]);
+            $pdf = response($bin)
+            ->header('Content-Type', 'application/pdf')->header('Content-disposition','attachment; filename="contrato.pdf"');
+            return $pdf;
+        }else{
+            return back()->with('fail4','Contrato no generado');
+        }
     }
     public function orden(Request $request){      
       $grupo = $request->orden;

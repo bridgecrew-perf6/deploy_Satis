@@ -1,29 +1,6 @@
-@extends('layouts.plantillaD')
-@section('content')
-<nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-              <ul>
-              
-              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
-              <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
-              <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-              
-              <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-              </ul>
-            </div>
-          </nav>
-          @endsection
+@extends('layouts.plantillaDocente')
  @section('cuerpo')
-
+ <title>Calendario</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />

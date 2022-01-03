@@ -31,8 +31,15 @@ Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estu
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
 //Route::post('/docente/calendario/accion',[MainController::class, 'accion'])->name('calendario.accion');
 Route::get('/docente/calendario', [FullCalenderController::class, 'index']);
-
 Route::post('/docente/calendario/action', [FullCalenderController::class, 'action']);
+
+Route::get('/docente/planP',[MainController::class, 'planP'])->name('docente.planP');
+Route::get('/docente/planT',[MainController::class, 'planT'])->name('docente.planT');
+
+
+Route::delete('/docente/inicioD/avisosD/{aviso}',[AvisosController::class, 'destroy'])->name('avisos.destroy');
+Route::delete('/docente/inicioD/convocatoriasD/{convocatoria}',[AvisosController::class, 'destroy2'])->name('convocatorias.destroy');
+
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
@@ -46,6 +53,8 @@ Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('est
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
 Route::post('/docente/orden',[MainController::class, 'orden'])->name('docente.orden');
+Route::post('/estudiante/orden',[MainController::class, 'displayO2'])->name('estudiante.orden');
+
 Route::get('/docente/orden',[MainController::class, 'orden']);
 Route::post('/docente/ordenG',[MainController::class, 'ordenG'])->name('docente.ordenG');
 Route::post('/estudiante/cambios',[MainController::class, 'displayO'])->name('estudiante.cambios');
@@ -66,7 +75,10 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
     Route::post('/docente/contrato',[MainController::class, 'mostrarPDF'])->name('docente.contrato');
     Route::post('/docente/contratoD',[MainController::class, 'contratoD'])->name('docente.contratoD');
+    Route::post('/estudiante/contrato',[MainController::class, 'mostrarPDF2'])->name('descarga.contrato');
+    Route::post('/estudiante/contratoD',[MainController::class, 'contratoD2'])->name('estudiante.contratoD');
     Route::post('/docente/verC',[MainController::class, 'displayC'])->name('ver.contrato');
+    Route::post('/estudiante/verC',[MainController::class, 'displayC2'])->name('ver.contrato2');
 
     Route::post('/estudiante/empresa',[MainController::class, 'updateE'])->name('empresa.update');
     Route::post('/estudiante/empresa2',[MainController::class, 'parteA'])->name('empresa.parteA');
@@ -90,5 +102,5 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('pagos', PagoController::class);
     Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
-
+    
 });

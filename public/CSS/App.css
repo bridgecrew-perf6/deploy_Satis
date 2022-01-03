@@ -37,9 +37,7 @@ padding-block-end: 1px;
     padding-left: 10px;
     background-color: #DDDDDD;
     }
-    .cardForm{
-        padding-bottom: 100px;
-    }
+   
     .cardazo {
         border: black 2px solid;
         border-radius: 20px;
@@ -53,12 +51,7 @@ padding-block-end: 1px;
     padding-bottom: 20px;
     
     }
-    .cards2 {
-        padding-left: 20px;
-        padding-right: 700px;
-        padding-bottom: 20px;
-        
-        }
+    
     .textL{
         text-align: center;
     }
@@ -82,4 +75,7 @@ padding-block-end: 1px;
 body{
     overflow-x: hidden;
  }
-
+.sinEmp{
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
