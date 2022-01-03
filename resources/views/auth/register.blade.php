@@ -1,6 +1,7 @@
 @extends('layouts.plantillaDocente')
 
  @section('cuerpo')
+ 
  <title>Registro estudiantes</title>
 </header>
 <body>
