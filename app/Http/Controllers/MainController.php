@@ -12,6 +12,7 @@ use App\Models\Evento;
 use App\Models\Pago;
 use App\Models\usuario_empresa;
 use App\Models\PlanTrabajo;
+use App\Models\Documento;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -32,24 +33,7 @@ class MainController extends Controller
   
   
   
-  function displayConv(Request $request){
-
-    $query = DB::table('convocatorias'); 
-
-    $query->where('id', '=', $request->archivote); 
-   
-    $data = $query->get();
-
-    $base64 = $data->pluck('archivote');
-    
-    if(!$data->isEmpty() && $base64[0]!=null){
-        $bin = base64_decode($base64[0]);
-        return response($bin)
-        ->header('Content-Type', 'application/pdf');
-    }else{
-        return back()->with('fail','Parte A no subida');
-    }
-}
+ 
 
 
 
@@ -93,11 +77,28 @@ $Convocatoria = Convocatoria::all();
     return view('/docente/inicioD',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
 }
 function estudiante(){
-
+    $documento = Documento::all();
     $Aviso = Aviso::all();
 $Convocatoria = Convocatoria::all();
-    return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+    return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),array('documentos'=>$documento)); 
 }
+function administrador(){
+
+    $Aviso = Aviso::all();
+    $Convocatoria = Convocatoria::all();
+    return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+    }
+function documentosBaseView(){
+$Documento = Documento::all();
+return view('/estudiante/documentosEst',array('documentos'=>$Documento));
+
+
+}
+
+
+
+
+
 function calendario(Request $request){
       if($request->ajax())
     	{            
@@ -129,12 +130,7 @@ function avisosDos(Request $request){
  /*  return $avisos; */
 }
 
-function administrador(){
 
-$Aviso = Aviso::all();
-$Convocatoria = Convocatoria::all();
-return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
-}
 
 
 

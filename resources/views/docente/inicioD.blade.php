@@ -19,9 +19,9 @@
                 @foreach ($convocatorias as $convocatorias)
                   <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
                   
-                  <p class="card-text">link documento:
-                  <a class="" href="{{ route('docente.convocatoriaPdf') }}">{{$convocatorias->nombre }}</a></p>
-                  <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
+                  <p class="card-text">Documento:
+                  {{$convocatorias->nombre }}</p>
+                  <p class="card-text">Codigo: {{$convocatorias->codigo }}</p>
                   <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
                   <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
                  
@@ -47,7 +47,7 @@
                   <div class="d-flex justify-content-evenly" >
                           
                   <div class=" " >
-                  <button type="submit"  name="archivote" value="{{$convocatorias->id}}" class="btn btn-primary"  style="background-color: #215f88;">VER</button>
+                  <button type="submit"  name="archivote" value="{{$convocatorias->id}}" class="btn btn-primary"  style="background-color: #215f88;">Ver Documento</button>
               
                   </div>
                   </div>

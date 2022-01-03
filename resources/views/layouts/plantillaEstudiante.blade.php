@@ -29,7 +29,7 @@
     <body>
         <header>
     
-        <title>INICIO</title>
+        
         <div>
             <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
           </div>
@@ -48,7 +48,7 @@
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
+                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 
              <li class="nav-item dropdown">

@@ -27,7 +27,10 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');
-Route::get('/estudiante/documentosB',[AvisosController::class, 'documentosB'])->name('estudiante.documentosB');
+
+Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
+
+Route::get('/estudiante/verDocumento',[AvisosController::class, 'verDocumento'])->name('estudiante.verDocumento');
 Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estudiante.empresa');
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
 //Route::post('/docente/calendario/accion',[MainController::class, 'accion'])->name('calendario.accion');
@@ -69,9 +72,13 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
 
     Route::get('/docente/convocatoriasD',[AvisosController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
-    
     Route::post ('/docente/convocatoria',[AvisosController::class, 'subirPdf'])->name('docente.subirPdf');
-    Route::post('/docente/convocatoriaPdf',[MainController::class, 'displayConv'])->name('docente.convocatoriaPdf');
+    Route::post('/docente/convocatoriaPdf',[AvisosController::class, 'displayConv'])->name('docente.convocatoriaPdf');
+
+    Route::get('/docente/documentosB',[AvisosController::class, 'documentosB'])->name('docente.documentosB');
+    Route::post('/docente/subirDocuB',[AvisosController::class,'subirDocuB'])->name('docente.subirDocuB');
+    Route::post('/estudiante/documentosPdf',[AvisosController::class, 'documentosDisplay'])->name('docente.documentosDisplay');
+
 
     Route::post('/docente/avisosD',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');

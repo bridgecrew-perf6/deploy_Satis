@@ -1,5 +1,5 @@
 @extends('layouts.plantillaEstudiante')
-
+<title>Empresa</title>
           @section('cuerpo')
         <div class="container mt-5 formulario">
           <div class="formCyA ">

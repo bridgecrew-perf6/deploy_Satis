@@ -1,5 +1,5 @@
 @extends('layouts.plantillaEstudiante')
-
+<title>Lista de empresas</title>
           @section('cuerpo')
           <section>
       

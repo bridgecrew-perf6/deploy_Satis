@@ -53,7 +53,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><a class="dropdown-item" href="{{ route('docente.convocatoriasD') }}">Convocatoria</a></li>
                   <li><a class="dropdown-item" href="{{ route('docente.avisosD') }}">Aviso</a></li>
-                 
+                  <li><a class="dropdown-item" href="{{ route('docente.documentosB') }}">Documentos Base</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">

@@ -30,20 +30,32 @@
               </h2>
               <div class="card ">
                 @foreach ($convocatorias as $convocatorias)
-                  <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
-                  
-                  <p class="card-text">link documento:
-                  <a class="" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">{{$convocatorias->nombre }}</a></p>
-                  <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
-                  <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
-                  <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
-                  @endforeach 
-                <div class="card-body">
-               
+                <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
+                
+                <p class="card-text">Documento:
+                {{$convocatorias->nombre }}</p>
+                <p class="card-text">Codigo: {{$convocatorias->codigo }}</p>
+                <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
+                <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
+              
+              <form method="post" action="{{ route('docente.convocatoriaPdf') }}" enctype="multipart/form-data">                               
+                @csrf
+                <div class="d-flex justify-content-evenly" >
+                        
+                <div class=" " >
+                <button type="submit"  name="archivote" value="{{$convocatorias->id}}" class="btn btn-primary"  style="background-color: #215f88;">Ver Documento</button>
+            
                 </div>
-              </div>
+                </div>
+                </form>
+                
+                
+              @endforeach 
+                <div class="card-body">
+
+                </div>
+              </div>            
             </div>
-  
             <div class="col-sm-6 avisotes">
               <h2 class="align-items-center avisos text-light">
                 Avisos
