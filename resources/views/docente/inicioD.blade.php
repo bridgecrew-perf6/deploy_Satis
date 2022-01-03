@@ -20,23 +20,42 @@
                   <h5 class="card-title text-ligth">{{$convocatorias->name }}</h5>
                   
                   <p class="card-text">link documento:
-                  <a class="" href="https://drive.google.com/file/d/1Kpy9tuMYdj1oB15c8nPVqKenT2fMZ2XX/view?usp=sharing">{{$convocatorias->nombre }}</a></p>
+                  <a class="" href="{{ route('docente.convocatoriaPdf') }}">{{$convocatorias->nombre }}</a></p>
                   <p class="card-text">codigo: {{$convocatorias->codigo }}</p>
                   <p class="card-text">Gestion: {{$convocatorias->gestion }}</p>
                   <p class="card-text">Semestre: {{$convocatorias->semestre}}</p> 
+                 
+                 
+                
+                  
+                  
                   <form action="{{ route('convocatorias.destroy', $convocatorias) }}" method="POST">
                     @csrf
                   @method('DELETE')
-  
+
+
+                
+                  
                   <button type="submit" style="border: none; background-color:transparent;">
                       <i class="fas fa-trash fa-lg text-danger"></i>
   
                   </button>
                 </form>
-                 
+                
+                <form method="post" action="{{ route('docente.convocatoriaPdf') }}" enctype="multipart/form-data">                               
+                  @csrf
+                  <div class="d-flex justify-content-evenly" >
+                          
+                  <div class=" " >
+                  <button type="submit"  name="archivote" value="{{$convocatorias->id}}" class="btn btn-primary"  style="background-color: #215f88;">VER</button>
+              
+                  </div>
+                  </div>
+                  </form>
+                  
                   
                 @endforeach 
-               
+              
              
                 <div class="card-body">
                

@@ -5,7 +5,7 @@
           <div class="formCyA">
             <h1 Style="text-align: center;">CONVOCATORIA</h1>
          
-          <form class="row g-3"  method="post" action="{{ route('docente.convocatoriasDos') }}" enctype="multipart/form-data">
+          <form class="row g-3"  method="post" action="{{ route('docente.subirPdf') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
             <div class="alert alert-success">
                {{ Session::get('success') }}

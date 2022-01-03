@@ -9,6 +9,7 @@ use App\Http\Controllers\PlanTrabajoController;
 
 
 use App\Http\Controllers\FullCalenderController;
+use App\Models\Aviso;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
 
     Route::get('/docente/convocatoriasD',[AvisosController::class, 'convocatoriasD'])->name('docente.convocatoriasD');
-    Route::post ('',[MainController::class, 'convocatoriasDos'])->name('docente.convocatoriasDos');
-
+    
+    Route::post ('/docente/convocatoria',[AvisosController::class, 'subirPdf'])->name('docente.subirPdf');
+    Route::post('/docente/convocatoriaPdf',[MainController::class, 'displayConv'])->name('docente.convocatoriaPdf');
 
     Route::post('/docente/avisosD',[MainController::class, 'avisosDos'])->name('docente.avisosDos');
     Route::get('/docente/avisosD',[AvisosController::class, 'avisosD'])->name('docente.avisosD');
@@ -85,6 +87,11 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/estudiante/empresa3',[MainController::class, 'parteB'])->name('empresa.parteB');
     Route::post('/estudiante/empresa4',[MainController::class, 'parteT'])->name('empresa.trabajo');
     Route::post('/estudiante/empresa5',[MainController::class, 'parteP'])->name('empresa.pagos');
+
+    
+
+
+
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
     Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');

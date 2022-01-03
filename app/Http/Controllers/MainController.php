@@ -29,6 +29,33 @@ class MainController extends Controller
            */
           return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
   }
+  
+  
+  
+  function displayConv(Request $request){
+
+    $query = DB::table('convocatorias'); 
+
+    $query->where('id', '=', $request->archivote); 
+   
+    $data = $query->get();
+
+    $base64 = $data->pluck('archivote');
+    
+    if(!$data->isEmpty() && $base64[0]!=null){
+        $bin = base64_decode($base64[0]);
+        return response($bin)
+        ->header('Content-Type', 'application/pdf');
+    }else{
+        return back()->with('fail','Parte A no subida');
+    }
+}
+
+
+
+
+
+
 
 
   function planP(){        
@@ -81,41 +108,7 @@ function calendario(Request $request){
     	}        
     	return view('/docente/calendario');
 }
-public function convocatoriasDos(Request $request){
-   
-         
-    if($request->hasFile("archivote")){
-      $file=$request->file("archivote");
-     /*  $request->file('archivote')->getClientOriginalName(); */
-    $nombre ="pdf_".time().".".$file->guessExtension(); 
-      $ruta = public_path("pdf/".$nombre);
 
-      if($file->guessExtension()=="pdf"){
-          copy($file,$ruta);
-      }else
-      {
-          dd("no es pdf bro");
-      } 
-      $Convocatoria = new Convocatoria();
-  $Convocatoria-> name = $request->name;
-  $Convocatoria-> codigo = $request->codigo;
-  $Convocatoria-> gestion = $request->gestion;
-  $Convocatoria-> semestre = $request->semestre;
-  $Convocatoria-> archivote = $request->archivote;
-  $Convocatoria-> nombre=$request->file('archivote')->getClientOriginalName();
-  
-  $save = $Convocatoria->save();
-  if($save){
-      return back()->with('success','Convocatoria publicado exitosamente');
-
-   }else{
-       return back()->with('fail','La convocatoria ya existe o su nombre no es valido');
-   }
-
-
-    }
-
-}
 
 function avisosDos(Request $request){
  
@@ -422,7 +415,7 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
         $data = $query2->get();
         if(!$data->isEmpty()){
                    $query3 = DB::table('documentos_empresa')
-                            ->where('emp', $emp)
+                            ->where('emp',  $emp)
                             ->update([
                                     'parteA' => $base64                                   
                                     ]);
