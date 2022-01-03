@@ -94,6 +94,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('planTrabajos', PlanTrabajoController::class);
     Route::resource('notificaciones', NotificacionController::class);
     //aqui era docente
-    Route::get('/estudiante/notificaciones',[MainController::class, 'mensajitos'])->name('estudiante.mensajito');
+    //Route::get('/estudiante/notificaciones',[MainController::class, 'mensajitos'])->name('estudiante.mensajito');
 
 });

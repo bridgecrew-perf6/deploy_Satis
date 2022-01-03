@@ -259,11 +259,12 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                 }
             } 
             $usuarios = Usuario::where('id',session('LoggedUser'))->first();
+            
             $actualizando = DB::table('empresas')
-            ->where('id',$save->id)
+            ->where('id',$admin->id)
             ->update([
                     'id_docente' => $usuarios->id_docente                          
-                    ]);
+        ]);
             return back()->with('success','Empresa creada exitosamente');
 
          }else{
