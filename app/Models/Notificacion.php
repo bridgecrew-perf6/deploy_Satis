@@ -16,10 +16,9 @@ class Notificacion extends Model
 
     protected $fillable = [
         'mensaje_notificacion',
-        //'sender_id',
-        //'recipient_id',
+        'envia_id',
         'created_at',
-        'id_empresa'
+        'recibe_id'
         
     ];
 }

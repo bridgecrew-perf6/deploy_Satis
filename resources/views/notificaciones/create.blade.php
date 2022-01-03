@@ -63,7 +63,7 @@
             </div>-->
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Cuerpo:</strong>
+                    <strong>Mensaje:</strong>
                     <textarea required class="form-control" id="myTextarea" style="height:200px;" name="mensaje_notificacion"
                         placeholder="Cuerpo"></textarea>
                 </div>

@@ -13,6 +13,7 @@
             <li><a href="{{ route('docente.convocatoriasD') }}">Agregar convocatoria</a></li>
               <li><a href="{{ route('docente.avisosD') }}">Agregar Avisos</a></li>
               <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
+              <li><a href="{{ url('/notificaciones/create') }}">Enviar Notificacion</a></li>
             
               <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
                 <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>

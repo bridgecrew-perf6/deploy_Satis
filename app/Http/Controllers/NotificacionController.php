@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use App\Models\Notificacion;
+use App\Models\Notificacion_usuario;
 use App\Models\Usuario;
 use App\Models\usuario_empresa;
 use Illuminate\Http\Request;
@@ -58,15 +59,25 @@ class NotificacionController extends Controller
      */
     public function store(Request $request)
     {
-        
-        //$usuario = Usuario::where('id','=', session('LoggedUser'));
         $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
-        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+        $data_merged = array_merge(['recibe_id'=>$usuario_empresa->emp], $request->all());
+        $obj_merged = array_merge(['envia_id'=>session('LoggedUser')], $data_merged);
+       
     
-        Notificacion::create($obj_merged);
+        $nueva_notificacion=Notificacion::create($obj_merged);
+        $usuario_recibidos= usuario_empresa::where('emp',$usuario_empresa->emp)->get();
+        for($i = 0; $i<count($usuario_recibidos); $i++){
+                    
+            $data_notificacion=[
+              "id_notificacion"=>$nueva_notificacion->id,
+                "id_recibido"=>$usuario_recibidos[$i]->usr
+            ];
+            Notificacion_usuario::create($data_notificacion);
+        }
 
         return redirect()->route('notificaciones.index')
             ->with('success', 'Mensaje enviado con éxito');
+        
     }
 
     /**
@@ -107,7 +118,7 @@ class NotificacionController extends Controller
             
         ]);
         $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
-        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+        $obj_merged = array_merge(['recibe_id'=>$usuario_empresa->emp], $request->all());
 
         $notificacion->update($obj_merged);
 

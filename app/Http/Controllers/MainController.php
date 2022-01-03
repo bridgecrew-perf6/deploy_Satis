@@ -8,6 +8,7 @@ use App\Models\Aviso;
 use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
+use App\Models\Notificacion_usuario;
 use App\Models\Evento;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +36,9 @@ function estudiante(){
 
     $Aviso = Aviso::all();
 $Convocatoria = Convocatoria::all();
-    return view('/estudiante/inicioE',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria)); 
+$notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->get();
+
+    return view('/estudiante/inicioE',['avisos'=> $Aviso,'notificaciones'=>$notificaciones,'convocatorias'=>$Convocatoria]); 
 }
 function calendario(Request $request){
       if($request->ajax())
@@ -145,17 +148,20 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
             while(($csv = fgetcsv($file_open, 200, ";")) !== false)
             {
                 $csv = array_map("utf8_encode", $csv);
+                $csvs = explode(",", $csv[0]);
                 if($i != 0){
-                $username = $csv[0];
-                $pass = $csv[1];
-                $nombre = $csv[2];
+                   // return var_dump($csvs);
+                $username = $csvs[0];
+                $pass = $csvs[1];
+                $nombre = $csvs[2];
                 $comprobar = DB::table('usuarios')->where('username','=',$username)->first();
                 if($comprobar == null){
                     DB::table('usuarios')->insert([
                         'username' => $username,
                         'pass' => $pass,
                         'nombre' => $nombre,
-                        'tipo' => '3'
+                        'tipo' => '3',
+                        'id_docente'=>session('LoggedUser')
                     ]);
                     $c++;
                 }
@@ -238,6 +244,8 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
          $admin->correo = $request->correo;
          $admin->telefono = $request->telefono;
          $admin->direccion = $request->direccion;
+         $admin->id_docente = $request->id_docente;
+
          $save = $admin->save();
          
 
@@ -249,8 +257,15 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                         'emp' => $admin->id
 	                ]);                    
                 }
-            }  
+            } 
+            $usuarios = Usuario::where('id',session('LoggedUser'))->first();
+            $actualizando = DB::table('empresas')
+            ->where('id',$save->id)
+            ->update([
+                    'id_docente' => $usuarios->id_docente                          
+                    ]);
             return back()->with('success','Empresa creada exitosamente');
+
          }else{
              return back()->with('fail','La empresa ya existe o su nombre no es valido');
          }
@@ -525,6 +540,8 @@ return view('/admin/inicioA',array('avisos'=> $Aviso),array('convocatorias'=>$Co
                                     'correo' => $request->correo,
                                     'telefono' => $request->telefono,
                                     'direccion' => $request->direccion
+
+
                                     ]);
         return back()->with('success','Empresa actualizada');
     }

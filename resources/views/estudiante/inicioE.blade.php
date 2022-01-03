@@ -15,6 +15,7 @@
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                 <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
+                <li><a href="{{ url('/notificaciones') }}">Notificaciones {{count($notificaciones)}}</a></li>
                 
              <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
