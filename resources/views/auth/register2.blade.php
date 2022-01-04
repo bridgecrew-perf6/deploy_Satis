@@ -1,5 +1,6 @@
 @extends('layouts.plantillaD')
 @section('content')
+<title>Registro Docente</title>
           <nav class="navbar">
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
             <a href="#" class="toggle-button">
@@ -20,7 +21,7 @@
           @endsection
           @section('cuerpo')
   <div class="container  mt-5 formulario">
-       <div class="cardForm formFunda formA">
+       <div class="formCyA">
         <h1 Style="text-align: center;">REGISTRAR DOCENTE</h1>
            <form action="{{ route('auth.save2') }}" method="post">
 

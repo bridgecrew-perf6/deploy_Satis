@@ -29,7 +29,7 @@
     <body>
         <header>
     
-        <title>INICIO</title>
+    
         <div>
             <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
           </div>

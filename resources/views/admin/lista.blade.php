@@ -1,5 +1,8 @@
 @extends('layouts.plantillaD')
 @section('content')
+<title>Lista Empresas</title>
+
+
           <nav class="navbar" >
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
             <a href="#" class="toggle-button">

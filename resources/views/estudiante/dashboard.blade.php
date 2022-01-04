@@ -1,26 +1,6 @@
-@extends('layouts.plantillaD')
-@section('content')
-          <nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-              <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
-                <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
-                <li><a href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-                
-              </ul>
-            </div>
-          </nav>
-          @endsection
-    
-          @section('cuerpo')
+@extends('layouts.plantillaEstudiante')
+
+@section('cuerpo')
     
 <section>
         <div class="container mt-5 mb-5 ">

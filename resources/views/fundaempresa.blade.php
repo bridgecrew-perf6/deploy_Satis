@@ -1,5 +1,6 @@
 @extends('layouts.plantilla')
 @section('content')
+<title>Registro funda empresa TIS</title>
           <nav class="navbar">
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
             <a href="#" class="toggle-button">
@@ -11,7 +12,7 @@
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
+                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 
              <li class="nav-item dropdown">
@@ -33,7 +34,7 @@
           @endsection
           @section('cuerpo')
         <div class="container mt-5 formulario">
-          <div class="cardForm formFunda formA ">
+          <div class="formCyA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
             <div   >
           <form

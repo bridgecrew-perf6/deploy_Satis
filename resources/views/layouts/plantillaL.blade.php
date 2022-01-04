@@ -25,7 +25,7 @@
       <div class="cabeceraCssBlanca"></div>
       <div class="textoCabecera h3">UNIVERSIDAD MAYOR DE SAN SIMON</div>
       <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
-      <img class="logoUmssCss" src="IMAGENES/LogoUMSS.png" alt="">
+      <img class="logoUmssCss" src="../IMAGENES/LogoUMSS.png" alt="">
   
     </div>
 </head>

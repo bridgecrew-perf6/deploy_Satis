@@ -1,5 +1,6 @@
 @extends('layouts.plantilla')
 @section('content')
+<title>Registrar Plan de pagos</title>
           <nav class="navbar">
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
             <a href="#" class="toggle-button">
@@ -11,7 +12,7 @@
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
+                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 
              <li class="nav-item dropdown">
