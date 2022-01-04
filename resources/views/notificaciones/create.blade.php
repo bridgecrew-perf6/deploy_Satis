@@ -1,4 +1,4 @@
-@extends('layouts.plantillaD')
+@extends('layouts.plantillaDocente')
 
 @section('cuerpo')
     <div class="row">

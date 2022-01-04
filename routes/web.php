@@ -29,6 +29,8 @@ Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docen
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');
 
+Route::get('/layouts/plantillaEstudiante',[MainController::class, 'plantillaEstudiante'])->name('plantilla.estudiante');
+
 Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
 
 

@@ -64,13 +64,18 @@ class MainController extends Controller
         return view('/docente/inicioD', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria));
     }
     function estudiante(){
-
+        $documento = Documento::all();
         $Aviso = Aviso::all();
     $Convocatoria = Convocatoria::all();
     $notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->where('leido',0)->get();
-    
-    
-        return view('/estudiante/inicioE',['avisos'=> $Aviso,'notificaciones'=>$notificaciones,'convocatorias'=>$Convocatoria, 'documentos'=>$documento]); 
+     return view('/estudiante/inicioE',['notificaciones'=>$notificaciones,'avisos'=>$Aviso,'convocatorias'=>$Convocatoria]);
+    }
+    function plantillaEstudiante(){
+        $documento = Documento::all();
+        $Aviso = Aviso::all();
+    $Convocatoria = Convocatoria::all();
+        $notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->where('leido',0)->get();
+        return view('/layouts/plantillaEstudiante',['notificaciones'=>$notificaciones,'avisos'=>$Aviso,'convocatorias'=>$Convocatoria]);
     }
     /*function estudiante()
     {

@@ -35,7 +35,8 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar">
+        <nav class="navbar " >
+            
             <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
             <a href="#" class="toggle-button">
               <span class="bar"></span>
@@ -43,36 +44,31 @@
               <span class="bar"></span>
             </a>
             <div class="navbar-links">
-              <ul>
               
-              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Publicar
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="{{ route('docente.convocatoriasD') }}">Convocatoria</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.avisosD') }}">Aviso</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.documentosB') }}">Documentos Base</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  ver
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="{{ route('docente.planP') }}">Plan de pagos</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
-                 
-                </ul>
-              </li>
-                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-                <li><a href="{{ url('/notificaciones/create') }}">Enviar Notificacion</a></li>
-                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
+              <ul>
+                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
+                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
+                <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
+                <li><a href="{{ url('/notificaciones') }}">Notificaciones @if(count($notificaciones)>0) {{count($notificaciones)}} @endif</a></li>
+                
+             <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registrar
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
+            <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
+            <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
+           
+          </ul>
+        </li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
-            </div>
-          </nav>
+            
+          </ul>
+        </div>
+      </div>
+      </nav>
 
     </header>
 
