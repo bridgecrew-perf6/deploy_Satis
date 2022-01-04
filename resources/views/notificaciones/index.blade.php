@@ -6,7 +6,13 @@
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
+                        @if ($LoggedUserInfo->tipo==3)
+                        <h2>Notificaciones recibidas </h2>
+                        @endif
+                        @if ($LoggedUserInfo->tipo==2)
                         <h2>Notificaciones enviadas </h2>
+                        @endif
+
                     </div>
                 
                     @if ($LoggedUserInfo->tipo==2)
@@ -25,47 +31,23 @@
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <!--<th>No</th>-->
-            <th>Cuerpo</th>
+            <th>Mensajes</th>
             <!--<th>Selecionar grupo empresa</th>
             <th>Selecionar grupo empresa2</th>-->
            <!--aqui era tipo 3-->
-            @if ($LoggedUserInfo->tipo==2)
-            <th width="280px">Acción</th>
-            @endif
+            
 
         </tr>
         
         
-           
+        @foreach ($notificaciones as $notificacion)
                 <tr>
-                    <td></td>
+                    <td>{{$notificacion->mensaje_notificacion}}</td>
                 
-                    @if ($LoggedUserInfo->tipo==2)  
-                <td>
-                    
-                    <form  method="POST">
-
-                        <a title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-
-                        <a >
-                            <i class="fas fa-edit  fa-lg"></i>
-
-                        </a>
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                            <i class="fas fa-trash fa-lg text-danger"></i>
-
-                        </button>
-                    </form>
-                </td>
-           @endif
+                
 
             </tr>
+        @endforeach
         
         
     </table>

@@ -19,12 +19,18 @@
         @csrf
 
         <div class="container">
-            <!--<div class="col-xs-12 col-sm-12 col-md-12">
+            
                 <div class="form-group">
-                    <strong>Cuerpo:</strong>
-                    <input required type="text" name="mensaje_notificacion" class="form-control" placeholder="Cuerpo">
+                    <select name="empresa" class="form-control">
+                        <option value="all">Todas las empresas</option>
+                        @foreach ($empresas as $empresa)
+                    <option value="{{$empresa->id}}">{{$empresa->nombreL}}</option>
+                    @endforeach
+                    </select>
                 </div>
-            </div>-->
+            
+
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Mensaje:</strong>
@@ -32,6 +38,7 @@
                         placeholder="Cuerpo"></textarea>
                 </div>
             </div>
+
             
             
             <div class="col-md-6 d-flex justify-content-between ">

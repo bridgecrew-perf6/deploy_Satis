@@ -36,7 +36,8 @@ function estudiante(){
 
     $Aviso = Aviso::all();
 $Convocatoria = Convocatoria::all();
-$notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->get();
+$notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->where('leido',0)->get();
+
 
     return view('/estudiante/inicioE',['avisos'=> $Aviso,'notificaciones'=>$notificaciones,'convocatorias'=>$Convocatoria]); 
 }
