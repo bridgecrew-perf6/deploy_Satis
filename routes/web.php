@@ -30,6 +30,8 @@ Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('adm
 
 Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
 
+
+
 Route::get('/estudiante/verDocumento',[AvisosController::class, 'verDocumento'])->name('estudiante.verDocumento');
 Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estudiante.empresa');
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
@@ -43,6 +45,7 @@ Route::get('/docente/planT',[MainController::class, 'planT'])->name('docente.pla
 
 Route::delete('/docente/inicioD/avisosD/{aviso}',[AvisosController::class, 'destroy'])->name('avisos.destroy');
 Route::delete('/docente/inicioD/convocatoriasD/{convocatoria}',[AvisosController::class, 'destroy2'])->name('convocatorias.destroy');
+Route::delete('/docente/documentosB/{documentos}',[AvisosController::class, 'destroy3'])->name('documento.destroy');
 
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');

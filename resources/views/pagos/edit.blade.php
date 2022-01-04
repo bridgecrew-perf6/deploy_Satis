@@ -13,7 +13,7 @@
               <ul>
                 <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
-                <li><a href="{{ route('estudiante.documentosB') }}">Documentos base</a></li>
+                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
                 
              <li class="nav-item dropdown">

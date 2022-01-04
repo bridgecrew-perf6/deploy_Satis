@@ -7,6 +7,8 @@ use App\Models\Convocatoria;
 use App\Models\Documento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class AvisosController extends Controller
 {
@@ -21,7 +23,8 @@ class AvisosController extends Controller
 
     function documentosB()
     {
-        return view('docente.documentosB');
+        $Documento = Documento::all();
+        return view('docente.documentosB', array('documentos' => $Documento));
     }
     function verDocumentos()
     {
@@ -43,6 +46,13 @@ class AvisosController extends Controller
         $convocatoria->delete();
 
         return redirect()->route('docente.inicioD')->with('success', 'convocatoria borrada exitosamente');
+    }
+    public function destroy3($documento)
+    {
+        $documento = Documento::find($documento);
+        $documento->delete();
+
+        return redirect()->route('docente.documentosB')->with('success', 'convocatoria borrada exitosamente');
     }
 
 
@@ -111,11 +121,7 @@ class AvisosController extends Controller
         $Documento->semestre = $request->semestre;
         $Documento->nombre = $request->file('archivote')->getClientOriginalName();
         $filesource = $request->file('archivote');
-        $fileExtension = "";
-        if ($filesource != null) {
-            $fileExtension = $filesource->getClientOriginalExtension();
-        }
-      
+     
 
         $path = $request->file('archivote')->getRealPath();
         $pdf = file_get_contents($path);
@@ -141,12 +147,15 @@ class AvisosController extends Controller
 
         $base64 = $data->pluck('archivote');
 
+    
+
         if (!$data->isEmpty() && $base64[0] != null) {
             $bin = base64_decode($base64[0]);
             return response($bin)
                 ->header('Content-Type', 'application/pdf');
+                
         } else {
-            return back()->with('fail', 'Parte A no subida');
+            return back()->with('fail', 'documento no subido');
         }
     }
 }
