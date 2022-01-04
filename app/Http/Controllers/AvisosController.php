@@ -121,7 +121,13 @@ class AvisosController extends Controller
         $Documento->semestre = $request->semestre;
         $Documento->nombre = $request->file('archivote')->getClientOriginalName();
         $filesource = $request->file('archivote');
-     
+        $fileExtension = "";
+        if ($filesource != null) {
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if (strcmp($fileExtension, "pdf") !== 0) {
+            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+        }
 
         $path = $request->file('archivote')->getRealPath();
         $pdf = file_get_contents($path);
