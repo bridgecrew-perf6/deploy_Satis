@@ -1,5 +1,4 @@
-@extends('layouts.plantillaEstudiante')
-<title>Inicio</title>
+@extends('layouts.plantillaNotificaciones')
       @section('cuerpo')
       <section>
         

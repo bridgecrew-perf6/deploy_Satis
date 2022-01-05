@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PlanTrabajoController;
+use App\Http\Controllers\NotificacionController;
 
 
 
@@ -27,6 +28,8 @@ Route::get('/',[MainController::class, 'index'])->name('home');
 Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');
+
+Route::get('/layouts/plantillaEstudiante',[MainController::class, 'plantillaEstudiante'])->name('plantilla.estudiante');
 
 Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
 
@@ -59,6 +62,7 @@ Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('est
 Route::post('/estudiante/parteB',[MainController::class, 'displayB'])->name('estudiante.parteB');
 Route::post('/estudiante/trabajo',[MainController::class, 'displayT'])->name('estudiante.trabajo');
 Route::post('/estudiante/pagos',[MainController::class, 'displayP'])->name('estudiante.pagos');
+
 Route::post('/docente/orden',[MainController::class, 'orden'])->name('docente.orden');
 Route::post('/estudiante/orden',[MainController::class, 'displayO2'])->name('estudiante.orden');
 
@@ -119,5 +123,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('pagos', PagoController::class);
     Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
+    Route::resource('notificaciones', NotificacionController::class);
     
+
 });
