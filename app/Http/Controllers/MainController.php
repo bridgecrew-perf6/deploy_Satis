@@ -174,6 +174,7 @@ class MainController extends Controller
                 $c = 0;
                 while (($csv = fgetcsv($file_open, 200, ";")) !== false) {
                     $csv = array_map("utf8_encode", $csv);
+                    $csvs = explode(",", $csv[0]);
                     if ($i != 0) {
                         $username = $csv[0];
                         $pass = $csv[1];
