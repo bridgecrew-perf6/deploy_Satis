@@ -29,7 +29,7 @@
           
           <ul>
             <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
-            <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+            
   
         
       </ul>
