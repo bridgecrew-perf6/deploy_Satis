@@ -181,7 +181,8 @@ class MainController extends Controller
                                 'username' => $username,
                                 'pass' => $pass,
                                 'nombre' => $nombre,
-                                'tipo' => '3'
+                                'tipo' => '3',
+                                'id_docente'=>session('LoggedUser')
                             ]);
                             $c++;
                         }
