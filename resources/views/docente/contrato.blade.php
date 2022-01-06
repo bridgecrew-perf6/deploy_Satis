@@ -7,7 +7,7 @@
   <body>
     @foreach($data as $key=>$item)
         <center><h2>CONTRATO DE PRESTACIÓN DE SERVICIOS - CONSULTORÍA</h2><center>
-        <center><h3>fecha</h3><center>
+        <center><h3><?php echo date('d-m-Y');?></h3><center>
       
         <p align="left" >Que suscriben la empresa Taller de Ingeniería de Software - TIS, que en lo sucesivo se
            denominará TIS, por una parte, y la consultora <b>{{$item->nombreL}}</b> registrada debidamente en
@@ -51,7 +51,7 @@
             condiciones establecidos en el presente Contrato de Prestación de Servicios y Consultoría,
             firmando en constancia al pie de presente documento.</p>
        
-        <center><b>Cochabamba,fecha</b><center>
+        <center><b>Cochabamba,<?php echo date('d-m-Y');?></b><center>
         <br>
         <br>
         <h3> <p>REPRESENTANTE GRUPO-EMPRESA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REPRESENTANTE CONSULTORA TIS</p></h3>
