@@ -252,7 +252,8 @@ class MainController extends Controller
             'representante' => 'nullable|unique:empresas',
             'correo' => 'nullable|email|unique:empresas',
             'telefono' => 'nullable|unique:empresas',
-            'direccion' => 'nullable|unique:empresas'
+            'direccion' => 'nullable|unique:empresas',
+            'gestion' => 'nullable|unique:empresas'
         ]);
         if ($request->integrantes == null) {
             $request->integrantes = "";
@@ -269,6 +270,9 @@ class MainController extends Controller
         if ($request->direccion == null) {
             $request->direccion = "";
         }
+        if ($request->gestion == null) {
+            $request->gestion = "";
+        }
 
         //Insert data into database
         $admin = new Empresa;
@@ -279,6 +283,7 @@ class MainController extends Controller
         $admin->correo = $request->correo;
         $admin->telefono = $request->telefono;
         $admin->direccion = $request->direccion;
+        $admin->gestion = $request->gestion;
         $admin->id_docente = $request->id_docente;
 
         $save = $admin->save();
