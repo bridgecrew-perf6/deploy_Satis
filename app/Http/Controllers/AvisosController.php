@@ -53,6 +53,7 @@ class AvisosController extends Controller
         $documento->delete();
 
         return redirect()->route('docente.documentosB')->with('success', 'convocatoria borrada exitosamente');
+        
     }
 
 

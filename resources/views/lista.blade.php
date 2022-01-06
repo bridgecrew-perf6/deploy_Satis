@@ -10,8 +10,8 @@
         <div class="navbar-links">
           <ul>
             <li><a href="{{ url('/') }}">Inicio</a></li>
-            <li><a href="{{ url('/lista') }}">Lista de empresas</a></li>
-            <li><a href="{{ url('/auth/login') }}">Iniciar Sesión</a></li>
+            <li class="nav-item {{!Route::is('lista')?:'active'}}"><a href="{{ route('lista') }}">Lista de empresas</a></li>
+            <li class="nav-item {{!Route::is('auth.login')?:'active'}}"> <a href="{{ route('auth.login') }}">Iniciar Sesión</a></li>
             
           </ul>
         </div>

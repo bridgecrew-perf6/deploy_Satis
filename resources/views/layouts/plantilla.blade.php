@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/9ac0673dac.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/App.css">
     <link rel="stylesheet" href="CSS/iconos.css">
@@ -14,10 +14,34 @@
     <link rel="stylesheet" href="CSS/fondos.css">
     <link rel="stylesheet" href="CSS/cabecera.css">
     <link rel="stylesheet" href="CSS/formulario.css">
-    <script src="CSS/script.js" defer></script>
-
+    
+    <script src="CSS/active.js" defer></script>
     <!--PORTADA PAGINA PRINCIPAL-->
-
+    <nav class="navbar"  >
+            
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          
+          <ul>
+            <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+            <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
+              <span class="fa fa-comment"></span>
+              <span class="num">
+              
+              </span>
+            </a></li>
+            <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+  
+        
+      </ul>
+    </div>
+  </div>
+  </nav>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss">
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
@@ -29,7 +53,7 @@
     </div>
 </head>
 
-<body>
+<body >
     <header>
         <div>
             <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
@@ -39,7 +63,7 @@
 
          @yield('content')
            
-    </header>
+  
 
     <!--publicaciones y avisos -->
 

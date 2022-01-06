@@ -79,3 +79,28 @@ body{
     margin-top: 200px;
     margin-bottom: 200px;
 }
+/* NOTIFICACION */
+
+a.fa-bell {
+    position: relative;
+    font-size: 2em;
+    color: grey;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  span.fa-comment {
+    position: absolute;
+    font-size: 0.8em;
+    top: -4px;
+    color: red;
+    right: -4px;
+    margin-top:5px;
+  }
+  span.num {
+    position: absolute;
+    font-size: 0.5em;
+    top: 1px;
+    color: #fff;
+    right: 4px;
+    margin-top: 4px;
+  }

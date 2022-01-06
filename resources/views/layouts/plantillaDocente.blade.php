@@ -17,6 +17,26 @@
     <link rel="stylesheet" href="../CSS/formulario.css"> 
     <link rel="stylesheet" href="../CSS/nav2.css"> 
     <script src="../CSS/script.js" defer></script>
+    <nav class="navbar"  >
+            
+      <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-links">
+        
+        <ul>
+          <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+         
+          <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+
+      
+    </ul>
+  </div>
+</div>
+</nav>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
@@ -35,8 +55,8 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <nav class="navbar"style="justify-content: center">
+            <div class="brand-title"></div>
             <a href="#" class="toggle-button">
               <span class="bar"></span>
               <span class="bar"></span>
@@ -45,8 +65,8 @@
             <div class="navbar-links">
               <ul>
               
-              <li><a href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li class="nav-item dropdown">
+              <li class="nav-item {{!Route::is('docente.inicioD')?:'active'}}"> <a class="nav-link" href="{{ route('docente.inicioD') }}">Inicio</a></li>
+              <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Publicar
                 </a>
@@ -61,16 +81,16 @@
                   ver
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="{{ route('docente.planP') }}">Plan de pagos</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
+                  <li class="nav-item {{!Route::is('docente.planP')?:'active'}}"><a class="dropdown-item" href="{{ route('docente.planP') }}">Plan de pagos</a></li>
+                  <li class="nav-item {{!Route::is('docente.planT')?:'active'}}"><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
                  
                 </ul>
               </li>
-                <li><a href="{{ url('/docente/lista') }}">Lista de empresas</a></li>
-                <li><a href="{{ url('/notificaciones/create') }}">Enviar Notificacion</a></li>
-                <li><a href="{{ url('/docente/calendario') }}">Calendario</a></li>
-                <li><a href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+                <li class="nav-item {{!Route::is('docente.lista')?:'active'}}"> <a class="nav-link"href="{{ route('docente.lista') }}">Lista de empresas</a></li>
+                <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
+                <li class="nav-item {{!Route::is('docente.calendario')?:'active'}}"><a class="nav-link"href="{{ route('docente.calendario') }}">Calendario</a></li>
+                <li class="nav-item {{!Route::is('auth.register')?:'active'}}"><a class="nav-link"href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
+                <li class="nav-item {{!Route::is('auth.logout')?:'active'}}"><a class="nav-link"href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
             </div>
           </nav>
 

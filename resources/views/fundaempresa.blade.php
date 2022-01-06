@@ -1,8 +1,8 @@
 @extends('layouts.plantilla')
 @section('content')
 <title>Registro funda empresa TIS</title>
-          <nav class="navbar">
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+          <nav class="navbar" style="justify-content: center">
+            <div class="brand-title"></div>
             <a href="#" class="toggle-button">
               <span class="bar"></span>
               <span class="bar"></span>
@@ -10,7 +10,7 @@
             </a>
             <div class="navbar-links">
               <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li  class="nav-item {{!Route::is('estudiante.inicioE')?:'active'}}"><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                 <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
@@ -20,13 +20,12 @@
             Registrar
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
-            <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
-            <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
+            <li class="nav-item {{!Route::is('fundaempresa')?:'active'}}"><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
+            <li class="nav-item {{!Route::is('pagos.index')?:'active'}}"><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
+            <li class="nav-item {{!Route::is('planTrabajos.index')?:'active'}}"><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
            
           </ul>
         </li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
             
           </ul>
             </div>

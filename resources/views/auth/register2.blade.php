@@ -12,8 +12,8 @@
               <ul>
                 <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
                 <li><a href="{{ url('/admin/lista') }}">Lista de empresas</a></li>
-                <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+                <li  class="nav-item {{!Route::is('auth.register2')?:'active'}}"><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
+                <li class="nav-item {{!Route::is('auth.logout')?:'active'}}"> <a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
               </ul>
             </div>
