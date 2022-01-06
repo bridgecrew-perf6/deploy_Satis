@@ -149,7 +149,7 @@
                         <li><a class="dropdown-item" href="{{ route('docente.documentosB') }}">Documentos Base</a></li>
                       </ul>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         ver
                       </a>
@@ -158,7 +158,7 @@
                         <li class="nav-item {{!Route::is('docente.planT')?:'active'}}"><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
                        
                       </ul>
-                    </li>
+                    </li>-->
                       <li class="nav-item {{!Route::is('docente.lista')?:'active'}}"> <a class="nav-link"href="{{ route('docente.lista') }}">Lista de empresas</a></li>
                       <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
                       <li class="nav-item {{!Route::is('docente.calendario')?:'active'}}"><a class="nav-link"href="{{ route('docente.calendario') }}">Calendario</a></li>
