@@ -30,9 +30,9 @@ class MainController extends Controller
         /* $now = Carbon::now();
       $currentDate = $now->format('Y-m-d');
            */
-          return view('inicio',array('avisos'=> $Aviso),array('convocatorias'=>$Convocatoria),); 
-  }
-  
+        return view('inicio', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria),);
+    }
+
 
     function planP()
     {
@@ -63,19 +63,21 @@ class MainController extends Controller
         $Convocatoria = Convocatoria::all();
         return view('/docente/inicioD', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria));
     }
-    function estudiante(){
+    function estudiante()
+    {
         $documento = Documento::all();
         $Aviso = Aviso::all();
-    $Convocatoria = Convocatoria::all();
-    $notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->where('leido',0)->get();
-     return view('/estudiante/inicioE',['notificaciones'=>$notificaciones,'avisos'=>$Aviso,'convocatorias'=>$Convocatoria]);
+        $Convocatoria = Convocatoria::all();
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        return view('/estudiante/inicioE', ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria]);
     }
-    function plantillaEstudiante(){
+    function plantillaEstudiante()
+    {
         $documento = Documento::all();
         $Aviso = Aviso::all();
-    $Convocatoria = Convocatoria::all();
-        $notificaciones= Notificacion_usuario::where("id_recibido",session('LoggedUser'))->where('leido',0)->get();
-        return view('/layouts/plantillaEstudiante',['notificaciones'=>$notificaciones,'avisos'=>$Aviso,'convocatorias'=>$Convocatoria]);
+        $Convocatoria = Convocatoria::all();
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        return view('/layouts/plantillaEstudiante', ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria]);
     }
     /*function estudiante()
     {
@@ -96,7 +98,7 @@ class MainController extends Controller
         $Documento = Documento::all();
         return view('/estudiante/documentosEst', array('documentos' => $Documento));
     }
-   
+
 
 
     function calendario(Request $request)
@@ -182,7 +184,7 @@ class MainController extends Controller
                                 'pass' => $pass,
                                 'nombre' => $nombre,
                                 'tipo' => '3',
-                                'id_docente'=>session('LoggedUser')
+                                'id_docente' => session('LoggedUser')
                             ]);
                             $c++;
                         }
@@ -258,19 +260,19 @@ class MainController extends Controller
             $request->direccion = "";
         }
 
-         //Insert data into database
-         $admin = new Empresa;
-         $admin->nombreC = $request->nombreC;
-         $admin->nombreL = $request->nombreL;
-         $admin->integrantes = $request->integrantes;
-         $admin->representante = $request->representante;
-         $admin->correo = $request->correo;
-         $admin->telefono = $request->telefono;
-         $admin->direccion = $request->direccion;
-         $admin->id_docente = $request->id_docente;
+        //Insert data into database
+        $admin = new Empresa;
+        $admin->nombreC = $request->nombreC;
+        $admin->nombreL = $request->nombreL;
+        $admin->integrantes = $request->integrantes;
+        $admin->representante = $request->representante;
+        $admin->correo = $request->correo;
+        $admin->telefono = $request->telefono;
+        $admin->direccion = $request->direccion;
+        $admin->id_docente = $request->id_docente;
 
-         $save = $admin->save();
-         
+        $save = $admin->save();
+
 
 
         if ($save) {
@@ -281,19 +283,18 @@ class MainController extends Controller
                         'emp' => $admin->id
                     ]);
                 }
-            } 
-            $usuarios = Usuario::where('id',session('LoggedUser'))->first();
-            
-            $actualizando = DB::table('empresas')
-            ->where('id',$admin->id)
-            ->update([
-                    'id_docente' => $usuarios->id_docente                          
-        ]);
-            return back()->with('success','Empresa creada exitosamente');
+            }
+            $usuarios = Usuario::where('id', session('LoggedUser'))->first();
 
-         }else{
-             return back()->with('fail','La empresa ya existe o su nombre no es valido');
-         }
+            $actualizando = DB::table('empresas')
+                ->where('id', $admin->id)
+                ->update([
+                    'id_docente' => $usuarios->id_docente
+                ]);
+            return back()->with('success', 'Empresa creada exitosamente');
+        } else {
+            return back()->with('fail', 'La empresa ya existe o su nombre no es valido');
+        }
     }
 
     function displayA(Request $request)
@@ -636,18 +637,18 @@ class MainController extends Controller
         $query->where('usr', '=', session('LoggedUser'));
         $query->get();
         $query2 = DB::table('empresas')
-                            ->where('id', $query->pluck('emp'))
-                            ->update([
-                                    'nombreC' => $request->nombreC,
-                                    'nombreL' => $request->nombreL,
-                                    'representante' => $request->representante,
-                                    'correo' => $request->correo,
-                                    'telefono' => $request->telefono,
-                                    'direccion' => $request->direccion
+            ->where('id', $query->pluck('emp'))
+            ->update([
+                'nombreC' => $request->nombreC,
+                'nombreL' => $request->nombreL,
+                'representante' => $request->representante,
+                'correo' => $request->correo,
+                'telefono' => $request->telefono,
+                'direccion' => $request->direccion
 
 
-                                    ]);
-        return back()->with('success','Empresa actualizada');
+            ]);
+        return back()->with('success', 'Empresa actualizada');
     }
 
     function funda(Request $request)
