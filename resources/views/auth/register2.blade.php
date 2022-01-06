@@ -44,8 +44,8 @@
                  <span class="text-danger kw" translate="yes">  @error('name'){{ $message }} @enderror</span>
               </div>  
               <div class="form-group">
-                <label>Correo</label>
-                <input type="text" class="form-control" name="email" placeholder="Ingrese su correo" value="{{ old('email') }}">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email"  placeholder="Ingrese su Email" value="{{ old('email') }}">
                 <span class="text-danger">@error('email'){{ $message }} @enderror</span>
              </div>            
               <div class="form-group">
