@@ -14,6 +14,7 @@ use App\Models\Pago;
 use App\Models\usuario_empresa;
 use App\Models\PlanTrabajo;
 use App\Models\Documento;
+use App\Http\Requests\UserCreateRequest;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -181,11 +182,13 @@ class MainController extends Controller
                                 'username' => $username,
                                 'pass' => $pass,
                                 'nombre' => $nombre,
-                                'tipo' => '3'
+                                'tipo' => '3',
+                                'id_docente'=>session('LoggedUser')
                             ]);
                             $c++;
                         }
-                    }
+                    
+                }
                     $i++;
                 }
                 if ($c == 0) {
@@ -197,28 +200,36 @@ class MainController extends Controller
             }
         }
     }
-    function save2(Request $request)
+    function save2(UserCreateRequest $request)
     {
 
         //Validate requests
-        $request->validate([
+       /* $request->validate([
             'name' => 'required:unique',
+            'email' => 'required:unique',
+            //'correo' => 'required|correo|unique:usuarios,correo',
             'password' => 'required|min:5|max:12'
-        ]);
+        ]);*/
+
 
         //Insert data into database
         $admin = new Usuario;
-        $admin->username = $request->name;
+        $admin->username = $request->email;
         $admin->pass = $request->password;
         $admin->nombre = $request->name;
         $admin->tipo = '2';
-        $save = $admin->save();
 
-        if ($save) {
-            return back()->with('success', 'Nuevo docente agregado');
-        } else {
-            return back()->with('fail', 'Algo salio mal');
-        }
+       
+            $save = $admin->save();
+       
+            if ($save) {
+                return back()->with('success', 'Nuevo docente agregado');
+            } else {
+                return back()->with('fail', 'Algo salio mal');
+            }
+       
+      
+        
     }
     function save3(Request $request)
     {

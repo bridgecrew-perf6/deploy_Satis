@@ -38,14 +38,19 @@
            @endif
 
            @csrf
-           <div class="form-group">
-                 <label>Nombre</label>
+            <div class="form-group">
+                 <label>Nombre Completo</label>
                  <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}">
-                 <span class="text-danger">@error('name'){{ $message }} @enderror</span>
-              </div>              
+                 <span class="text-danger kw" translate="yes">  @error('name'){{ $message }} @enderror</span>
+              </div>  
+              <div class="form-group">
+                <label>Correo</label>
+                <input type="text" class="form-control" name="email" placeholder="Ingrese su correo" value="{{ old('email') }}">
+                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+             </div>            
               <div class="form-group">
                  <label>Contraseña</label>
-                 <input type="password" class="form-control" name="password" placeholder="Ingrese una contraseña">
+                 <input type="password" class="form-control" name="password" placeholder="Ingrese una contraseña" >
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
               </div>
               <button Style=" background-color: #215f88; margin-top: 50px; " type="submit" class="btn btn-primary" >Registrar</button>
