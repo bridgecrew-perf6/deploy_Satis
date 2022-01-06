@@ -44,6 +44,7 @@
                     {{ Session::get('fail5') }}
                 </div>
                 @endif
+                
                 <table name="empresas"  class="table tabla">
                     <thead class="tablaL">
                             <th class="text-center"><h4>Nombre corto</h4></th>  
@@ -52,7 +53,7 @@
                     </thead>
                     
                     @foreach($data as $key=>$item)
-                        
+                    @if($item->id_docente==session('LoggedUser'))
                         <tr>
                            
                             <td  align="center">
@@ -179,10 +180,11 @@
                                 </form>
                             </td>
                         </tr>
-                        
+                        @endif
                     @endforeach
                     
                 </table>
+                
          
             
         </div>

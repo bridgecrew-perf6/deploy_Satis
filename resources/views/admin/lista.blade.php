@@ -34,6 +34,8 @@
                   
                   <th class="text-center" border="1">Nombre corto</th>
                   <th class="text-center" border="1">Nombre Largo</th>
+                  <th class="text-center" border="1">Gestión</th>
+                  <th class="text-center" border="1">Docente</th>
                 </thead>
                 <tbody>
                    @foreach($data as $key=>$item)
@@ -48,6 +50,14 @@
                       <td align="center">
                           {{$item->nombreL}}                                
                       </td>
+                      <td align="center">
+                        {{$item->gestion}}                                
+                      </td>
+            
+                      <td align="center">
+                        {{$item->nombre}}                           
+                      </td>
+
                   </tr>
                   
               @endforeach
