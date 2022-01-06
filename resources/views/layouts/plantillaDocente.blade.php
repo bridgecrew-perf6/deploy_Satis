@@ -90,7 +90,6 @@
                 <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
                 <li class="nav-item {{!Route::is('docente.calendario')?:'active'}}"><a class="nav-link"href="{{ route('docente.calendario') }}">Calendario</a></li>
                 <li class="nav-item {{!Route::is('auth.register')?:'active'}}"><a class="nav-link"href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-                <li class="nav-item {{!Route::is('auth.logout')?:'active'}}"><a class="nav-link"href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
             </div>
           </nav>
 
