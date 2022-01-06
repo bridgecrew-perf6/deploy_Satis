@@ -696,8 +696,9 @@ class MainController extends Controller
     }
     function funda5()
     {
-        $query = DB::table('empresas');
+        $query = DB::table('empresas')->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
         $data = $query->get();
+    
         return view('/admin/lista', compact('data'));
     }
     function empresa()
