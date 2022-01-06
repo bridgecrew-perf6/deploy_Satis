@@ -17,6 +17,31 @@
     <link rel="stylesheet" href="../../CSS/formulario.css"> 
     <link rel="stylesheet" href="../../CSS/nav2.css"> 
     <script src="../CSS/script.js" defer></script>
+    <nav class="navbar"  >
+            
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          
+          <ul>
+            <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+            <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
+              <span class="fa fa-comment"></span>
+              <span class="num">
+              
+              </span>
+            </a></li>
+            <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+  
+        
+      </ul>
+    </div>
+  </div>
+  </nav>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>

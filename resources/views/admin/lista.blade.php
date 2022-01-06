@@ -13,7 +13,7 @@
             <div class="navbar-links">
               <ul>
                 <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
-                <li><a href="{{ url('/admin/lista') }}">Lista de empresas</a></li>
+                <li  class="nav-item {{!Route::is('admin.lista')?:'active'}}"><a href="{{ route('admin.lista') }}">Lista de empresas</a></li>
                 <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
@@ -34,6 +34,8 @@
                   
                   <th class="text-center" border="1">Nombre corto</th>
                   <th class="text-center" border="1">Nombre Largo</th>
+                  <th class="text-center" border="1">Gestión</th>
+                  <th class="text-center" border="1">Docente</th>
                 </thead>
                 <tbody>
                    @foreach($data as $key=>$item)
@@ -48,6 +50,14 @@
                       <td align="center">
                           {{$item->nombreL}}                                
                       </td>
+                      <td align="center">
+                        {{$item->gestion}}                                
+                      </td>
+            
+                      <td align="center">
+                        {{$item->nombre}}                           
+                      </td>
+
                   </tr>
                   
               @endforeach

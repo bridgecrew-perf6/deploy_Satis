@@ -16,7 +16,25 @@
     <link rel="stylesheet" href="../CSS/cabecera.css"> 
     <script src="../CSS/script.js" defer></script>
     <title>iniciarsesion</title>
-    
+    <nav class="navbar"  >
+            
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          
+          <ul>
+            <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+           
+  
+        
+      </ul>
+    </div>
+  </div>
+  </nav>
     <!--PORTADA-->
     
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 

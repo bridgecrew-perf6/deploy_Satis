@@ -17,6 +17,32 @@
     <link rel="stylesheet" href="../CSS/formulario.css"> 
     <link rel="stylesheet" href="../CSS/nav2.css"> 
     <script src="../CSS/script.js" defer></script>
+    <nav class="navbar"  >
+            
+      <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-links">
+        
+        <ul>
+          <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+          <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
+            <span class="fa fa-comment"></span>
+            <span class="num">
+            
+            </span>
+          </a></li>
+          <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+
+      
+    </ul>
+  </div>
+</div>
+</nav>
+    
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
@@ -35,39 +61,39 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar " >
+        <nav class="navbar "style="justify-content: center" >
             
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-            <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-              
-              <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
-                <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
-                <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
-                <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
-                
-             <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Registrar
+          <div class="brand-title"></div>
+          <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
-            <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
-            <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
-           
-          </ul>
-        </li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+          <div class="navbar-links">
             
-          </ul>
-        </div>
+            <ul>
+              <li  class="nav-item {{!Route::is('estudiante.inicioE')?:'active'}}"><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+              <li class="nav-item {{!Route::is('estudiante.empresa')?:'active'}}"><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
+              <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
+              <li class="nav-item {{!Route::is('estudiante.lista')?:'active'}}"><a href="{{ route('estudiante.lista') }}">Lista de empresas</a></li>
+              
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Registrar
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
+          <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
+          <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
+         
+        </ul>
+      </li>
+              
+          
+        </ul>
       </div>
-      </nav>
+    </div>
+    </nav>
 
     </header>
 

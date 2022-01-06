@@ -39,8 +39,10 @@ Route::get('/estudiante/verDocumento',[AvisosController::class, 'verDocumento'])
 Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estudiante.empresa');
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
 //Route::post('/docente/calendario/accion',[MainController::class, 'accion'])->name('calendario.accion');
-Route::get('/docente/calendario', [FullCalenderController::class, 'index']);
+Route::get('/docente/calendario', [FullCalenderController::class, 'index'])->name('docente.calendario');
 Route::post('/docente/calendario/action', [FullCalenderController::class, 'action']);
+
+Route::get('/notificaciones', [NotificacionController::class, 'mensajito'])->name('docente.notificaciones');
 
 Route::get('/docente/planP',[MainController::class, 'planP'])->name('docente.planP');
 Route::get('/docente/planT',[MainController::class, 'planT'])->name('docente.planT');
@@ -53,9 +55,9 @@ Route::delete('/docente/documentosB/{documentos}',[AvisosController::class, 'des
 
 Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
-Route::get('/estudiante/lista',[MainController::class, 'funda3']);
-Route::get('/docente/lista',[MainController::class, 'funda4']);
-Route::get('/admin/lista',[MainController::class, 'funda5']);
+Route::get('/estudiante/lista',[MainController::class, 'funda3'])->name('estudiante.lista');
+Route::get('/docente/lista',[MainController::class, 'funda4'])->name('docente.lista');
+Route::get('/admin/lista',[MainController::class, 'funda5'])->name('admin.lista');
 
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
 Route::post('/estudiante/parteA',[MainController::class, 'displayA'])->name('estudiante.parteA');
@@ -121,9 +123,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
 
     Route::resource('pagos', PagoController::class);
-    Route::get('/docente/pagos',[MainController::class, 'paguitos'])->name('docente.paguito');
     Route::resource('planTrabajos', PlanTrabajoController::class);
     Route::resource('notificaciones', NotificacionController::class);
+     
     
 
 });

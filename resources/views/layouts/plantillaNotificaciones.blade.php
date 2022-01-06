@@ -17,6 +17,31 @@
     <link rel="stylesheet" href="../CSS/formulario.css"> 
     <link rel="stylesheet" href="../CSS/nav2.css"> 
     <script src="../CSS/script.js" defer></script>
+    <nav class="navbar"  >
+            
+      <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-links">
+        
+        <ul>
+          <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+          <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
+            <span class="fa fa-comment"></span>
+            <span class="num"> @if(count($notificaciones)>0) {{count($notificaciones)}} @endif
+            
+            </span>
+          </a></li>
+          <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+
+      
+    </ul>
+  </div>
+</div>
+</nav>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
@@ -35,9 +60,9 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar " >
+        <nav class="navbar "style="justify-content: center" >
             
-            <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+            <div class="brand-title"></div>
             <a href="#" class="toggle-button">
               <span class="bar"></span>
               <span class="bar"></span>
@@ -46,11 +71,10 @@
             <div class="navbar-links">
               
               <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li  class="nav-item {{!Route::is('estudiante.inicioE')?:'active'}}"><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                 <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
-                <li><a href="{{ url('/notificaciones') }}">Notificaciones @if(count($notificaciones)>0) {{count($notificaciones)}} @endif</a></li>
                 
              <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +87,7 @@
            
           </ul>
         </li>
-                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+                
             
           </ul>
         </div>

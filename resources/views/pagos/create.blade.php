@@ -11,7 +11,7 @@
             <div class="navbar-links">
               
               <ul>
-                <li><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
+                <li  class="nav-item {{!Route::is('estudiante.inicioE')?:'active'}}"><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
                 <li><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                 <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
                 <li><a href="{{ url('/estudiante/lista') }}">Lista de empresas</a></li>
