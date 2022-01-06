@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillaInicio')
 @section('content')
       <nav class="navbar ">
         <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
