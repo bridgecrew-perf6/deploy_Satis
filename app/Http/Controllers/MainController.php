@@ -865,7 +865,10 @@ class MainController extends Controller
         $query = DB::table('empresas');
         $query->where('id', '=', $request->id);
         $data = $query->first();
-        $pdf = PDF::loadView('/docente/ordenG', compact('data', 'request'));
+        $query2 = DB::table('usuarios');
+        $query2->where('id', '=', session('LoggedUser'));
+        $data2 = $query2->first();
+        $pdf = PDF::loadView('/docente/ordenG', compact('data', 'request', 'data2'));
         $path = $pdf->output('orden.pdf');
         $base64 = base64_encode($path);
         $query2 = DB::table('documentos_empresa');
