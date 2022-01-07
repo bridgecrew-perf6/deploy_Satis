@@ -14,7 +14,7 @@
                         </a>
                         <div class="navbar-links">
 
-                            <ul>
+                            <ul>    
                                 <li class="nav-item {{ !Route::is('') ?: 'active' }}"><a href=""></a></li>
                                 <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
                                         <span class="fa fa-comment"></span>

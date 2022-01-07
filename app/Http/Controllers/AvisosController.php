@@ -5,31 +5,70 @@ namespace App\Http\Controllers;
 use App\Models\Aviso;
 use App\Models\Convocatoria;
 use App\Models\Documento;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PDF;
 
+
 class AvisosController extends Controller
-{
+{ 
+    
     function avisosD()
     {
-        return view('docente.avisosD');
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        
+        return view('docente.avisosD', $data,['usuarios' => $data]);
     }
     function convocatoriasD()
     {
-        return view('docente.convocatoriasD');
+        
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+        return view('docente.convocatoriasD', $data,['usuarios' => $data]);
     }
 
     function documentosB()
     {
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $Documento = Documento::all();
-        return view('docente.documentosB', array('documentos' => $Documento));
+        return view('docente.documentosB', $data,['documentos' => $Documento,'usuarios' => $data]);
     }
     function verDocumentos()
     {
         return view('estudiante.verDocumento');
     }
+
+    function editDocumentos(Documento $documentos){
+       
+            return view('/docente/documentosEdit',compact('documentos'));
+    }
+    public function updateDocumentos(Request $request , Documento $documentos){
+        $documentos->name = $request->name;
+        $documentos->nombre = $request->file('archivote')->getClientOriginalName();
+        $filesource = $request->file('archivote');
+        $fileExtension = "";
+        if ($filesource != null) {
+            $fileExtension = $filesource->getClientOriginalExtension();
+        }
+        if (strcmp($fileExtension, "pdf") !== 0) {
+            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+        }
+
+        $path = $request->file('archivote')->getRealPath();
+        $pdf = file_get_contents($path);
+        $base64 = base64_encode($pdf);
+        $documentos->archivote = $base64;
+        $save = $documentos->save();
+        if ($save) {
+            return redirect()->route('docente.documentosB')->with('success', 'Documento base actualizado exitosamente');
+        } else {
+            return back()->with('fail', 'El documento base ya existe o su nombre no es valido');
+        }
+    }
+
+
 
 
     public function destroy($aviso)
@@ -45,14 +84,14 @@ class AvisosController extends Controller
         $convocatoria = Convocatoria::find($convocatoria);
         $convocatoria->delete();
 
-        return redirect()->route('docente.inicioD')->with('success', 'convocatoria borrada exitosamente');
+        return redirect()->route('docente.inicioD')->with('success', 'Convocatoria borrada exitosamente');;
     }
     public function destroy3($documento)
     {
         $documento = Documento::find($documento);
         $documento->delete();
 
-        return redirect()->route('docente.documentosB')->with('success', 'convocatoria borrada exitosamente');
+        return redirect()->route('docente.documentosB')->with('success', 'Documento base borrado exitosamente');
         
     }
 
@@ -66,9 +105,6 @@ class AvisosController extends Controller
 
         $Convocatoria = new Convocatoria();
         $Convocatoria->name = $request->name;
-        $Convocatoria->codigo = $request->codigo;
-        $Convocatoria->gestion = $request->gestion;
-        $Convocatoria->semestre = $request->semestre;
         $Convocatoria->nombre = $request->file('archivote')->getClientOriginalName();
         $filesource = $request->file('archivote');
         $fileExtension = "";
@@ -117,9 +153,6 @@ class AvisosController extends Controller
 
         $Documento = new Documento();
         $Documento->name = $request->name;
-        $Documento->codigo = $request->codigo;
-        $Documento->gestion = $request->gestion;
-        $Documento->semestre = $request->semestre;
         $Documento->nombre = $request->file('archivote')->getClientOriginalName();
         $filesource = $request->file('archivote');
         $fileExtension = "";

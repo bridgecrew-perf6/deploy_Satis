@@ -59,26 +59,28 @@ class MainController extends Controller
 
     function docentito()
     {
-
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
-        return view('/docente/inicioD', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria));
+        return view('/docente/inicioD',$data, ['avisos' => $Aviso,'convocatorias' => $Convocatoria,'usuarios'=>$data]);
     }
     function estudiante()
     {
-        $documento = Documento::all();
+     
+       
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
-        return view('/estudiante/inicioE', ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria]);
+        return view('/estudiante/inicioE',$data, ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria,'usuarios'=>$data]);
     }
     function plantillaEstudiante()
     {
-        $documento = Documento::all();
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
-        return view('/layouts/plantillaEstudiante', ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria]);
+        return view('/layouts/plantillaEstudiante', $data,['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria,'usuarios'=>$data]);
     }
     /*function estudiante()
     {
@@ -96,8 +98,10 @@ class MainController extends Controller
     }
     function documentosBaseView()
     {
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $Documento = Documento::all();
-        return view('/estudiante/documentosEst', array('documentos' => $Documento));
+        
+        return view('/estudiante/documentosEst',$data,  ['documentos' => $Documento,'usuarios'=>$data]);
     }
 
 
@@ -120,9 +124,6 @@ class MainController extends Controller
 
         $Aviso = new Aviso();
         $Aviso->name = $request->name;
-        $Aviso->codigo = $request->codigo;
-        $Aviso->gestion = $request->gestion;
-        $Aviso->semestre = $request->semestre;
         $Aviso->descripcion = $request->descripcion;
 
         $save = $Aviso->save();
@@ -144,7 +145,8 @@ class MainController extends Controller
     }
     function register()
     {
-        return view('auth.register');
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        return view('auth.register', $data,['usuarios' => $data]);
     }
     function register2()
     {
@@ -633,6 +635,7 @@ class MainController extends Controller
     }
     function updateE(Request $request)
     {
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         if (($request->nombreC == null) || ($request->nombreL == null)) {
             return back()->with('fail', 'La empresa necesita un nombre');
         }
@@ -678,21 +681,24 @@ class MainController extends Controller
     }
     function funda2()
     {
+
         $query = DB::table('empresas');
         $data = $query->get();
         return view('lista', compact('data'));
     }
     function funda3()
     {
+        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $query = DB::table('empresas');
         $data = $query->get();
-        return view('/estudiante/lista', compact('data'));
+        return view('/estudiante/lista',$data2, compact('data'),['usuarios'=>$data2]);
     }
     function funda4()
     {
+        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $query = DB::table('empresas');
         $data = $query->get();
-        return view('/docente/lista', compact('data'));
+        return view('/docente/lista' ,$data2,compact('data'),['usuarios'=>$data2]);
     }
     function funda5()
     {
@@ -702,6 +708,8 @@ class MainController extends Controller
     }
     function empresa()
     {
+        
+        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
         $data = $query->get();
@@ -712,7 +720,8 @@ class MainController extends Controller
             $data2 = $query2->get();
             $query = DB::table('empresas')->where('id', '=', $data->pluck('emp'));
             $data = $query->get();
-            return view('estudiante.empresa', compact('data', 'data2'));
+            return view('estudiante.empresa',$data2, compact('data', 'data2'),['usuarios'=>$data2]);
+
         } else {
             return view('estudiante.sinempresa');
         }

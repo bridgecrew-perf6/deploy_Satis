@@ -26,7 +26,9 @@ use App\Models\Aviso;
 Route::get('/',[MainController::class, 'index'])->name('home');
 
 Route::get('/docente/inicioD',[MainController::class, 'docentito'])->name('docente.inicioD');
+
 Route::get('/estudiante/inicioE',[MainController::class, 'estudiante'])->name('estudiante.inicioE');
+
 Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('admin.inicioA');
 
 Route::get('/layouts/plantillaEstudiante',[MainController::class, 'plantillaEstudiante'])->name('plantilla.estudiante');
@@ -104,11 +106,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::post('/estudiante/empresa4',[MainController::class, 'parteT'])->name('empresa.trabajo');
     Route::post('/estudiante/empresa5',[MainController::class, 'parteP'])->name('empresa.pagos');
 
-    
-
-
-
-
+   
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
     Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');
     Route::post('/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
@@ -126,6 +124,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('planTrabajos', PlanTrabajoController::class);
     Route::resource('notificaciones', NotificacionController::class);
      
+    Route::get('/docente/documentosB/{documentos}',[AvisosController::class, 'editDocumentos'])->name('documentos.edit');
+    Route::put('/docente/documentosB/{documentos}',[AvisosController::class, 'updateDocumentos'])->name('documentos.update');
     
-
 });

@@ -15,6 +15,7 @@ class MainController extends Controller
         return view('auth.login');
     }
     function convocatoriasD(){
+        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         return view('docente.convocatoriasD');
     }
     function avisosD(){

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Event;
+use App\Models\Usuario;
 
 class FullCalenderController extends Controller
 {
     public function index(Request $request)
     {
+		$data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
     	if($request->ajax())
     	{
     		$data = Event::whereDate('start', '>=', $request->start)
@@ -17,7 +19,7 @@ class FullCalenderController extends Controller
                        ->get(['id', 'title', 'start', 'end']);
             return response()->json($data);
     	}
-    	return view('/docente/calendario');
+    	return view('/docente/calendario',$data,['usuarios' => $data]);
     }
 
     public function action(Request $request)
@@ -55,4 +57,3 @@ class FullCalenderController extends Controller
     	}
     }
 }
-?>

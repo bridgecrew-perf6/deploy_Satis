@@ -9,15 +9,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9ac0673dac.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../CSS/App.css">
-    <link rel="stylesheet" href="../CSS/iconos.css">
-    <link rel="stylesheet" href="../CSS/nav.css">  
-    <link rel="stylesheet" href="../CSS/fondos.css"> 
-    <link rel="stylesheet" href="../CSS/cabecera.css"> 
-    <link rel="stylesheet" href="../CSS/formulario.css"> 
-    <link rel="stylesheet" href="../CSS/nav2.css"> 
-    <script src="../CSS/script.js" defer></script>
-    <script src="../CSS/borrar.js" defer></script>
+    <link rel="stylesheet" href="../../CSS/App.css">
+    <link rel="stylesheet" href="../../CSS/iconos.css">
+    <link rel="stylesheet" href="../../CSS/nav.css">  
+    <link rel="stylesheet" href="../../CSS/fondos.css"> 
+    <link rel="stylesheet" href="../../CSS/cabecera.css"> 
+    <link rel="stylesheet" href="../../CSS/formulario.css"> 
+    <link rel="stylesheet" href="../../CSS/nav2.css"> 
+    <script src="../../CSS/script.js" defer></script>
+    <script src="../../CSS/borrar.js" defer></script>
     <nav class="navbar"  >
             
       <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
@@ -96,7 +96,59 @@
     </header>
 
     <!--publicaciones y avisos -->
-    @yield('cuerpo')
+    <div class="container mt-5 formularioDocu">
+        <div class="formCyA">
+            <h1 Style="text-align: center;">Documentos Base</h1>
+            <div class="text-center">
+                @if(Session::get('success'))
+                <div class="alert alert-success">
+                   {{ Session::get('success') }}
+                </div>
+               @endif
+               @if(Session::get('fail'))
+                <div class="alert alert-danger">
+                   {{ Session::get('fail') }}
+                </div>
+               @endif
+            </div>
+     
+            <form class="row g-3" method="post" action="{{ route('documentos.update',$documentos) }}"
+                enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+            
+                     <div class="col-md-12">
+                    <label class="form-label">Mensaje:</label>
+                    
+                    <textarea name="name" class="form-control" placeholder="" id="floatingTextarea2"
+                        style="height: 100px" required>{{ $documentos->name }}
+                    
+                    </textarea>
+                </div> 
+                <div Style="margin-top: 40px;">
+                    <label for="convocatoria">Elegir Documento:</label>
+                    <input name="archivote" type="file" name="convocatoria" id="convocatoria" required>
+
+
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-between ">
+                    <button type="submit" class="btn btn-primary " style="background-color: #215f88;">actualizar</button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+        </form>
+    </div>
+   
+
+
+
+
+
     <!-- PIE DE CABECERA -->
     <footer class="footer text-white">
         <div class="container">
@@ -136,3 +188,4 @@
 </body>
 
 </html>
+ 
