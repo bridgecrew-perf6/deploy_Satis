@@ -669,14 +669,13 @@ class MainController extends Controller
 
     function funda(Request $request)
     {
-        $data1 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+
         $query = DB::table('usuarios');
         $query->where('tipo', '=', 3);
         $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
 
-        $data2 = $query->get();
-        $data = array_merge(['data'=>$data2], $data1);
-        return view('fundaempresa', $data);
+        $data = $query->get();
+        return view('fundaempresa', compact('data'));
     }
     function funda2()
     {
