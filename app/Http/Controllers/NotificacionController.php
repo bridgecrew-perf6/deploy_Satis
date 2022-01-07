@@ -48,7 +48,8 @@ class NotificacionController extends Controller
     }
     function mensajitos(){
        
-       
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+
         $notificaciones = Notificacion::all();
         $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
         $empresas = Empresa::all();
@@ -56,7 +57,7 @@ class NotificacionController extends Controller
         
 
 
-        return view('/docente/notificaciones', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('/docente/notificaciones', $data,['usuarios' => $log]) ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
 
@@ -67,8 +68,9 @@ class NotificacionController extends Controller
      */
     public function create()
     { $empresas = Empresa::all();
-        
-        return view('notificaciones.create',['empresas'=>$empresas]);
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+ 
+        return view('notificaciones.create',['empresas'=>$empresas,'usuarios' => $log]);
     }
 
     /**
@@ -80,7 +82,7 @@ class NotificacionController extends Controller
     public function store(Request $request)
     {   
     
-
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         if( $request->get('empresa')=='all'){
             $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
             $data_merged = array_merge(['recibe_id'=> 0], $request->all());
