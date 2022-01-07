@@ -165,6 +165,7 @@ class ComposerStaticInite8f8346433ea404a1770ab776a332074
             'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Common\\Lexer\\' => 22,
             'DeepCopy\\' => 9,
+            'DaveJamesMiller\\Breadcrumbs\\' => 28,
             'Database\\Seeders\\' => 17,
             'Database\\Factories\\' => 19,
         ),
@@ -489,6 +490,10 @@ class ComposerStaticInite8f8346433ea404a1770ab776a332074
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'DaveJamesMiller\\Breadcrumbs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src',
+        ),
         'Database\\Seeders\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/seeders',
@@ -692,6 +697,15 @@ class ComposerStaticInite8f8346433ea404a1770ab776a332074
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsException' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/BreadcrumbsException.php',
+        'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsGenerator' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/BreadcrumbsGenerator.php',
+        'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsManager' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/BreadcrumbsManager.php',
+        'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/BreadcrumbsServiceProvider.php',
+        'DaveJamesMiller\\Breadcrumbs\\Exceptions\\DuplicateBreadcrumbException' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Exceptions/DuplicateBreadcrumbException.php',
+        'DaveJamesMiller\\Breadcrumbs\\Exceptions\\InvalidBreadcrumbException' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Exceptions/InvalidBreadcrumbException.php',
+        'DaveJamesMiller\\Breadcrumbs\\Exceptions\\UnnamedRouteException' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Exceptions/UnnamedRouteException.php',
+        'DaveJamesMiller\\Breadcrumbs\\Exceptions\\ViewNotSetException' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Exceptions/ViewNotSetException.php',
+        'DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Facades/Breadcrumbs.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

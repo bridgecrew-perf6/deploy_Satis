@@ -134,7 +134,7 @@ background-color:rgb(91, 160, 200);
 
 li {
     display: block;
-    transition-duration: 0.5s;
+    transition-duration: 0.5s;    
 }
 
 li:hover {
@@ -165,3 +165,11 @@ ul li ul li {
 color: black;
 background-color: black;
 }
+
+.breadcrumb > .active,
+.breadcrumb > .active a {
+    color: black;
+}
+
+
+

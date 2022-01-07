@@ -11,14 +11,14 @@
           <ul>
             <li><a href="{{ url('/') }}">Inicio</a></li>
             <li><a href="{{ url('/lista') }}">Lista de empresas</a></li>
-            <li class="nav-item {{!Route::is('auth.login')?:'active'}}"><a href="{{route('auth.login') }}" >Iniciar Sesión</a></li>
-            
+            <li class="nav-item {{!Route::is('auth.login')?:'active'}}"><a href="{{route('auth.login') }}" >Iniciar Sesión</a></li>            
           </ul>
         </div>
       </nav>
       @endsection
+      
       @section('cuerpo')
-
+      {{ Breadcrumbs::render('auth.login') }}
 <div class="container">
    <div class="row justify-content-center pt-5 mt-5 m-1 caja">
       <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">

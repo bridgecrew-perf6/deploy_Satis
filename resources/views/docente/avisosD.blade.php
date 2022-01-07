@@ -1,5 +1,6 @@
 @extends('layouts.plantillaDocente')
 @section('cuerpo')
+    {{ Breadcrumbs::render('docente.avisosD') }}
     <title>Aviso</title>
     <div class="container mt-5 formulario">
 

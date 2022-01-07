@@ -1,9 +1,10 @@
 @extends('layouts.plantillaEstudiante')
 <title>Empresa</title>
           @section('cuerpo')
+          {{ Breadcrumbs::render('estudiante.empresa') }}
         <div class="container mt-5 formulario">
           <div class="formCyA ">
-            <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
+            <h1 Style="text-align: center;">EMPRESA</h1>
             <div   >
           <form
           id="funda" class="row g-3" method="post" action="{{ route('empresa.update') }}" enctype="multipart/form-data">

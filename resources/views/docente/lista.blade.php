@@ -1,6 +1,7 @@
 @extends('layouts.plantillaDocente')
 
-@section('cuerpo') 
+@section('cuerpo')
+{{ Breadcrumbs::render('docente.lista') }}
 <title>Lista Empresas</title>
     <section>
         <div class=" mt-5 mb-5 ">

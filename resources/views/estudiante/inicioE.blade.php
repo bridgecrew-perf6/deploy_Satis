@@ -1,7 +1,7 @@
 @extends('layouts.plantillaNotificaciones')
       @section('cuerpo')
       <section>
-        
+        {{ Breadcrumbs::render('estudiante.inicioE') }}
         <div class="mt-5 mb-5 ">
           <div class=" row d-flex justify-content-between cards ">
             <div class="col-sm-6 avisotes">

@@ -720,11 +720,15 @@ class MainController extends Controller
             $data = $query->get();
             return view('estudiante.empresa', compact('data', 'data2'), ['usuarios' => $log]);
         } else {
-            return view('estudiante.sinempresa');
+            return redirect('estudiante/sinempresa');
         }
     }
 
-
+    function sinempresa()
+    {
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        return view('estudiante.sinempresa', ['usuarios' => $log]);
+    }
     function check(Request $request)
     {
         //Validate requests
@@ -870,8 +874,9 @@ class MainController extends Controller
     }
     public function orden(Request $request)
     {
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $grupo = $request->orden;
-        return view('/docente/orden', compact('grupo'));
+        return view('/docente/orden', compact('grupo'), ['usuarios' => $log]);
     }
 
 

@@ -1,5 +1,6 @@
 @extends('layouts.plantillaDocente')
  @section('cuerpo')
+ {{ Breadcrumbs::render('docente.calendario') }}
  <title>Calendario</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

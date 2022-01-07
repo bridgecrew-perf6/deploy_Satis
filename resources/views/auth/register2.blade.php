@@ -20,6 +20,7 @@
           </nav>
           @endsection
           @section('cuerpo')
+          {{ Breadcrumbs::render('auth.register2') }}
   <div class="container  mt-5 formulario">
        <div class="formCyA">
         <h1 Style="text-align: center;">REGISTRAR DOCENTE</h1>
@@ -61,4 +62,3 @@
         </div>
      </div>
      @endsection
-  

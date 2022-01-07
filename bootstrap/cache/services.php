@@ -24,17 +24,18 @@
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    23 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    24 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    25 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    26 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    27 => 'Carbon\\Laravel\\ServiceProvider',
-    28 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    29 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    30 => 'App\\Providers\\AppServiceProvider',
-    31 => 'App\\Providers\\AuthServiceProvider',
-    32 => 'App\\Providers\\EventServiceProvider',
-    33 => 'App\\Providers\\RouteServiceProvider',
+    23 => 'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider',
+    24 => 'Facade\\Ignition\\IgnitionServiceProvider',
+    25 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    26 => 'Fruitcake\\Cors\\CorsServiceProvider',
+    27 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    28 => 'Carbon\\Laravel\\ServiceProvider',
+    29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    30 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    31 => 'App\\Providers\\AppServiceProvider',
+    32 => 'App\\Providers\\AuthServiceProvider',
+    33 => 'App\\Providers\\EventServiceProvider',
+    34 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -174,6 +175,7 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsManager' => 'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
   ),
   'when' => 
@@ -212,6 +214,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider' => 
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 

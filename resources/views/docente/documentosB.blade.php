@@ -1,5 +1,6 @@
 @extends('layouts.plantillaDocente')
 @section('cuerpo')
+    {{ Breadcrumbs::render('docente.documentosB') }}
     <title>Documento Base</title>
     <div class="container mt-5 formularioDocu">
         <div class="formCyA">

@@ -32,6 +32,7 @@
           </nav>
           @endsection
           @section('cuerpo')
+          {{ Breadcrumbs::render('fundaempresa') }}
         <div class="container mt-5 formulario">
           <div class="formCyA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>

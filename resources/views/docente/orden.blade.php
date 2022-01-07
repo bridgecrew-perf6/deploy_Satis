@@ -1,6 +1,7 @@
 @extends('layouts.plantillaDocente')
 
  @section('cuerpo')
+        {{ Breadcrumbs::render('docente.orden') }}
          <div class="container mt-5 formulario">
           <div class="formPlanO">
             <h1 Style="text-align: center;">Orden de cambio</h1>

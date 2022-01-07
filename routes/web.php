@@ -39,6 +39,7 @@ Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBas
 
 Route::get('/estudiante/verDocumento',[AvisosController::class, 'verDocumento'])->name('estudiante.verDocumento');
 Route::get('/estudiante/empresa',[MainController::class, 'empresa'])->name('estudiante.empresa');
+Route::get('/estudiante/sinempresa',[MainController::class, 'sinempresa'])->name('estudiante.sinempresa');
 //Route::get('/docente/calendario',[MainController::class, 'calendario'])->name('docente.calendario');
 //Route::post('/docente/calendario/accion',[MainController::class, 'accion'])->name('calendario.accion');
 Route::get('/docente/calendario', [FullCalenderController::class, 'index'])->name('docente.calendario');

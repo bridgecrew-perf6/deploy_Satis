@@ -3,7 +3,7 @@
     <title>INICIO</title>
 
     <section>
-       
+       {{ Breadcrumbs::render('docente.inicioD') }}
        <div class="text-center">
         @if(Session::get('success'))
         <div class="alert alert-success">

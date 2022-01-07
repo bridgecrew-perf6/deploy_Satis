@@ -11,5 +11,6 @@
     "\\resources\\views\\estudiante",
     "\\resources\\views\\pagos"
   ],
+  "SelectedNode": "\\resources\\views\\docente\\contrato.blade.php",
   "PreviewInSolutionExplorer": false
 }

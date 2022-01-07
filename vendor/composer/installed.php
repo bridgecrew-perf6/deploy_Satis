@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd8ff830f6682e8a4ae2d101e20148d5b43053f5a',
+        'reference' => 'b84b4c9d1ba1bd8af67284c55f53dfe39afc26f9',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -48,6 +48,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'davejamesmiller/laravel-breadcrumbs' => array(
+            'pretty_version' => '5.3.2',
+            'version' => '5.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../davejamesmiller/laravel-breadcrumbs',
+            'aliases' => array(),
+            'reference' => '99f92a706faefb5e1816caa96e877a0184509e5b',
+            'dev_requirement' => false,
         ),
         'dnoegel/php-xdg-base-dir' => array(
             'pretty_version' => 'v0.1.1',
@@ -137,7 +146,7 @@
             'install_path' => __DIR__ . '/../facade/ignition-contracts',
             'aliases' => array(),
             'reference' => 'aeab1ce8b68b188a43e81758e750151ad7da796b',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'fideloper/proxy' => array(
             'pretty_version' => '4.4.0',
@@ -427,7 +436,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd8ff830f6682e8a4ae2d101e20148d5b43053f5a',
+            'reference' => 'b84b4c9d1ba1bd8af67284c55f53dfe39afc26f9',
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(

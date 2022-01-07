@@ -1,5 +1,6 @@
 @extends('layouts.plantillaDocente')
  @section('cuerpo')
+ {{ Breadcrumbs::render('docente.convocatoriasD') }}
  <title>Convocatoria</title>
          
  <div class="container mt-5 formulario">
@@ -41,4 +42,3 @@
           </form>
       </div>
       @endsection
-     

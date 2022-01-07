@@ -1,6 +1,7 @@
 @extends('layouts.plantillaDocente')
 
  @section('cuerpo')
+ {{ Breadcrumbs::render('auth.register') }}
  
  <title>Registro estudiantes</title>
 </header>

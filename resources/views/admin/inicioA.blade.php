@@ -21,7 +21,7 @@
     
       @section('cuerpo')
       <section>
-        
+        {{ Breadcrumbs::render('admin.inicioA') }}
         <div class="mt-5 mb-5 ">
           <div class=" row d-flex justify-content-between cards ">
             <div class="col-sm-6 avisotes">

@@ -4,6 +4,7 @@
 </title>
 @section('cuerpo')
     <section>
+        {{ Breadcrumbs::render('estudiante.lista') }}
         <div class="container mt-5 mb-5 ">
             <div class=" row d-flex justify-content-between cards ">
 
