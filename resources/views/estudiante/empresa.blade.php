@@ -92,7 +92,7 @@
             @endif
             @if(Session::get('fail5'))
              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
+                {{ Session::get('fail5') }}
              </div>
             @endif
             @csrf              

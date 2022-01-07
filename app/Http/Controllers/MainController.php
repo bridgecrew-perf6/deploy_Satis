@@ -911,6 +911,13 @@ class MainController extends Controller
         }
     }
 
+    public function docentes(Request $request)
+    {
+        $query = DB::table('usuarios')->where('tipo', '=', '2');
+        $data = $query->get();
+
+        return view('/admin/docentes', compact('data'));
+    }
     /*
     function settings(){
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];

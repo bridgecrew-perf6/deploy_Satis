@@ -6,9 +6,6 @@
         <div class="container mt-5 formulario">
           <div class="formCyA ">
             <h1 Style="text-align: center;">FUNDA EMPRESA</h1>
-            <div   >
-          <form
-          id="funda" class="row g-3" method="post" action="{{ route('auth.save3') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
              <div class="alert alert-success">
                 {{ Session::get('success') }}
@@ -19,6 +16,9 @@
                 {{ Session::get('fail') }}
              </div>
             @endif
+          <form
+          id="funda" class="row g-3" method="post" action="{{ route('auth.save3') }}" enctype="multipart/form-data">
+            
             @csrf
             <div class="col-md-6 ">
               <label for="nombreC" class="form-label">Nombre corto*</label>

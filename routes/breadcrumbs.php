@@ -104,8 +104,19 @@ Breadcrumbs::for('admin.inicioA', function ($trail) {
   $trail->push('Inicio', route('admin.inicioA'));
 });
 
+// Inicio > Lista empresas
+Breadcrumbs::for('admin.lista', function ($trail) {
+  $trail->parent('admin.inicioA');
+  $trail->push('Lista de empresas', route('admin.lista'));
+});
+
+// Inicio > Lista docentes
+Breadcrumbs::for('admin.docentes', function ($trail) {
+  $trail->parent('admin.inicioA');
+  $trail->push('Lista de docentes', route('admin.docentes'));
+});
 // Inicio > Registrar docentes
 Breadcrumbs::for('auth.register2', function ($trail) {
-  $trail->parent('docente.inicioD');
+  $trail->parent('admin.inicioA');
   $trail->push('Registrar docentes', route('auth.register2'));
 });
