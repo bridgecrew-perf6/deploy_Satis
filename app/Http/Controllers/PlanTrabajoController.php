@@ -20,6 +20,7 @@ class PlanTrabajoController extends Controller
         /*$planTrabajos = PlanTrabajo::all();
         return view('planTrabajos.index', compact('planTrabajos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
+            $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
             $planTrabajos = PlanTrabajo::all();
             $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
             $empresas = Empresa::all();
@@ -28,7 +29,7 @@ class PlanTrabajoController extends Controller
 
 
 
-            return view('planTrabajos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('planTrabajos.index', $data,['usuarios' => $log]) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

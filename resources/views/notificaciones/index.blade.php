@@ -101,8 +101,10 @@
             <div class="navbar-links">
               
               <ul>
-                <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
-               
+                <li>  <a> @foreach ($usuarios as $usuarios)
+                    {{$usuarios->nombre}}
+                    @endforeach
+                  </a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
       
             

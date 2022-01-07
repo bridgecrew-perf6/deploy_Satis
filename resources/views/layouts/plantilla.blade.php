@@ -28,7 +28,10 @@
         <div class="navbar-links">
           
           <ul>
-            <li  class="nav-item {{!Route::is('')?:'active'}}"><a href=""></a></li>
+            <li>  <a> @foreach ($usuarios as $usuarios)
+                {{$usuarios->nombre}}
+                @endforeach
+              </a></li> 
             <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
               <span class="fa fa-comment"></span>
               <span class="num">

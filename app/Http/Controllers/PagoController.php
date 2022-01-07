@@ -21,6 +21,7 @@ class PagoController extends Controller
        /* $pagos = Pago::all();
         return view('pagos.index', compact('pagos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
+           $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
             $pagos = Pago::all();
             $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
             $empresas = Empresa::all();
@@ -28,7 +29,7 @@ class PagoController extends Controller
             
 
 
-            return view('pagos.index', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('pagos.index', $data,['usuarios' => $log]) ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
     function paguitos(){

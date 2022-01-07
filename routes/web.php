@@ -123,7 +123,6 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('pagos', PagoController::class);
     Route::resource('planTrabajos', PlanTrabajoController::class);
     Route::resource('notificaciones', NotificacionController::class);
-     
     Route::get('/docente/documentosB/{documentos}',[AvisosController::class, 'editDocumentos'])->name('documentos.edit');
     Route::put('/docente/documentosB/{documentos}',[AvisosController::class, 'updateDocumentos'])->name('documentos.update');
     

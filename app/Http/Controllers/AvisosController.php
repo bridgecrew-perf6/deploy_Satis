@@ -26,7 +26,7 @@ class AvisosController extends Controller
     {
         
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-        return view('docente.convocatoriasD', $data,['usuarios' => $data]);
+        return view('docente.convocatoriasD',['usuarios' => $data]);
     }
 
     function documentosB()

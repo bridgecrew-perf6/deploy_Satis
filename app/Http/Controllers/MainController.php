@@ -59,28 +59,28 @@ class MainController extends Controller
 
     function docentito()
     {
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
-        return view('/docente/inicioD',$data, ['avisos' => $Aviso,'convocatorias' => $Convocatoria,'usuarios'=>$data]);
+        return view('/docente/inicioD', $data, ['avisos' => $Aviso, 'convocatorias' => $Convocatoria, 'usuarios' => $data]);
     }
     function estudiante()
     {
-     
-       
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+
+
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
-        return view('/estudiante/inicioE',$data, ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria,'usuarios'=>$data]);
+        return view('/estudiante/inicioE', $data, ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria, 'usuarios' => $data]);
     }
     function plantillaEstudiante()
     {
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
-        return view('/layouts/plantillaEstudiante', $data,['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria,'usuarios'=>$data]);
+        return view('/layouts/plantillaEstudiante', $data, ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria, 'usuarios' => $data]);
     }
     /*function estudiante()
     {
@@ -98,10 +98,10 @@ class MainController extends Controller
     }
     function documentosBaseView()
     {
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $Documento = Documento::all();
-        
-        return view('/estudiante/documentosEst',$data,  ['documentos' => $Documento,'usuarios'=>$data]);
+
+        return view('/estudiante/documentosEst', $data,  ['documentos' => $Documento, 'usuarios' => $data]);
     }
 
 
@@ -145,8 +145,8 @@ class MainController extends Controller
     }
     function register()
     {
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
-        return view('auth.register', $data,['usuarios' => $data]);
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        return view('auth.register', $data, ['usuarios' => $data]);
     }
     function register2()
     {
@@ -192,8 +192,7 @@ class MainController extends Controller
                             ]);
                             $c++;
                         }
-                    
-                }
+                    }
                     $i++;
                 }
                 if ($c == 0) {
@@ -209,7 +208,7 @@ class MainController extends Controller
     {
 
         //Validate requests
-       /* $request->validate([
+        /* $request->validate([
             'name' => 'required:unique',
             'email' => 'required:unique',
             //'correo' => 'required|correo|unique:usuarios,correo',
@@ -224,17 +223,14 @@ class MainController extends Controller
         $admin->nombre = $request->name;
         $admin->tipo = '2';
 
-       
-            $save = $admin->save();
-       
-            if ($save) {
-                return back()->with('success', 'Nuevo docente agregado');
-            } else {
-                return back()->with('fail', 'Algo salio mal');
-            }
-       
-      
-        
+
+        $save = $admin->save();
+
+        if ($save) {
+            return back()->with('success', 'Nuevo docente agregado');
+        } else {
+            return back()->with('fail', 'Algo salio mal');
+        }
     }
     function save3(Request $request)
     {
@@ -636,7 +632,7 @@ class MainController extends Controller
     }
     function updateE(Request $request)
     {
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         if (($request->nombreC == null) || ($request->nombreL == null)) {
             return back()->with('fail', 'La empresa necesita un nombre');
         }
@@ -672,13 +668,13 @@ class MainController extends Controller
 
     function funda(Request $request)
     {
-
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         $query = DB::table('usuarios');
         $query->where('tipo', '=', 3);
         $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
 
         $data = $query->get();
-        return view('fundaempresa', compact('data'));
+        return view('fundaempresa', compact('data'),['usuarios' => $log]);
     }
     function funda2()
     {
@@ -689,29 +685,29 @@ class MainController extends Controller
     }
     function funda3()
     {
-        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $data2 = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $query = DB::table('empresas');
         $data = $query->get();
-        return view('/estudiante/lista',$data2, compact('data'),['usuarios'=>$data2]);
+        return view('estudiante.lista',compact('data'), ['usuarios' => $data2]);
     }
     function funda4()
     {
-        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         $query = DB::table('empresas');
         $data = $query->get();
-        return view('/docente/lista' ,$data2,compact('data'),['usuarios'=>$data2]);
+        return view('/docente/lista', compact('data'), ['usuarios' => $log]);
     }
     function funda5()
     {
         $query = DB::table('empresas')->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
         $data = $query->get();
-    
+
         return view('/admin/lista', compact('data'));
     }
     function empresa()
     {
-        
-        $data2 = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
         $data = $query->get();
@@ -722,8 +718,7 @@ class MainController extends Controller
             $data2 = $query2->get();
             $query = DB::table('empresas')->where('id', '=', $data->pluck('emp'));
             $data = $query->get();
-            return view('estudiante.empresa',$data2, compact('data', 'data2'),['usuarios'=>$data2]);
-
+            return view('estudiante.empresa', compact('data', 'data2'), ['usuarios' => $log]);
         } else {
             return view('estudiante.sinempresa');
         }
@@ -823,7 +818,7 @@ class MainController extends Controller
     }
 
     public function mostrarPDF(Request $request)
-    {        
+    {
         $query0 = DB::table('documentos_empresa');
         $query0->where('emp', '=', $request->id);
         $data = $query0->get();
@@ -833,7 +828,7 @@ class MainController extends Controller
             return response($bin)
                 ->header('Content-Type', 'application/pdf');
         } else {
-        
+
             $query = DB::table('empresas');
             $query->where('id', '=', $request->id);
             $data = $query->get();
@@ -854,7 +849,6 @@ class MainController extends Controller
                 return back()->with('fail', 'Faltan documentos de la grupo-empresa');
             }
         }
-        
     }
     public function mostrarPDF2(Request $request)
     {

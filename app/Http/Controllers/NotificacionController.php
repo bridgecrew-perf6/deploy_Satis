@@ -18,7 +18,7 @@ class NotificacionController extends Controller
      */
     public function index()
     {
-
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         $LoggedUserInfo=Usuario::where('id','=', session('LoggedUser'))->first();
         if($LoggedUserInfo->tipo==2){
             $notificaciones = Notificacion::all();
@@ -43,10 +43,12 @@ class NotificacionController extends Controller
             
 
 
-            return view('notificaciones.index', $data)->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('notificaciones.index', $data,['usuarios' => $log])->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
     function mensajitos(){
+       
+       
         $notificaciones = Notificacion::all();
         $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
         $empresas = Empresa::all();
