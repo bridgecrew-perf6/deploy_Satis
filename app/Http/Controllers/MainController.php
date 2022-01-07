@@ -176,6 +176,7 @@ class MainController extends Controller
                 $c = 0;
                 while (($csv = fgetcsv($file_open, 200, ";")) !== false) {
                     $csv = array_map("utf8_encode", $csv);
+                    $csvs = explode(",", $csv[0]);
                     if ($i != 0) {
                         $username = $csv[0];
                         $pass = $csv[1];
@@ -702,8 +703,9 @@ class MainController extends Controller
     }
     function funda5()
     {
-        $query = DB::table('empresas');
+        $query = DB::table('empresas')->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
         $data = $query->get();
+    
         return view('/admin/lista', compact('data'));
     }
     function empresa()
@@ -821,27 +823,38 @@ class MainController extends Controller
     }
 
     public function mostrarPDF(Request $request)
-    {
-        //$pdf = PDF::loadView('pdf', compact('user'));
-        $query = DB::table('empresas');
-        $query->where('id', '=', $request->id);
-        $data = $query->get();
-        $pdf = PDF::loadView('/docente/contrato', compact('data'));
-        $path = $pdf->output('contrato.pdf');
-        $base64 = base64_encode($path);
-        $query2 = DB::table('documentos_empresa');
-        $query2->where('emp', '=', $request->id);
-        $data = $query2->get();
-        if (!$data->isEmpty()) {
-            $query3 = DB::table('documentos_empresa')
-                ->where('emp', $request->id)
-                ->update([
-                    'contrato' => $base64
-                ]);
-            return $pdf->download('contrato.pdf');
+    {        
+        $query0 = DB::table('documentos_empresa');
+        $query0->where('emp', '=', $request->id);
+        $data = $query0->get();
+        $base64 = $data->pluck('contrato');
+        if (!$data->isEmpty() && $base64[0] != null) {
+            $bin = base64_decode($base64[0]);
+            return response($bin)
+                ->header('Content-Type', 'application/pdf');
         } else {
-            return back()->with('fail', 'Faltan documentos de la grupo-empresa');
+        
+            $query = DB::table('empresas');
+            $query->where('id', '=', $request->id);
+            $data = $query->get();
+            $pdf = PDF::loadView('/docente/contrato', compact('data'));
+            $path = $pdf->output('contrato.pdf');
+            $base64 = base64_encode($path);
+            $query2 = DB::table('documentos_empresa');
+            $query2->where('emp', '=', $request->id);
+            $data = $query2->get();
+            if (!$data->isEmpty()) {
+                $query3 = DB::table('documentos_empresa')
+                    ->where('emp', $request->id)
+                    ->update([
+                        'contrato' => $base64
+                    ]);
+                return $pdf->download('contrato.pdf');
+            } else {
+                return back()->with('fail', 'Faltan documentos de la grupo-empresa');
+            }
         }
+        
     }
     public function mostrarPDF2(Request $request)
     {
@@ -873,7 +886,10 @@ class MainController extends Controller
         $query = DB::table('empresas');
         $query->where('id', '=', $request->id);
         $data = $query->first();
-        $pdf = PDF::loadView('/docente/ordenG', compact('data', 'request'));
+        $query2 = DB::table('usuarios');
+        $query2->where('id', '=', session('LoggedUser'));
+        $data2 = $query2->first();
+        $pdf = PDF::loadView('/docente/ordenG', compact('data', 'request', 'data2'));
         $path = $pdf->output('orden.pdf');
         $base64 = base64_encode($path);
         $query2 = DB::table('documentos_empresa');

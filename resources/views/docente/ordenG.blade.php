@@ -5,9 +5,10 @@
     <title>Orden de Cambio </title>
   </head>
   <body>
+    
     <center><h2>Orden de Cambio</h2></center>
-    <h3>De: docente</h3>
-    <h3>fecha</h3>
+    <h3>De: {{$data2->nombre}}</h3>
+    <h3>Fecha: <?php echo date('d-m-Y');?></h3>
     <h3>Para el representante de la grupo empresa: {{$data->nombreL}}</h3>
     <h3>Parte A</h3>
     <h4>Caratula</h4>

@@ -4,13 +4,12 @@
     "\\app",
     "\\app\\Http",
     "\\app\\Http\\Controllers",
-    "\\app\\Models",
-    "\\config",
-    "\\public",
     "\\resources",
     "\\resources\\views",
+    "\\resources\\views\\admin",
     "\\resources\\views\\docente",
-    "\\resources\\views\\estudiante"
+    "\\resources\\views\\estudiante",
+    "\\resources\\views\\pagos"
   ],
   "PreviewInSolutionExplorer": false
 }

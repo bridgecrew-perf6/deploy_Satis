@@ -44,6 +44,7 @@
                     {{ Session::get('fail5') }}
                 </div>
                 @endif
+                
                 <table name="empresas"  class="table tabla">
                     <thead class="tablaL">
                             <th class="text-center"><h4>Nombre corto</h4></th>  
@@ -52,7 +53,7 @@
                     </thead>
                     
                     @foreach($data as $key=>$item)
-                        
+                    @if($item->id_docente==session('LoggedUser'))
                         <tr>
                            
                             <td  align="center">
@@ -142,13 +143,13 @@
                                 <div class="d-flex justify-content-evenly" >
                                         
                                 <div class=" " >
-                                <button type="submit"  name="id" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Generar contrato</button>
+                                <button type="submit"  name="id" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Generar/Ver contrato</button>
                             
                                 </div>
                                 </div>
                                 </form>
                             </td>
-                            <td>
+                  <!--          <td>
                                 <form method="post" action="{{ route('ver.contrato') }}" enctype="multipart/form-data">                               
                                 @csrf
                                 <div class="d-flex justify-content-evenly" >
@@ -160,6 +161,7 @@
                                 </div>
                                 </form>
                             </td>
+                            -->
                             <td>
                                 <form method="post" action="{{ route('docente.contratoD') }}" accept=".pdf" enctype="multipart/form-data">
                                 @csrf              
@@ -179,10 +181,11 @@
                                 </form>
                             </td>
                         </tr>
-                        
+                        @endif
                     @endforeach
                     
                 </table>
+                
          
             
         </div>
