@@ -33,7 +33,7 @@ Route::get('/admin/inicioA',[MainController::class, 'administrador'])->name('adm
 
 Route::get('/layouts/plantillaEstudiante',[MainController::class, 'plantillaEstudiante'])->name('plantilla.estudiante');
 
-Route::get('/estudiante/documentosEst/id',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
+Route::get('/estudiante/documentosEst',[MainController::class, 'documentosBaseView'])->name('estudiante.documentosBaseView');
 
 
 
@@ -109,8 +109,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 
    
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
-    Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');
-    Route::post('/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
+    Route::get('/estudiante/fundaempresa',[MainController::class, 'funda'])->name('estudiante.fundaempresa');
+    Route::post('/estudiante/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
 
     Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
     Route::get('/docente/dashboard',[MainController::class, 'dashboard2']);

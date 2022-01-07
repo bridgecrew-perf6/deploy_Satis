@@ -34,7 +34,7 @@
           </a></li> 
           <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
             <span class="fa fa-comment"></span>
-            <span class="num">
+            <span class="num">@if(count($notificaciones)>0) {{count($notificaciones)}} @endif
             
             </span>
           </a></li>
@@ -64,8 +64,12 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar "style="justify-content: center" >
-            
+        <nav class="navbar " >
+          <div class="brand-title"> 
+            @if($usuarios->tipo==3)
+            ESTUDIANTE
+            @endif
+          </div>
           <div class="brand-title"></div>
           <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -78,21 +82,18 @@
               <li  class="nav-item {{!Route::is('estudiante.inicioE')?:'active'}}"><a href="{{ route('estudiante.inicioE') }}">Inicio</a></li>
               <li class="nav-item {{!Route::is('estudiante.empresa')?:'active'}}"><a href="{{ route('estudiante.empresa') }}">Empresa</a></li>
               <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Registrar
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{{ route('estudiante.fundaempresa') }}">Registrar funda empresa TIS</a></li>
+                  <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
+                  <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
+                 
+                </ul>
+              </li>
               <li class="nav-item {{!Route::is('estudiante.lista')?:'active'}}"><a href="{{ route('estudiante.lista') }}">Lista de empresas</a></li>
-              
-           <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Registrar
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda empresa TIS</a></li>
-          <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de pagos</a></li>
-          <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar plan de Trabajo</a></li>
-         
-        </ul>
-      </li>
-              
-          
         </ul>
       </div>
     </div>

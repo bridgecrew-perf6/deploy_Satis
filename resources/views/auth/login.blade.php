@@ -1,7 +1,7 @@
 @extends('layouts.plantillaL')
 @section('content')
-      <nav class="navbar"style="justify-content: center">
-        <div class="brand-title"></div>
+      <nav class="navbar">
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
         <a href="#" class="toggle-button">
           <span class="bar"></span>
           <span class="bar"></span>

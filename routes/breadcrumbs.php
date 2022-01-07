@@ -47,9 +47,9 @@ Breadcrumbs::for('estudiante.lista', function ($trail) {
 });
 
 // Inicio > Registro de empresa 
-Breadcrumbs::for('fundaempresa', function ($trail) {
+Breadcrumbs::for('estudiante.fundaempresa', function ($trail) {
   $trail->parent('estudiante.inicioE');
-  $trail->push('Registro de empresa', route('fundaempresa'));
+  $trail->push('Registro de empresa', route('estudiante.fundaempresa'));
 });
 
 // Inicio docentes

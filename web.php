@@ -32,8 +32,8 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/docente/avisosD',[MainController::class, 'avisosD'])->name('docente.avisosD');
 
     Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
-    Route::get('/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');
-    Route::post('/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
+    Route::get('/estudiante/fundaempresa',[MainController::class, 'funda'])->name('fundaempresa');
+    Route::post('/estudiante/fundaempresa',[MainController::class, 'save3'])->name('auth.save3');
 
     Route::get('/admin/dashboard',[MainController::class, 'dashboard']);
     Route::get('/docente/dashboard',[MainController::class, 'dashboard2']);

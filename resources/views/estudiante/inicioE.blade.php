@@ -1,4 +1,4 @@
-@extends('layouts.plantillaNotificaciones')
+@extends('layouts.plantillaEstudiante')
       @section('cuerpo')
       <section>
         {{ Breadcrumbs::render('estudiante.inicioE') }}

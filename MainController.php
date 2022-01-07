@@ -135,7 +135,7 @@ class MainController extends Controller
     }
     function funda(Request $request){
         $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-        return view('fundaempresa',['usuarios' => $data]);
+        return view('estudiante.fundaempresa',['usuarios' => $data]);
     }
 
     function check(Request $request){    

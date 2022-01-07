@@ -38,7 +38,7 @@
                     </a></li>
                 <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
                         <span class="fa fa-comment"></span>
-                        <span class="num">
+                        <span class="num">@if(count($notificaciones)>0) {{count($notificaciones)}} @endif
 
                         </span>
                     </a></li>

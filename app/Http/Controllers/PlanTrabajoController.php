@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Empresa;
+use App\Models\Notificacion_usuario;
 use App\Models\PlanTrabajo;
 use App\Models\Usuario;
 use App\Models\usuario_empresa;
@@ -20,6 +21,7 @@ class PlanTrabajoController extends Controller
         /*$planTrabajos = PlanTrabajo::all();
         return view('planTrabajos.index', compact('planTrabajos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
+            $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
             $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
             $planTrabajos = PlanTrabajo::all();
             $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
@@ -29,7 +31,7 @@ class PlanTrabajoController extends Controller
 
 
 
-            return view('planTrabajos.index', $data,['usuarios' => $log]) ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('planTrabajos.index', $data,['usuarios' => $log,'notificaciones' => $notificaciones]) ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -39,7 +41,9 @@ class PlanTrabajoController extends Controller
      */
     public function create()
     {
-        return view('planTrabajos.create');
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+        return view('planTrabajos.create',['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
 
     /**
@@ -75,7 +79,10 @@ class PlanTrabajoController extends Controller
      */
     public function show(PlanTrabajo $planTrabajo)
     {
-        return view('planTrabajos.show', compact('planTrabajo'));
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+        return view('planTrabajos.show', compact('planTrabajo'),['usuarios' => $log,'notificaciones' => $notificaciones]);
+    
     }
 
     /**
@@ -86,7 +93,9 @@ class PlanTrabajoController extends Controller
      */
     public function edit(PlanTrabajo $planTrabajo)
     {
-        return view('planTrabajos.edit', compact('planTrabajo'));
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+        return view('planTrabajos.edit', compact('planTrabajo'),['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
     /**
      * Update the specified resource in storage.

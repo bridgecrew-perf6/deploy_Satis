@@ -51,7 +51,25 @@ padding-block-end: 1px;
     padding-bottom: 150px;
     
     }
-    
+    .inicio{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 150px;
+      
+    }
+    .inicio1{
+        border: black 2px solid;
+        border-radius: 20px;
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        
+        }
+    .inicio2{
+        margin-left: 200px;
+        margin-right: 200px;
+    }
     .textL{
         text-align: center;
     }
@@ -70,7 +88,8 @@ padding-block-end: 1px;
     }
 .footer{
     background-color: #215f88;
-    margin-top: 150px;
+    margin-top: 250px;
+    
 }
 body{
     overflow-x: hidden;

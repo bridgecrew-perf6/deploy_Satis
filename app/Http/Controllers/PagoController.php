@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empresa;
+use App\Models\Notificacion_usuario;
 use App\Models\Pago;
 use App\Models\Usuario;
 use App\Models\usuario_empresa;
@@ -18,30 +19,31 @@ class PagoController extends Controller
     public function index()
     {
         //$pagos = Pago::latest()->paginate(5);
-       /* $pagos = Pago::all();
+        /* $pagos = Pago::all();
         return view('pagos.index', compact('pagos'))
             ->with('i', (request()->input('page', 1) - 1) * 5);*/
-           $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-            $pagos = Pago::all();
-            $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
-            $empresas = Empresa::all();
-            $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
-            
-
-
-            return view('pagos.index', $data,['usuarios' => $log]) ->with('i', (request()->input('page', 1) - 1) * 5);
-
-    }
-    function paguitos(){
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $pagos = Pago::all();
-        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
+        $usuario_empresa = usuario_empresa::where('usr', session('LoggedUser'))->first();
         $empresas = Empresa::all();
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first(),'pagos'=>$pagos,'usuario_empresa'=>$usuario_empresa,'empresas'=>$empresas];
-        
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first(), 'pagos' => $pagos, 'usuario_empresa' => $usuario_empresa, 'empresas' => $empresas];
 
 
-        return view('/docente/pagos', $data) ->with('i', (request()->input('page', 1) - 1) * 5);
 
+        return view('pagos.index', $data, ['usuarios' => $log,'notificaciones' => $notificaciones])->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    function paguitos()
+    {
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        $pagos = Pago::all();
+        $usuario_empresa = usuario_empresa::where('usr', session('LoggedUser'))->first();
+        $empresas = Empresa::all();
+        $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first(), 'pagos' => $pagos, 'usuario_empresa' => $usuario_empresa, 'empresas' => $empresas];
+
+
+
+        return view('/docente/pagos', $data, ['usuarios' => $log])->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -51,7 +53,10 @@ class PagoController extends Controller
      */
     public function create()
     {
-        return view('pagos.create');
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+
+        return view('pagos.create', ['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
 
     /**
@@ -69,9 +74,10 @@ class PagoController extends Controller
             'costo' => 'required'
         ]);*/
         //$usuario = Usuario::where('id','=', session('LoggedUser'));
-        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
-        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
-    
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        $usuario_empresa = usuario_empresa::where('usr', session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa' => $usuario_empresa->emp], $request->all());
+
         Pago::create($obj_merged);
 
         return redirect()->route('pagos.index')
@@ -86,7 +92,9 @@ class PagoController extends Controller
      */
     public function show(Pago $pago)
     {
-        return view('pagos.show', compact('pago'));
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        return view('pagos.show', compact('pago'), ['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
 
     /**
@@ -97,7 +105,9 @@ class PagoController extends Controller
      */
     public function edit(Pago $pago)
     {
-        return view('pagos.edit', compact('pago'));
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
+        return view('pagos.edit', compact('pago'), ['usuarios' => $log, 'notificaciones' => $notificaciones]);
     }
     /**
      * Update the specified resource in storage.
@@ -108,6 +118,7 @@ class PagoController extends Controller
      */
     public function update(Request $request, Pago $pago)
     {
+        $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $request->validate([
             'estado_del_proyecto' => 'required',
             'entregable' => 'required',
@@ -115,8 +126,8 @@ class PagoController extends Controller
             'porcentaje' => 'required',
             'costo' => 'required'
         ]);
-        $usuario_empresa = usuario_empresa::where('usr',session('LoggedUser'))->first();
-        $obj_merged = array_merge(['id_empresa'=>$usuario_empresa->emp], $request->all());
+        $usuario_empresa = usuario_empresa::where('usr', session('LoggedUser'))->first();
+        $obj_merged = array_merge(['id_empresa' => $usuario_empresa->emp], $request->all());
 
         $pago->update($obj_merged);
 

@@ -80,7 +80,7 @@ class MainController extends Controller
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
-        return view('/layouts/plantillaEstudiante', $data, ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria, 'usuarios' => $data]);
+        return view('/layouts/plantillaEstudiante', ['notificaciones' => $notificaciones, 'avisos' => $Aviso, 'convocatorias' => $Convocatoria, 'usuarios' => $data]);
     }
     /*function estudiante()
     {
@@ -91,17 +91,17 @@ class MainController extends Controller
     }*/
     function administrador()
     {
-
         $Aviso = Aviso::all();
         $Convocatoria = Convocatoria::all();
         return view('/admin/inicioA', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria));
     }
     function documentosBaseView()
     {
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
         $data = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $Documento = Documento::all();
 
-        return view('/estudiante/documentosEst', $data,  ['documentos' => $Documento, 'usuarios' => $data]);
+        return view('/estudiante/documentosEst',['documentos' => $Documento,'notificaciones' => $notificaciones,'usuarios' => $data]);
     }
 
 
@@ -672,9 +672,9 @@ class MainController extends Controller
         $query = DB::table('usuarios');
         $query->where('tipo', '=', 3);
         $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
-
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
         $data = $query->get();
-        return view('fundaempresa', compact('data'),['usuarios' => $log]);
+        return view('estudiante.fundaempresa', compact('data'),['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
     function funda2()
     {
@@ -685,10 +685,11 @@ class MainController extends Controller
     }
     function funda3()
     {
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
         $data2 = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $query = DB::table('empresas');
         $data = $query->get();
-        return view('estudiante.lista',compact('data'), ['usuarios' => $data2]);
+        return view('estudiante.lista',compact('data'), ['usuarios' => $data2,'notificaciones' => $notificaciones]);
     }
     function funda4()
     {
@@ -706,7 +707,7 @@ class MainController extends Controller
     }
     function empresa()
     {
-
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
         $log = ['LoggedUserInfo' => Usuario::where('id', '=', session('LoggedUser'))->first()];
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
@@ -718,9 +719,9 @@ class MainController extends Controller
             $data2 = $query2->get();
             $query = DB::table('empresas')->where('id', '=', $data->pluck('emp'));
             $data = $query->get();
-            return view('estudiante.empresa', compact('data', 'data2'), ['usuarios' => $log]);
+            return view('estudiante.empresa', compact('data', 'data2'), ['usuarios' => $log,'notificaciones' => $notificaciones]);
         } else {
-            return redirect('estudiante/sinempresa');
+            return redirect('estudiante/sinempresa',['notificaciones' => $notificaciones]);
         }
     }
 

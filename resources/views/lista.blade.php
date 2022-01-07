@@ -1,7 +1,7 @@
 @extends('layouts.plantillaInicio')
 @section('content')
-      <nav class="navbar"style="justify-content: center">
-        <div class="brand-title"></div>
+      <nav class="navbar">
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
         <a href="#" class="toggle-button">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -11,8 +11,8 @@
           <ul>
             <li><a href="{{ url('/') }}">Inicio</a></li>
             <li class="nav-item {{!Route::is('lista')?:'active'}}"><a href="{{ route('lista') }}">Lista de empresas</a></li>
-            <li class="nav-item {{!Route::is('auth.login')?:'active'}}"> <a href="{{ route('auth.login') }}">Iniciar Sesión</a></li>
-            
+            <li class="nav-item {{!Route::is('auth.login')?:'active'}}"><a href="{{route('auth.login') }}">Iniciar Sesión</a></li>
+
           </ul>
         </div>
       </nav>

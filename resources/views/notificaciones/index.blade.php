@@ -15,7 +15,10 @@
                         <div class="navbar-links">
 
                             <ul>    
-                                <li class="nav-item {{ !Route::is('') ?: 'active' }}"><a href=""></a></li>
+                                <li>  <a> @foreach ($usuarios as $usuarios)
+                                    {{$usuarios->nombre}}
+                                    @endforeach
+                                  </a></li> 
                                 <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">
                                         <span class="fa fa-comment"></span>
                                         <span class="num"> @if (count($notificaciones) > 0) {{ count($notificaciones) }} @endif
@@ -46,9 +49,13 @@
                     <div>
                         <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
                     </div>
-                    <nav class="navbar " style="justify-content: center">
+                    <nav class="navbar">
 
-                        <div class="brand-title"></div>
+                        <div class="brand-title"> 
+                            @if($usuarios->tipo==3)
+                            ESTUDIANTE
+                            @endif
+                          </div>
                         <a href="#" class="toggle-button">
                             <span class="bar"></span>
                             <span class="bar"></span>
@@ -71,7 +78,7 @@
                                         Registrar
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="{{ route('fundaempresa') }}">Registrar funda
+                                        <li><a class="dropdown-item" href="{{ route('estudiante.fundaempresa') }}">Registrar funda
                                                 empresa TIS</a></li>
                                         <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de
                                                 pagos</a></li>
@@ -130,8 +137,12 @@
                 </div>
       
               <!--MENU NAVBAR  -->
-              <nav class="navbar"style="justify-content: center">
-                  <div class="brand-title"></div>
+              <nav class="navbar">
+                <div class="brand-title"> 
+                    @if($usuarios->tipo==2)
+                    DOCENTE
+                    @endif
+                  </div>
                   <a href="#" class="toggle-button">
                     <span class="bar"></span>
                     <span class="bar"></span>

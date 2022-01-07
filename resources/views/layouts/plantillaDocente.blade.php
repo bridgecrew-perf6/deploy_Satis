@@ -58,8 +58,12 @@
           </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar"style="justify-content: center">
-            <div class="brand-title"></div>
+        <nav class="navbar">
+          <div class="brand-title"> 
+            @if($usuarios->tipo==2)
+            DOCENTE
+            @endif
+          </div>
             <a href="#" class="toggle-button">
               <span class="bar"></span>
               <span class="bar"></span>
