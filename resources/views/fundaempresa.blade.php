@@ -69,7 +69,6 @@
                     </tr>
                     
                     @foreach($data as $key=>$item)
-                    @if($item->id_docente==$LoggedUserInfo->id_docente)
                         
                         <tr>
                             <td align="center">
@@ -80,7 +79,6 @@
                                 <input type="hidden" name="nombre[]" value="{{$item->nombre}}">
                             </td>
                         </tr>
-                        @endif
                     @endforeach
                     
                 </table>
