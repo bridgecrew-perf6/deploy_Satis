@@ -30,7 +30,7 @@
         
         <ul>
           <li>  <a> @foreach ($usuarios as $usuarios)
-            {{$usuarios->nombre}}
+            Usuario docente: {{$usuarios->nombre}}
             @endforeach
           </a></li> 
           <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>

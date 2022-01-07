@@ -31,7 +31,7 @@
           
            
           <li>  <a> @foreach ($usuarios as $usuarios)
-          {{$usuarios->nombre}}
+          Usuario estudiante: {{$usuarios->nombre}}
           @endforeach
         </a></li>
           <li><a class="far fa-bell" href="{{ url('/notificaciones') }}">

@@ -14,6 +14,7 @@
               <ul>
                 <li><a href="{{ route('admin.inicioA') }}">Inicio</a></li>
                 <li  class="nav-item {{!Route::is('admin.lista')?:'active'}}"><a href="{{ route('admin.lista') }}">Lista de empresas</a></li>
+                <li class="nav-item {{!Route::is('admin.docentes')?:'active'}}"><a href="{{ route('admin.docentes') }}">Lista de docentes</a></li>
                 <li><a href="{{ route('auth.register2') }}">Registrar docentes</a></li>
                 <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
                 
@@ -25,7 +26,7 @@
 
           @section('cuerpo')
           <section>
-      
+            {{ Breadcrumbs::render('admin.lista') }}
             <div class="container mt-5 mb-5 ">
             <div class=" row d-flex justify-content-between cards ">
              
