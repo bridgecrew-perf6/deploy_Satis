@@ -147,4 +147,4 @@ class PagoController extends Controller
         return redirect()->route('pagos.index')
             ->with('success', 'Plan de pago borrado exitosamente');
     }
-} //generar pdf pago
+} //actualizado
