@@ -92,6 +92,10 @@
                   @csrf
                  
                   <select name="gestion" class="form-control" required>
+                    <option value="1/2007">1/2007</option>
+                    <option value="2/2007">2/2007</option>
+                    <option value="1/2008">1/2008</option>
+                    <option value="2/2008">2/2008</option>
                     <option value="1/2009">1/2009</option>
                     <option value="2/2009">2/2009</option>
                     <option value="1/2010">1/2010</option>
@@ -104,8 +108,8 @@
                     <option value="2/2013">2/2013</option>
                     <option value="1/2021">1/2021</option>
                     <option value="2/2021">2/2021</option>
-                    <option value="2/2021">1/2022</option>
-                    <option value="2/2021">2/2022</option>
+                    <option value="1/2022">1/2022</option>
+                    <option value="2/2022">2/2022</option>
                   </select>
                   <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
@@ -150,7 +154,7 @@ La gestión seleccionada no tiene grupo empresas registradas.
                           {{$item->nombreL}}                                
                       </td>
                       <td align="center">
-                        {{$item->gestion}}                                
+                        {{$item->gestion_emp}}                                
                       </td>
             
                       <td align="center">
