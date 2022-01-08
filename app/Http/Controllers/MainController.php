@@ -282,7 +282,7 @@ class MainController extends Controller
         $admin = new Empresa;
         $admin->nombreC = $request->nombreC;
         $admin->nombreL = $request->nombreL;
-        //$admin->integrantes = $request->integrantes;
+        $admin->integrantes = $request->integrantes;
         $admin->representante = $request->representante;
         $admin->correo = $request->correo;
         $admin->telefono = $request->telefono;
