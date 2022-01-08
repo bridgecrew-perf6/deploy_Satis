@@ -177,7 +177,7 @@ class MainController extends Controller
                 while (($csv = fgetcsv($file_open, 200, ";")) !== false) {
                     $csv = array_map("utf8_encode", $csv);
                     $csvs = explode(",", $csv[0]);
-                    if ($i != 0) {
+                    if ($i != 0 ) {
                         $username = $csv[0];
                         $pass = $csv[1];
                         $nombre = $csv[2];
@@ -188,9 +188,15 @@ class MainController extends Controller
                                 'pass' => $pass,
                                 'nombre' => $nombre,
                                 'tipo' => '3',
-                                'id_docente' => session('LoggedUser')
+                                'id_docente' => session('LoggedUser'),
+                                'gestion' => $request->gestion,
+                                'grupo' => $request->grupo
                             ]);
                             $c++;
+                        }
+                    }else{
+                        if($csv[0] !== 'username' || $csv[1] !== 'pass' || $csv[2] !== 'nombre'){
+                            return back()->with('fail', 'El formato del archivo no es el correcto');
                         }
                     }
                     $i++;
@@ -251,8 +257,7 @@ class MainController extends Controller
             'representante' => 'nullable|unique:empresas',
             'correo' => 'nullable|email|unique:empresas',
             'telefono' => 'nullable|unique:empresas',
-            'direccion' => 'nullable|unique:empresas',
-            'gestion' => 'nullable|unique:empresas'
+            'direccion' => 'nullable|unique:empresas'
         ]);
         if ($request->integrantes == null) {
             $request->integrantes = "";
@@ -277,7 +282,7 @@ class MainController extends Controller
         $admin = new Empresa;
         $admin->nombreC = $request->nombreC;
         $admin->nombreL = $request->nombreL;
-        $admin->integrantes = $request->integrantes;
+        //$admin->integrantes = $request->integrantes;
         $admin->representante = $request->representante;
         $admin->correo = $request->correo;
         $admin->telefono = $request->telefono;
@@ -668,9 +673,17 @@ class MainController extends Controller
 
     function funda(Request $request)
     {
-        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $query = DB::table('usuarios');
+        $query->where('id', '=', session('LoggedUser'));
+        $docente = $query->pluck('id_docente');
+        $gestion = $query->pluck('gestion');
+        $grupo = $query->pluck('grupo');
         $query = DB::table('usuarios');
         $query->where('tipo', '=', 3);
+        $query->where('id_docente', '=', $docente);
+        $query->where('gestion', '=', $gestion);
+        $query->where('grupo', '=', $grupo);
         $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
         $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
         $data = $query->get();
@@ -721,7 +734,7 @@ class MainController extends Controller
             $data = $query->get();
             return view('estudiante.empresa', compact('data', 'data2'), ['usuarios' => $log,'notificaciones' => $notificaciones]);
         } else {
-            return redirect('estudiante/sinempresa',['notificaciones' => $notificaciones]);
+            return view('estudiante/sinempresa',['usuarios' => $log,'notificaciones' => $notificaciones]);
         }
     }
 
