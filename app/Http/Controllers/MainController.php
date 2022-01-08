@@ -739,10 +739,11 @@ class MainController extends Controller
     }
     public function admEmp(Request $request)
     {
+        $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         $query = DB::table('empresas')->where('empresas.gestion',$request->get('gestion'))->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
         $data = $query->get();
 
-        return view('/admin/lista', compact('data'));
+        return view('/admin/lista', compact('data'),['usuarios' => $log]);
     }
     function funda5()
     {
