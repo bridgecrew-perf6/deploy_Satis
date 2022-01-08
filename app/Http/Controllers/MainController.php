@@ -910,7 +910,7 @@ class MainController extends Controller
             return back()->with('fail', 'Faltan documentos de la grupo-empresa');
         }
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
-        $grupo = $request->orden;
+        $grupo = $request->id;
         return view('/docente/orden', compact('grupo'), ['usuarios' => $log]);
     }
 
@@ -939,7 +939,7 @@ class MainController extends Controller
             $query = DB::table('empresas');
             $data = $query->get();
             //return redirect('/docente/lista',compact('data'))->with('success','Archivo subido');
-            return redirect('/docente/lista')->with('success', 'Archivo subido');
+            return redirect('/docente/lista')->with('success', 'Orden creada');
         } else {
             return back()->with('fail', 'Faltan documentos de la grupo-empresa');
         }

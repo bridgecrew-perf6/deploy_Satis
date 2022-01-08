@@ -28,6 +28,7 @@
             
             @csrf
             <label>*Todos los campos y el archivo son obligatorios, porfavor prestar atención al formato</label>
+            <img src="../IMAGENES/formato.png" alt="" width="300" height="100">
             <div class="col-md-12 ">
             <label class="form-label">Gestión</label>
               <input type="text" placeholder="1/2022" class="form-control" name="gestion" required >

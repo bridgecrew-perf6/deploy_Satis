@@ -148,7 +148,7 @@
                                 <div class="d-flex justify-content-evenly" >
                                         
                                 <div class=" " >
-                                <button type="submit"  name="orden" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Crear orden de cambio</button>
+                                <button type="submit"  name="id" value="{{$item->id}}" class="btn btn-primary" style="background-color: #215f88;">Crear orden de cambio</button>
                             
                                 </div>
                                 </div>
