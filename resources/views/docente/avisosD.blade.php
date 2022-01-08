@@ -5,7 +5,9 @@
     <div class="container mt-5 formulario">
 
         <div class="formCyA">
+            
             <h1 Style="text-align: center;">AVISOS</h1>
+            <p>*Todos los campos son obligatorios.</p>
             <div class="text-center">
                 @if(Session::get('success'))
                 <div class="alert alert-success">
@@ -51,6 +53,7 @@
         <div class="container mt-5 mb-5">
             <div class=" row d-flex justify-content-between cards ">
                 <div class="col-sm-12">
+                    
                     <h2 class="align-items-center avisos text-light">
                         AVISOS PUBLICADOS
                     </h2>

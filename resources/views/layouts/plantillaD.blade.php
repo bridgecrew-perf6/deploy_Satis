@@ -17,6 +17,28 @@
     <link rel="stylesheet" href="../CSS/formulario.css"> 
     <link rel="stylesheet" href="../CSS/nav2.css"> 
     <script src="../CSS/script.js" defer></script>
+    <nav class="navbar"  >
+            
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          
+          <ul>
+            <li>  <a> @foreach ($usuarios as $usuarios)
+              Usuario: {{$usuarios->nombre}}
+              @endforeach
+            </a></li> 
+            <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+  
+        
+      </ul>
+    </div>
+  </div>
+  </nav>
     <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
