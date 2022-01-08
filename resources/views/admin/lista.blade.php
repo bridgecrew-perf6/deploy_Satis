@@ -36,6 +36,7 @@
                 <h1 class="text-center">Seleccione su empresa</h1>
                   <div class="col-md-1">Año:
                       <select name="gestion" class="form-control" required>
+                        <option value="2021">2022</option>
                           <option value="2021">2021</option>
                           <option value="2020">2020</option>
                           <option value="2019">2019</option>
