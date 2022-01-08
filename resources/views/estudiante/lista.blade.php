@@ -7,7 +7,9 @@
         {{ Breadcrumbs::render('estudiante.lista') }}
         <div class="container mt-5 mb-5 ">
             <div class=" row d-flex justify-content-between cards ">
-
+                <h2 class="align-items-center avisos text-light">
+                FUNDA EMPRESA
+                </h2>
                 <table class="table tabla">
                     <thead class="tablaL">
 

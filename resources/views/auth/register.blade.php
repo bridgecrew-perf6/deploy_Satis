@@ -14,7 +14,6 @@
          <div class="formRegistro ">
             <h1 Style="text-align: center;">Registro de estudiantes</h1>  
             <div id="wrapper">
-            <form method="post" action="{{ route('auth.save') }}" accept=".csv" enctype="multipart/form-data">
             @if(Session::get('success'))
              <div class="alert alert-success">
                 {{ Session::get('success') }}
@@ -25,9 +24,20 @@
                 {{ Session::get('fail') }}
              </div>
             @endif
+            <form method="post" action="{{ route('auth.save') }}" accept=".csv" enctype="multipart/form-data">
+            
             @csrf
+            <label>*Todos los campos y el archivo son obligatorios, porfavor prestar atención al formato</label>
+            <div class="col-md-12 ">
+            <label class="form-label">Gestión</label>
+              <input type="text" placeholder="1/2022" class="form-control" name="gestion" required >
+            </div>
+            <div class="col-md-12 ">
+            <label class="form-label">Numero de grupo</label>
+              <input type="text" pattern="[0-9]{1,10}" placeholder="1" class="form-control" name="grupo" required >
+            </div>
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
-              <div> <input type="file" name="file"/>
+              <div> <input type="file" name="file" required/>
               </div>
          
             <div class=" " >

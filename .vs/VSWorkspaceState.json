@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
+    "\\app\\Models",
     "\\resources",
     "\\resources\\views",
-    "\\resources\\views\\admin",
-    "\\resources\\views\\docente",
+    "\\resources\\views\\auth",
     "\\resources\\views\\estudiante",
-    "\\resources\\views\\pagos"
+    "\\resources\\views\\layouts",
+    "\\resources\\views\\pagos",
+    "\\routes"
   ],
-  "SelectedNode": "\\resources\\views\\docente\\contrato.blade.php",
+  "SelectedNode": "\\resources\\views\\auth\\register2.blade.php",
   "PreviewInSolutionExplorer": false
 }
