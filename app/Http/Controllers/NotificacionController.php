@@ -21,7 +21,8 @@ class NotificacionController extends Controller
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
         $LoggedUserInfo=Usuario::where('id','=', session('LoggedUser'))->first();
         if($LoggedUserInfo->tipo==2){
-            $notificaciones = Notificacion::all();
+            //$notificaciones = Notificacion::all();
+            $notificaciones =Notificacion::where('envia_id',session('LoggedUser'))->get();
 
         } else{
             $notificaciones = Notificacion_usuario::where('id_recibido',session('LoggedUser'))

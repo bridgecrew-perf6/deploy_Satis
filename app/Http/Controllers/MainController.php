@@ -733,7 +733,7 @@ class MainController extends Controller
     {
 
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-        $query = DB::table('empresas')->where('gestion',$request->get('gestion'));
+        $query = DB::table('empresas')->where('gestion_emp',$request->get('gestion_emp'));
         $data = $query->get();
         return /*redirect('/docente/lista');*/view('/docente/lista', compact('data'), ['usuarios' => $log]);
     }
