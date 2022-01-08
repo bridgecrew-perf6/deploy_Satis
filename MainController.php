@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Aviso;
+use App\Models\Convocatoria;
 use App\Models\Usuario;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
@@ -15,8 +17,9 @@ class MainController extends Controller
         return view('auth.login');
     }
     function convocatoriasD(){
-        $data = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
-        return view('docente.convocatoriasD');
+        $Aviso = Aviso::all();
+        $Convocatoria = Convocatoria::all();
+        return view('docente.convocatoriasD', array('avisos' => $Aviso), array('convocatorias' => $Convocatoria));
     }
     function avisosD(){
         return view('docente.avisosD');

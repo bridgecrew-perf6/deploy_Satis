@@ -248,7 +248,19 @@ class MainController extends Controller
         if (count($integrantes) > 5) {
             return back()->with('fail', 'Maximo 5 socios');
         }
+        $flag = true;
         $nombres = $request->nombre;
+        foreach ($integrantes as $integrante) {
+            $query = DB::table('usuarios');
+            $query->where('id', '=', session('LoggedUser'));            
+            if($query->first()->nombre == $nombres[$integrante]){
+                $flag = false;
+            }
+        }
+        if($flag){
+            return back()->with('fail', 'Asegurese que usted mismo esta seleccionado como socio');
+        }
+        
         //Validate requests
         $request->validate([
             'nombreC' => 'required|unique:empresas',
@@ -274,21 +286,16 @@ class MainController extends Controller
         if ($request->direccion == null) {
             $request->direccion = "";
         }
-        if ($request->gestion == null) {
-            $request->gestion = "";
-        }
+        
 
         //Insert data into database
         $admin = new Empresa;
         $admin->nombreC = $request->nombreC;
         $admin->nombreL = $request->nombreL;
-        $admin->integrantes = $request->integrantes;
         $admin->representante = $request->representante;
         $admin->correo = $request->correo;
         $admin->telefono = $request->telefono;
-        $admin->direccion = $request->direccion;
-        $admin->gestion = $request->gestion;
-        $admin->id_docente = $request->id_docente;
+        $admin->direccion = $request->direccion;        
 
         $save = $admin->save();
 
@@ -308,7 +315,9 @@ class MainController extends Controller
             $actualizando = DB::table('empresas')
                 ->where('id', $admin->id)
                 ->update([
-                    'id_docente' => $usuarios->id_docente
+                    'id_docente' => $usuarios->id_docente,
+                    'gestion' => $usuarios->gestion,
+                    'grupo' => $usuarios->grupo
                 ]);
             return back()->with('success', 'Empresa creada exitosamente');
         } else {
@@ -674,6 +683,13 @@ class MainController extends Controller
     function funda(Request $request)
     {
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $query = DB::table('usuario_empresa');
+        $query->where('usr', '=', session('LoggedUser'));
+        $data = $query->get();
+        if (!$data->isEmpty()) {
+            return view('estudiante/conempresa',['usuarios' => $log,'notificaciones' => $notificaciones]);
+        }
         $query = DB::table('usuarios');
         $query->where('id', '=', session('LoggedUser'));
         $docente = $query->pluck('id_docente');
@@ -684,8 +700,7 @@ class MainController extends Controller
         $query->where('id_docente', '=', $docente);
         $query->where('gestion', '=', $gestion);
         $query->where('grupo', '=', $grupo);
-        $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
-        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));        
         $data = $query->get();
         return view('estudiante.fundaempresa', compact('data'),['usuarios' => $log,'notificaciones' => $notificaciones]);
     }

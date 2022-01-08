@@ -27,7 +27,7 @@
         <div class="navbar-links">
           
           <ul>
-            <li>  <a> @foreach ($usuarios as $usuarios)
+            <li>  <a> Usuario estudiante: @foreach ($usuarios as $usuarios)
                 {{$usuarios->nombre}}
                 @endforeach
               </a></li> 

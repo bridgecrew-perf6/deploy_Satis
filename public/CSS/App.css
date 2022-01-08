@@ -42,14 +42,14 @@ padding-block-end: 1px;
     .cardazo {
         border: black 2px solid;
         border-radius: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         padding-left: 10px;
         background-color: #fff3cd;
     }
     .cards {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 150px;
+    padding-bottom: 20px;
     
     }
     .inicio{
