@@ -202,7 +202,7 @@ class MainController extends Controller
                     $i++;
                 }
                 if ($c == 0) {
-                    return back()->with('success', ' Se agregaron 0 usuarios');
+                    return back()->with('success', ' Se agregaron 0 usuarios, puede que los usuarios ya existan');
                 }
                 return back()->with('success', ' Usuarios agregados');
             } catch (Exception $e) {
@@ -452,7 +452,7 @@ class MainController extends Controller
             $fileExtension = $filesource->getClientOriginalExtension();
         }
         if (strcmp($fileExtension, "pdf") !== 0) {
-            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+            return back()->with('fail7', 'Se requiere un archivo con extension .pdf');
         }
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
@@ -470,13 +470,13 @@ class MainController extends Controller
                 ->update([
                     'parteA' => $base64
                 ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success2', 'Parte A subida');
         } else {
             DB::table('documentos_empresa')->insert([
                 'emp' => $emp[0],
                 'parteA' => $base64
             ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success2', 'Parte A subida');
         }
     }
     function parteB(Request $request)
@@ -487,7 +487,7 @@ class MainController extends Controller
             $fileExtension = $filesource->getClientOriginalExtension();
         }
         if (strcmp($fileExtension, "pdf") !== 0) {
-            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+            return back()->with('fail8', 'Se requiere un archivo con extension .pdf');
         }
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
@@ -505,13 +505,13 @@ class MainController extends Controller
                 ->update([
                     'parteB' => $base64
                 ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success3', 'Parte B subida');
         } else {
             DB::table('documentos_empresa')->insert([
                 'emp' => $emp[0],
                 'parteB' => $base64
             ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success3', 'Parte B subida');
         }
     }
     function parteT(Request $request)
@@ -522,7 +522,7 @@ class MainController extends Controller
             $fileExtension = $filesource->getClientOriginalExtension();
         }
         if (strcmp($fileExtension, "pdf") !== 0) {
-            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+            return back()->with('fail9', 'Se requiere un archivo con extension .pdf');
         }
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
@@ -540,13 +540,13 @@ class MainController extends Controller
                 ->update([
                     'trabajo' => $base64
                 ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success4', 'Plan de trabajo subido');
         } else {
             DB::table('documentos_empresa')->insert([
                 'emp' => $emp[0],
                 'trabajo' => $base64
             ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success4', 'Plan de trabajo subido');
         }
     }
     function parteP(Request $request)
@@ -557,7 +557,7 @@ class MainController extends Controller
             $fileExtension = $filesource->getClientOriginalExtension();
         }
         if (strcmp($fileExtension, "pdf") !== 0) {
-            return back()->with('fail', 'Se requiere un archivo con extension .pdf');
+            return back()->with('fail10', 'Se requiere un archivo con extension .pdf');
         }
         $query = DB::table('usuario_empresa');
         $query->where('usr', '=', session('LoggedUser'));
@@ -575,13 +575,13 @@ class MainController extends Controller
                 ->update([
                     'pagos' => $base64
                 ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success5', 'Plan de pagos subido');
         } else {
             DB::table('documentos_empresa')->insert([
                 'emp' => $emp[0],
                 'pagos' => $base64
             ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success5', 'Plan de pagos subido');
         }
     }
     function contratoD(Request $request)
@@ -639,7 +639,7 @@ class MainController extends Controller
                 ->update([
                     'contrato' => $base64
                 ]);
-            return back()->with('success', 'Archivo subido');
+            return back()->with('success1', 'Contrato actualizado');
         } else {
             return back()->with('fail6', 'Faltan documentos de la grupo-empresa');
         }
@@ -898,11 +898,17 @@ class MainController extends Controller
                 ->header('Content-Type', 'application/pdf')->header('Content-disposition', 'attachment; filename="contrato.pdf"');
             return $pdf;
         } else {
-            return back()->with('fail4', 'Contrato no generado');
+            return back()->with('fail11', 'Contrato no generado');
         }
     }
     public function orden(Request $request)
     {
+        $query2 = DB::table('documentos_empresa');
+        $query2->where('emp', '=', $request->id);
+        $data = $query2->get();
+        if ($data->isEmpty()) {
+            return back()->with('fail', 'Faltan documentos de la grupo-empresa');
+        }
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
         $grupo = $request->orden;
         return view('/docente/orden', compact('grupo'), ['usuarios' => $log]);

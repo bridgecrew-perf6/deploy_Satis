@@ -6,8 +6,6 @@
           <div class="formCyA ">
             <h1 Style="text-align: center;">EMPRESA</h1>
             <div   >
-          <form
-          id="funda" class="row g-3" method="post" action="{{ route('empresa.update') }}" enctype="multipart/form-data">
             @if(Session::get('success'))
              <div class="alert alert-success">
                 {{ Session::get('success') }}
@@ -18,6 +16,9 @@
                 {{ Session::get('fail') }}
              </div>
             @endif
+          <form
+          id="funda" class="row g-3" method="post" action="{{ route('empresa.update') }}" enctype="multipart/form-data">
+            
             @csrf
             @foreach($data as $empresa)
             <div class="col-md-6 ">
@@ -84,12 +85,7 @@
           </div>
           @endforeach
           </form>
-          <form method="post" action="{{ route('estudiante.orden') }}" enctype="multipart/form-data">
-            @if(Session::get('success'))
-             <div class="alert alert-success">
-                {{ Session::get('success') }}
-             </div>
-            @endif
+          <form method="post" action="{{ route('estudiante.orden') }}" enctype="multipart/form-data">            
             @if(Session::get('fail5'))
              <div class="alert alert-danger">
                 {{ Session::get('fail5') }}
@@ -104,15 +100,10 @@
              </div>
             </div>
           </form>
-          <form method="post" action="{{ route('ver.contrato2') }}" enctype="multipart/form-data">
-            @if(Session::get('success'))
-             <div class="alert alert-success">
-                {{ Session::get('success') }}
-             </div>
-            @endif
+          <form method="post" action="{{ route('ver.contrato2') }}" enctype="multipart/form-data">            
             @if(Session::get('fail4'))
              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
+                {{ Session::get('fail4') }}
              </div>
             @endif
             @csrf              
@@ -124,15 +115,10 @@
              </div>
             </div>
           </form>
-          <form method="post" action="{{ route('descarga.contrato') }}" enctype="multipart/form-data">
-            @if(Session::get('success'))
-             <div class="alert alert-success">
-                {{ Session::get('success') }}
-             </div>
-            @endif
-            @if(Session::get('fail4'))
+          <form method="post" action="{{ route('descarga.contrato') }}" enctype="multipart/form-data">            
+            @if(Session::get('fail11'))
              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
+                {{ Session::get('fail11') }}
              </div>
             @endif
             @csrf              
@@ -144,12 +130,13 @@
              </div>
             </div>
           </form>
-          <form method="post" action="{{ route('estudiante.contratoD') }}" accept=".pdf" enctype="multipart/form-data">
-            @if(Session::get('success'))
+          <form method="post" action="{{ route('estudiante.contratoD') }}" accept=".pdf" enctype="multipart/form-data">            
+            @if(Session::get('success1'))
              <div class="alert alert-success">
-                {{ Session::get('success') }}
+                {{ Session::get('success1') }}
              </div>
-            @endif
+            @endif           
+
             @if(Session::get('fail6'))
              <div class="alert alert-danger">
                 {{ Session::get('fail6') }}
@@ -172,18 +159,18 @@
              </div>
             </div>
          </form>
-          <form method="post" action="{{ route('empresa.parteA') }}" accept=".pdf" enctype="multipart/form-data">
-            @if(Session::get('success'))
+          <form method="post" action="{{ route('empresa.parteA') }}" accept=".pdf" enctype="multipart/form-data">            
+            @csrf
+            @if(Session::get('success2'))
              <div class="alert alert-success">
-                {{ Session::get('success') }}
+                {{ Session::get('success2') }}
              </div>
             @endif
-            @if(Session::get('fail'))
+            @if(Session::get('fail7'))
              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
+                {{ Session::get('fail7') }}
              </div>
             @endif
-            @csrf              
               
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
               <div>
@@ -200,19 +187,18 @@
              </div>
             </div>
          </form>
-         <form method="post" action="{{ route('empresa.parteB') }}" accept=".pdf" enctype="multipart/form-data">
-            @if(Session::get('success'))
-             <div class="alert alert-success">
-                {{ Session::get('success') }}
-             </div>
-            @endif
-            @if(Session::get('fail'))
-             <div class="alert alert-danger">
-                {{ Session::get('fail') }}
-             </div>
-            @endif
+         <form method="post" action="{{ route('empresa.parteB') }}" accept=".pdf" enctype="multipart/form-data">            
             @csrf              
-              
+            @if(Session::get('success3'))
+             <div class="alert alert-success">
+                {{ Session::get('success3') }}
+             </div>
+            @endif
+            @if(Session::get('fail8'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail8') }}
+             </div>
+            @endif  
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
               <div>
                     <label for="parteB" class="form-label">Parte B</label>
@@ -228,18 +214,18 @@
              </div>
             </div>
          </form>
-         <form method="post" action="{{ route('empresa.trabajo') }}" accept=".pdf" enctype="multipart/form-data">
-            @if(Session::get('success'))
+         <form method="post" action="{{ route('empresa.trabajo') }}" accept=".pdf" enctype="multipart/form-data">            
+            @csrf
+            @if(Session::get('success4'))
              <div class="alert alert-success">
                 {{ Session::get('success') }}
              </div>
             @endif
-            @if(Session::get('fail'))
+            @if(Session::get('fail9'))
              <div class="alert alert-danger">
-                {{ Session::get('fail') }}
+                {{ Session::get('fail9') }}
              </div>
             @endif
-            @csrf              
               
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
               <div>
@@ -257,18 +243,17 @@
             </div>
          </form>
          <form method="post" action="{{ route('empresa.pagos') }}" accept=".pdf" enctype="multipart/form-data">
-            @if(Session::get('success'))
-             <div class="alert alert-success">
-                {{ Session::get('success') }}
-             </div>
-            @endif
-            @if(Session::get('fail'))
-             <div class="alert alert-danger">
-                {{ Session::get('fail') }}
-             </div>
-            @endif
             @csrf              
-              
+            @if(Session::get('success5'))
+             <div class="alert alert-success">
+                {{ Session::get('success5') }}
+             </div>
+            @endif
+            @if(Session::get('fail10'))
+             <div class="alert alert-danger">
+                {{ Session::get('fail10') }}
+             </div>
+            @endif
             <div class="d-flex justify-content-evenly" style="margin-top:50px;">
               <div>
                     <label for="pagos" class="form-label">Plan de pagos</label>
