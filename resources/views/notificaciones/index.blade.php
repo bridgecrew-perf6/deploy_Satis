@@ -80,10 +80,10 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="{{ route('estudiante.fundaempresa') }}">Registrar funda
                                                 empresa TIS</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de
+                                        <!--<li><a class="dropdown-item" href="{{ route('pagos.index') }}">Registrar plan de
                                                 pagos</a></li>
                                         <li><a class="dropdown-item" href="{{ route('planTrabajos.index') }}">Registrar
-                                                plan de Trabajo</a></li>
+                                                plan de Trabajo</a></li>-->
 
                                     </ul>
                                 </li>

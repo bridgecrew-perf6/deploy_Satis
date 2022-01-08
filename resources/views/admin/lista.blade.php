@@ -81,38 +81,52 @@
           <section>
         
             {{ Breadcrumbs::render('admin.lista') }}
+            
             <div class="container mt-5 mb-5 ">
-            <div class=" row d-flex justify-content-between cards ">
-             <h2 class="align-items-center avisos text-light">
+              <h2 class="align-items-center avisos text-light">
                 FUNDA EMPRESA
                 </h2>
+              <h1 class="text-center">Seleccione la gestión correspondiente de la  empresa</h1>
+              <div class="col-md-1">Gestión:
+                <form method="POST" action="{{ route('admin.lista') }}">
+                  @csrf
+                 
+                  <select name="gestion" class="form-control" required>
+                    <option value="1/2009">1/2009</option>
+                    <option value="2/2009">2/2009</option>
+                    <option value="1/2010">1/2010</option>
+                    <option value="2/2010">2/2010</option>
+                    <option value="1/2011">1/2011</option>
+                    <option value="2/2011">2/2011</option>
+                    <option value="1/2012">1/2012</option>
+                    <option value="2/2012">2/2012</option>
+                    <option value="1/2013">1/2013</option>
+                    <option value="2/2013">2/2013</option>
+                    <option value="1/2021">1/2021</option>
+                    <option value="2/2021">2/2021</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+              </div>
+              @if (count($data)==0)
+              <div class="container mt-5 mb-5">
+<div class="col-sm-12 sinEmp">
+<h1 class="align-items-center avisos text-light">
+La gestión seleccionada no tiene grupo empresas registradas.
+</h1>
+
+
+</div>
+
+</div> 
+@else
+            
+            <div class=" row d-flex justify-content-between cards ">
+             
+             
               <table class="table tabla">
-                <h1 class="text-center">Seleccione su empresa</h1>
-                  <div class="col-md-1">Año:
-                      <select name="gestion" class="form-control" required>
-                        <option value="2021">2022</option>
-                          <option value="2021">2021</option>
-                          <option value="2020">2020</option>
-                          <option value="2019">2019</option>
-                          <option value="2018">2018</option>
-                          <option value="2017">2017</option>
-                          <option value="2016">2016</option>
-                          <option value="2015">2015</option>
-                          <option value="2014">2014</option>
-                          <option value="2013">2013</option>
-                      </select>
-                      
-                  </div>
-              
-              <div class="col-md-2"> Elegir semestre :
-
-
-                <select name="semestre" class="form-control " required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-
-            </div>
+                <!--<h1 class="text-center">Seleccione la empresa</h1>-->
+                                   
                 <thead class="tablaL">
                   
                   <th class="text-center" border="1">Nombre corto</th>
@@ -181,6 +195,7 @@
               </div> --}}
                 
             </div>
+            @endif
             </div>
         </section>
         <footer class="footer text-white">
