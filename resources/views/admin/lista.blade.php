@@ -153,9 +153,7 @@ La gestión seleccionada no tiene grupo empresas registradas.
                       <td align="center">
                           {{$item->nombreL}}                                
                       </td>
-                      <!--<td align="center">
-                        {{$item->gestion_emp}}                                
-                      </td>-->
+                   
             
                       <td align="center">
                         {{$item->nombre}}                           
