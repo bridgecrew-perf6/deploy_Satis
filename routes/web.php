@@ -127,5 +127,10 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::resource('notificaciones', NotificacionController::class);
     Route::get('/docente/documentosB/{documentos}',[AvisosController::class, 'editDocumentos'])->name('documentos.edit');
     Route::put('/docente/documentosB/{documentos}',[AvisosController::class, 'updateDocumentos'])->name('documentos.update');
-    
+   
+    Route::get('/docente/convocatoriasD/{convocatorias}',[AvisosController::class, 'editConvocatorias'])->name('convocatorias.edit');
+    Route::put('/docente/convocatoriasD/{convocatorias}',[AvisosController::class, 'updateConvocatorias'])->name('convocatorias.update');
+
+    Route::get('/docente/avisosD/{avisos}',[AvisosController::class, 'editAvisos'])->name('avisos.edit');
+    Route::put('/docente/avisosD/{avisos}',[AvisosController::class, 'updateAvisos'])->name('avisos.update');
 });

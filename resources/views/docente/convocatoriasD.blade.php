@@ -41,4 +41,58 @@
           </div>
           </form>
       </div>
+      <section>
+        <div class="container mt-5 mb-5">
+            <div class=" row d-flex justify-content-between cards ">
+                <div class="col-sm-12">
+                    <h2 class="align-items-center avisos text-light">
+                        CONVOCATORIAS PUBLICADAS
+                    </h2>
+                    <div class="card ">
+                      @foreach ($convocatorias as $convocatorias)
+                      <h5 class="card-title text-ligth">{{ $convocatorias->name }}</h5>
+
+                      <p class="card-text">Documento:
+                          {{ $convocatorias->nombre }}</p>
+                          <div class="container d-flex justify-content-end">
+                            <form action="{{ route('convocatorias.destroy', $convocatorias) }}" method="POST"
+                                onclick="return confirm('¿Esta seguro que desea eliminar la convocatoria?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    style="border: none; background-color:transparent;margin-right: 50px;">
+                                    <i class="fas fa-trash fa-lg text-danger"></i>
+
+                                </button>
+                            </form>
+                            <form action="">
+                                <a href="{{ route('convocatorias.edit', $convocatorias) }}">
+                                    <i class="fas fa-edit  fa-lg"></i>
+
+                                </a>
+                            </form>
+                        </div>
+
+                  <form method="post" action="{{ route('docente.convocatoriaPdf') }}"
+                          enctype="multipart/form-data">
+                          @csrf
+                          <div class="d-flex justify-content-evenly">
+
+                              <div class=" ">
+                                  <button type="submit" name="archivote" value="{{ $convocatorias->id }}"
+                                      class="btn btn-primary" style="background-color: #215f88;margin-bottom:20px;">Ver
+                                      Documento</button>
+
+                              </div>
+                          </div>
+                      </form>
+                      
+
+                  @endforeach
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
       @endsection

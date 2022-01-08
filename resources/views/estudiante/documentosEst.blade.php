@@ -17,8 +17,6 @@
                   
                   <p class="card-text">Documento:
             {{$documentos->nombre }}</p>
-              
-                  <p class="card-text">Gestion: {{$documentos->gestion }}</p>
                 <form method="post" action="{{ route('docente.documentosDisplay') }}" enctype="multipart/form-data">                               
                   @csrf
                   <div class="d-flex justify-content-evenly" >
