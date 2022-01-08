@@ -683,6 +683,13 @@ class MainController extends Controller
     function funda(Request $request)
     {
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()];
+        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $query = DB::table('usuario_empresa');
+        $query->where('usr', '=', session('LoggedUser'));
+        $data = $query->get();
+        if (!$data->isEmpty()) {
+            return view('estudiante/conempresa',['usuarios' => $log,'notificaciones' => $notificaciones]);
+        }
         $query = DB::table('usuarios');
         $query->where('id', '=', session('LoggedUser'));
         $docente = $query->pluck('id_docente');
@@ -693,8 +700,7 @@ class MainController extends Controller
         $query->where('id_docente', '=', $docente);
         $query->where('gestion', '=', $gestion);
         $query->where('grupo', '=', $grupo);
-        $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));
-        $notificaciones = Notificacion_usuario::where("id_recibido", session('LoggedUser'))->where('leido', 0)->get();
+        $query->whereNotIn('id', DB::table('usuario_empresa')->pluck('usr'));        
         $data = $query->get();
         return view('estudiante.fundaempresa', compact('data'),['usuarios' => $log,'notificaciones' => $notificaciones]);
     }
