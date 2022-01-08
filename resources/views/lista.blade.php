@@ -21,11 +21,13 @@
       @section('cuerpo')
     <section>
       {{ Breadcrumbs::render('lista') }}
-        <div class="container mt-5 mb-5 ">
-        <div class=" row d-flex justify-content-between cards ">
-            <h2 class="align-items-center avisos text-light">
-                FUNDA EMPRESA
-            </h2>
+        
+      <div class="container ">
+        <h2 class="avisos text-light text-center">
+          FUNDA EMPRESA
+      </h2>
+        <div class=" row ">
+           
           <table class="table tabla">
             <thead class="tablaL">
               

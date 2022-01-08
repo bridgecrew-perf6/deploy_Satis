@@ -43,10 +43,13 @@
 
         </div>
         </form>
-    </div>
-    <div class="container mt-5 formularioDocu">
+   
+    
         <h1 class="text-center">DOCUMENTOS BASE PUBLICADOS</h1>
         <div class="formCyA">
+        
+            <div class="">
+            <div class="container">
             @foreach ($documentos as $documentos)
                 <h3 class="card-title text-ligth">{{ $documentos->name }}</h3>
 
@@ -54,15 +57,18 @@
                     {{ $documentos->nombre }}</p>
 
                 <p class="card-text">Gestion: {{ $documentos->gestion }}</p>
-
-                <form action="{{ route('documento.destroy', $documentos) }}" method="POST"onclick="return confirm('¿Esta seguro que desea eliminar el documento base?')">
+            </div>   
+                <div class="container d-flex justify-content-end">
+                <form  action="{{ route('documento.destroy', $documentos) }}" method="POST"onclick="return confirm('¿Esta seguro que desea eliminar el documento base?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" style="border: none; background-color:transparent;">
+                    <button type="submit" style="border: none; background-color:transparent;margin-right: 50px;">
                         <i class="fas fa-trash fa-lg text-danger"></i>
 
                     </button>
                 </form>
+             
+              
                 <form action="" >
 
                 <a href="{{ route('documentos.edit',$documentos) }}">
@@ -70,6 +76,9 @@
 
                 </a>
                 </form>
+                </div>
+            
+        </div>
                 <form method="post" action="{{ route('docente.documentosDisplay') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex justify-content-evenly">
@@ -82,9 +91,9 @@
                     </div>
                 </form>
 
-
-            @endforeach
+            </div>
         </div>
-    </div>
-
+            @endforeach
+        
 @endsection
+

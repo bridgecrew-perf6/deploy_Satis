@@ -6,38 +6,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
     <script src="https://kit.fontawesome.com/9ac0673dac.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../CSS/App.css">
     <link rel="stylesheet" href="../../CSS/iconos.css">
-    <link rel="stylesheet" href="../../CSS/nav.css">  
-    <link rel="stylesheet" href="../../CSS/fondos.css"> 
-    <link rel="stylesheet" href="../../CSS/cabecera.css"> 
-    <link rel="stylesheet" href="../../CSS/formulario.css"> 
-    <link rel="stylesheet" href="../../CSS/nav2.css"> 
+    <link rel="stylesheet" href="../../CSS/nav.css">
+    <link rel="stylesheet" href="../../CSS/fondos.css">
+    <link rel="stylesheet" href="../../CSS/cabecera.css">
+    <link rel="stylesheet" href="../../CSS/formulario.css">
+    <link rel="stylesheet" href="../../CSS/nav2.css">
     <script src="../../CSS/script.js" defer></script>
     <script src="../../CSS/borrar.js" defer></script>
-    <nav class="navbar"  >
-            
-      <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
-      <a href="#" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </a>
-      <div class="navbar-links">
-        
-        <ul>
-         
-          <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+    <nav class="navbar">
 
-      
-    </ul>
-  </div>
-</div>
-</nav>
-    <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss"> 
+        <div class="brand-title">TALLER DE INGENIERIA DE SOFTWARE</div>
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+
+            <ul>
+
+                <li><a href="{{ route('auth.logout') }}">Cerrar sesion</a></li>
+
+
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="d-sm-none d-md-block d-none d-lg-block cabeceraCss">
         <div class="cabeceraCssAzul"></div>
         <div class="cabeceraCssAzulClaro"></div>
         <div class="cabeceraCssBlanca"></div>
@@ -45,53 +48,61 @@
         <div class="textoCabeceraUniverisdad h3">FACULTAD DE CIENCIAS Y TECNOLOGIA</div>
         <img class="logoUmssCss" src="../../IMAGENES/LogoUMSS.png" alt="">
     </div>
-        </head>
-    <body>
-        <header>
-    
-        
+</head>
+
+<body>
+    <header>
+
+
         <div>
             <h2 class="textos">Sistema de Apoyo a la Empresa TIS</h2>
-          </div>
+        </div>
 
         <!--MENU NAVBAR  -->
-        <nav class="navbar"style="justify-content: center">
+        <nav class="navbar" style="justify-content: center">
             <div class="brand-title"></div>
             <a href="#" class="toggle-button">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </a>
             <div class="navbar-links">
-              <ul>
-              
-              <li class="nav-item {{!Route::is('docente.inicioD')?:'active'}}"> <a class="nav-link" href="{{ route('docente.inicioD') }}">Inicio</a></li>
-              <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Publicar
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="{{ route('docente.convocatoriasD') }}">Convocatoria</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.avisosD') }}">Aviso</a></li>
-                  <li><a class="dropdown-item" href="{{ route('docente.documentosB') }}">Documentos Base</a></li>
-                </ul>
-              </li>
-              <!--<li class="nav-item dropdown">
+                <ul>
+
+                    <li class="nav-item {{ !Route::is('docente.inicioD') ?: 'active' }}"> <a class="nav-link"
+                            href="{{ route('docente.inicioD') }}">Inicio</a></li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Publicar
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item"
+                                    href="{{ route('docente.convocatoriasD') }}">Convocatoria</a></li>
+                            <li><a class="dropdown-item" href="{{ route('docente.avisosD') }}">Aviso</a></li>
+                            <li><a class="dropdown-item" href="{{ route('docente.documentosB') }}">Documentos
+                                    Base</a></li>
+                        </ul>
+                    </li>
+                    <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ver
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li class="nav-item {{!Route::is('docente.planP')?:'active'}}"><a class="dropdown-item" href="{{ route('docente.planP') }}">Plan de pagos</a></li>
-                  <li class="nav-item {{!Route::is('docente.planT')?:'active'}}"><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
+                  <li class="nav-item {{ !Route::is('docente.planP') ?: 'active' }}"><a class="dropdown-item" href="{{ route('docente.planP') }}">Plan de pagos</a></li>
+                  <li class="nav-item {{ !Route::is('docente.planT') ?: 'active' }}"><a class="dropdown-item" href="{{ route('docente.planT') }}">Plan de Trabajos</a></li>
                  
                 </ul>
               </li>-->
-                <li class="nav-item {{!Route::is('docente.lista')?:'active'}}"> <a class="nav-link"href="{{ route('docente.lista') }}">Lista de empresas</a></li>
-                <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
-                <li class="nav-item {{!Route::is('docente.calendario')?:'active'}}"><a class="nav-link"href="{{ route('docente.calendario') }}">Calendario</a></li>
-                <li class="nav-item {{!Route::is('auth.register')?:'active'}}"><a class="nav-link"href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
+                    <li class="nav-item {{ !Route::is('docente.lista') ?: 'active' }}"> <a class="nav-link"
+                            href="{{ route('docente.lista') }}">Lista de empresas</a></li>
+                    <li><a class="nav-link" href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
+                    <li class="nav-item {{ !Route::is('docente.calendario') ?: 'active' }}"><a class="nav-link"
+                            href="{{ route('docente.calendario') }}">Calendario</a></li>
+                    <li class="nav-item {{ !Route::is('auth.register') ?: 'active' }}"><a class="nav-link"
+                            href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
             </div>
-          </nav>
+        </nav>
 
     </header>
 
@@ -100,31 +111,31 @@
         <div class="formCyA">
             <h1 Style="text-align: center;">Documentos Base</h1>
             <div class="text-center">
-                @if(Session::get('success'))
-                <div class="alert alert-success">
-                   {{ Session::get('success') }}
-                </div>
-               @endif
-               @if(Session::get('fail'))
-                <div class="alert alert-danger">
-                   {{ Session::get('fail') }}
-                </div>
-               @endif
+                @if (Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if (Session::get('fail'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('fail') }}
+                    </div>
+                @endif
             </div>
-     
-            <form class="row g-3" method="post" action="{{ route('documentos.update',$documentos) }}"
+
+            <form class="row g-3" method="post" action="{{ route('documentos.update', $documentos) }}"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-            
-                     <div class="col-md-12">
+
+                <div class="col-md-12">
                     <label class="form-label">Mensaje:</label>
-                    
+
                     <textarea name="name" class="form-control" placeholder="" id="floatingTextarea2"
                         style="height: 100px" required>{{ $documentos->name }}
                     
                     </textarea>
-                </div> 
+                </div>
                 <div Style="margin-top: 40px;">
                     <label for="convocatoria">Elegir Documento:</label>
                     <input name="archivote" type="file" name="convocatoria" id="convocatoria" required>
@@ -132,18 +143,19 @@
 
                 </div>
 
-                <div class="col-md-6 d-flex justify-content-between ">
-                    <button type="submit" class="btn btn-primary " style="background-color: #215f88;">actualizar</button>
+                <div class=" d-flex justify-content-center ">
+                    <button type="submit" class="btn btn-primary "
+                        style="background-color: #215f88;">Actualizar</button>
 
-                </div>
+
 
 
             </form>
-
         </div>
-        </form>
     </div>
-   
+    </form>
+    </div>
+
 
 
 
@@ -188,4 +200,3 @@
 </body>
 
 </html>
- 
