@@ -60,7 +60,10 @@ Route::post('/auth/check',[MainController::class, 'check'])->name('auth.check');
 Route::get('/lista',[MainController::class, 'funda2'])->name('lista');
 Route::get('/estudiante/lista',[MainController::class, 'funda3'])->name('estudiante.lista');
 Route::get('/docente/lista',[MainController::class, 'funda4'])->name('docente.lista');
+Route::post('/docente/new_lista',[MainController::class, 'emp'])->name('docente.new_lista');
 Route::get('/admin/lista',[MainController::class, 'funda5'])->name('admin.lista');
+
+Route::post('/admin/lista',[MainController::class, 'admEmp'])->name('admin.lista');
 Route::get('/admin/docentes',[MainController::class, 'docentes'])->name('admin.docentes');
 
 Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
