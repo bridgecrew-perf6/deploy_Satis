@@ -733,7 +733,7 @@ class MainController extends Controller
     {
 
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-        //$query = DB::table('empresas')->where('gestion_emp',$request->get('gestion_emp'));
+        //$query = DB::table('empresas')->where('gestion',$request->get('gestion'));
         $query = DB::table('empresas')->where('gestion',$request->get('gestion'));
         $data = $query->get();
         return /*redirect('/docente/lista');*/view('/docente/lista', compact('data'), ['usuarios' => $log]);
@@ -741,7 +741,7 @@ class MainController extends Controller
     public function admEmp(Request $request)
     {
         $log = ['LoggedUserInfo'=>Usuario::where('id','=', session('LoggedUser'))->first()]; 
-        $query = DB::table('empresas')->where('empresas.gestion_emp',$request->get('gestion'))->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
+        $query = DB::table('empresas')->where('empresas.gestion',$request->get('gestion'))->join('usuarios', 'empresas.id_docente', '=', 'usuarios.id');
         $data = $query->get();
 
         return view('/admin/lista', compact('data'),['usuarios' => $log]);
