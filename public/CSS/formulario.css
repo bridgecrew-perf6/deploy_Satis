@@ -60,13 +60,16 @@ padding-right: 20px;
     background-color: #DDDDDD;
 }
 .formCyA{
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: #DDDDDD;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .breadcrumb-item.active {
     color: white;
+}
+.tablaLista{
+    background-color: #DDDDDD;
 }
