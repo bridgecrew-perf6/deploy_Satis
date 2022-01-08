@@ -69,9 +69,6 @@
                                 <li class="nav-item {{ !Route::is('estudiante.empresa') ?: 'active' }}"><a
                                         href="{{ route('estudiante.empresa') }}">Empresa</a></li>
                                 <li><a href="{{ route('estudiante.documentosBaseView') }}">Documentos base</a></li>
-                                <li class="nav-item {{ !Route::is('estudiante.lista') ?: 'active' }}"><a
-                                        href="{{ route('estudiante.lista') }}">Lista de empresas</a></li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,6 +84,10 @@
 
                                     </ul>
                                 </li>
+                                <li class="nav-item {{ !Route::is('estudiante.lista') ?: 'active' }}"><a
+                                        href="{{ route('estudiante.lista') }}">Lista de empresas</a></li>
+
+                                
 
 
                             </ul>
