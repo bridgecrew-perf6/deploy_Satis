@@ -20,7 +20,7 @@
       @section('cuerpo')
       {{ Breadcrumbs::render('auth.login') }}
 <div class="container">
-   <div class="row justify-content-center pt-5 mt-5 m-1 caja">
+   <div class="row justify-content-center pt-3 m-1 caja">
       <div class="col-md-6 col-sm-8 col-xl-4 col-lg-5 formulario">
       
       <div class="form-group text-center pt-3">
