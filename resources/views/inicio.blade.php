@@ -38,10 +38,8 @@
                       <h2 class="textos">Sistema de Apoyo </h2>
                       <h2 class="textos"> a la Empresa TIS</h2>
                   </div>
-                  <h5 class="card-title text-ligth inicio2">La empresa TIS, tiene como misión realizar consultorías
-                      para la mejora de
-                      procesos de desarrollo de software, trabaja directamente con
-                      las empresas consultadas y su equipo en la prestación de servicios.</h5>
+                  <h5 class="card-title text-ligth inicio2">El sistema de apoyo a la empresa TIS, está pensado y diseñado para facilitar a los usuarios de taller de ingeniería de software “TIS” y docentes “TIS”, para tener los mecanismos que permitan automatizar sus procesos administrativos, desde la publicación de documentos oficiales de TIS, pasando por la gestión de funda empresa TIS hasta el establecimiento de toda la información para realizar el seguimiento de las empresas.
+                  </h5>
 
                   <div class="card-body">
 

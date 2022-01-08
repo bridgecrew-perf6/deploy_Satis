@@ -22,6 +22,7 @@
 
                 @csrf
                 <div class="col-md-12">
+                    <p>*El campo y el archivo son obligatorios.</p>
                     <label class="form-label">Mensaje:</label>
                     <textarea name="name" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"
                         required></textarea>

@@ -21,11 +21,16 @@
           <form class="row g-3"  method="post" action="{{ route('docente.subirPdf') }}" enctype="multipart/form-data">
           
             @csrf
-         <div class="col-md-4">
+         <div class="col-md-12">
+           <p>*El campo y el archivo son obligatorios.</p>
               <label for="firstName" class="form-label">Mensaje:</label>
-              <input type="text" class="form-control" name="name" required >
+              <input type="text" class="form-control" name="name" required style="height: 50px"  >
             </div>
     
+
+
+
+            
           <div Style="margin-top: 40px;"  >
             <label  for="convocatoria" >Elegir Documento:</label>
             <input name= "archivote" type="file" name="convocatoria" id="convocatoria" required>
