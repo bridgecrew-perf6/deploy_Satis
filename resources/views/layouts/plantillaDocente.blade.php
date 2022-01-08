@@ -94,10 +94,10 @@
                 </ul>
               </li>-->
                 <li class="nav-item {{!Route::is('docente.lista')?:'active'}}"> <a class="nav-link"href="{{ route('docente.lista') }}">Lista de empresas</a></li>
-                <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
                 <li class="nav-item {{!Route::is('docente.calendario')?:'active'}}"><a class="nav-link"href="{{ route('docente.calendario') }}">Calendario</a></li>
                 <li class="nav-item {{!Route::is('auth.register')?:'active'}}"><a class="nav-link"href="{{ route('auth.register') }}">Registrar estudiantes</a></li>
-            </div>
+                <li><a class="nav-link"href="{{ url('/notificaciones') }}">Enviar Notificacion</a></li>
+              </div>
           </nav>
 
     </header>

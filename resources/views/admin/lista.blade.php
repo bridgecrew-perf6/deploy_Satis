@@ -31,6 +31,31 @@
             <div class=" row d-flex justify-content-between cards ">
              
               <table class="table tabla">
+                <h1 class="text-center">Seleccione su empresa</h1>
+                  <div class="col-md-1">Año:
+                      <select name="gestion" class="form-control" required>
+                          <option value="2021">2021</option>
+                          <option value="2020">2020</option>
+                          <option value="2019">2019</option>
+                          <option value="2018">2018</option>
+                          <option value="2017">2017</option>
+                          <option value="2016">2016</option>
+                          <option value="2015">2015</option>
+                          <option value="2014">2014</option>
+                          <option value="2013">2013</option>
+                      </select>
+                      
+                  </div>
+              
+              <div class="col-md-2"> Elegir semestre :
+
+
+                <select name="semestre" class="form-control " required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+
+            </div>
                 <thead class="tablaL">
                   
                   <th class="text-center" border="1">Nombre corto</th>
